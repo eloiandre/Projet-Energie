@@ -1,7 +1,6 @@
-streamlit 
-pandas
-geopandas
-gdown
-plotly.graph_objects
-plotly.express
-os
+streamlit==1.25.0   # Spécifiez la version actuelle si vous en avez besoin
+pandas==2.0.3       # Spécifiez la version actuelle si vous en avez besoin
+geopandas==0.14.0   # Spécifiez la version actuelle si vous en avez besoin
+gdown==4.7.1        # Spécifiez la version actuelle si vous en avez besoin
+plotly==5.15.0      # Spécifiez la version actuelle si vous en avez besoin
+Pillow==10.0.0      # Pour le module PIL
