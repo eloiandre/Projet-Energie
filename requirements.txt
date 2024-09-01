@@ -1,6 +1,6 @@
-streamlit==1.25.0   # Si vous voulez conserver cette version, mettez Pillow à jour
-pandas==2.0.3
-geopandas==0.14.0
-gdown==4.7.1
-plotly==5.15.0
-Pillow==9.5.0       # Utilisez une version compatible avec Streamlit
+streamlit
+pandas
+geopandas
+gdown
+plotly
+Pillow
