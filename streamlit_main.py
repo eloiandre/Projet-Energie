@@ -467,7 +467,7 @@ def show_model():
     st.write('## Model :')
 def main():
    
-    st.title("Projet Energie2")
+    st.title("Projet Energie")
     st.sidebar.title("Sommaire")
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
