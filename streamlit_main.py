@@ -30,7 +30,7 @@ def import_files():
 # Example usage:
 df, geojson, additional_df = import_files()
 
-    st.write('### Exploration2')
+    st.write('### Exploration2a')
     st.dataframe(df.head(10))
     st.write(f"Dimensions du DataFrame: {df.shape}")
     st.dataframe(df.describe())
