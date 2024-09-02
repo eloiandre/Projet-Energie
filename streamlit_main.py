@@ -19,13 +19,6 @@ def import_files():
     output_temperature_csv = "temperature.csv"
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
-    
-    url_initial_csv = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
-    output_initial_csv = "initial.csv"
-    gdown.download(url_initial_csv, output_initial_csv, quiet=False)
-    # Lire le fichier CSV en morceaux (chunks) pour éviter les problèmes de mémoire
-    chunk_size = 100000  # Par exemple, 100 000 lignes par morceau
-    df_chunks = pd.read_csv(output_initial_csv, sep=';', chunksize=chunk_size, low_memory=False)
 
     # Traiter chaque morceau (chunk) séparément ou les combiner
     df_initial = pd.concat(df_chunks, ignore_index=True)
@@ -85,15 +78,15 @@ def show_initial_df():
         """
     
         if st.checkbox('Afficher un extrait du DataFrame', key='checkbox_df'):
-            st.dataframe(df_initial.head(10))
-            st.dataframe(df_initial.describe().round(2))
+            st.dataframe(df.head(10))
+            st.dataframe(df.describe().round(2))
         
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
         
-        st.dataframe(df_initial.isna().sum() * 100 / len(df))
+        st.dataframe(df.isna().sum() * 100 / len(df))
         
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
