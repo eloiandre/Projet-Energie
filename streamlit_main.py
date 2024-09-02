@@ -76,7 +76,6 @@ def show_exploration():
         - les échanges d'électricité entre régions, en MW
         """
     
-
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.dataframe(df.head(10))
             st.dataframe(df.describe().round(2))
@@ -120,6 +119,16 @@ def show_exploration():
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         
         """
+    with st.expander('**Dataset température**'):
+        """
+        - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
+        - changement de la variable date_heure au format datetime
+        - passage de la région en type string
+
+        """
+        if st.checkbox('Afficher un extrait du DataFrame'):
+            st.dataframe(temperature.head(10))
+
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
