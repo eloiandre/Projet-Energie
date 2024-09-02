@@ -30,7 +30,7 @@ def import_files():
 # Example usage:
 df, geojson, additional_df = import_files()
 
-    st.write('### Exploration')
+    st.write('### Exploration2')
     st.dataframe(df.head(10))
     st.write(f"Dimensions du DataFrame: {df.shape}")
     st.dataframe(df.describe())
@@ -138,7 +138,7 @@ def show_exploration():
         """
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.dataframe(temperature.head(10))
-            
+
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
