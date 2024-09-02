@@ -496,7 +496,7 @@ def conso_temp():
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('## Model :')
-    courbe_apprentissage=Image.open('COurbe_apprentissage.jpg')
+    courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
 
 
