@@ -23,11 +23,11 @@ def import_files():
     url_initial_csv = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
     output_initial_csv = "initial.csv"
     gdown.download(url_initial_csv, output_initial_csv, quiet=False)
-    new_data = pd.read_csv(output_initial_csv)
+    df_initial = pd.read_csv(output_initial_csv)
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson,temperature)
+    return(df,geojson,temperature,df_initial)
 
 def show_definition():
     st.write('## Definition du projet :')
@@ -79,15 +79,15 @@ def show_initial_df():
         """
     
         if st.checkbox('Afficher un extrait du DataFrame', key='checkbox_df'):
-            st.dataframe(df.head(10))
-            st.dataframe(df.describe().round(2))
+            st.dataframe(df_initial.head(10))
+            st.dataframe(df_initial.describe().round(2))
         
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
         
-        st.dataframe(df.isna().sum() * 100 / len(df))
+        st.dataframe(df_initial.isna().sum() * 100 / len(df))
         
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
@@ -497,5 +497,5 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-df,geojson,temperature=import_files()
+df,geojson,temperature,df_initial=import_files()
 main()
