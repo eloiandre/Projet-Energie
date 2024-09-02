@@ -409,14 +409,14 @@ def carte_conso(geojson):
     st.plotly_chart(fig, use_container_width=True)
 def show_data_viz(df,geojson):
     st.write('### DataVisualization')
-    conso_temp()
+    #conso_temp()
     st.write(' En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
               une vague de froid en janvier 2021 engendre un pic de consommation.')
     st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
-    carte_conso(geojson)
-    carte_prod(monthly_2022(),geojson)
-    a, b, c = aggreg_period()
-    conso_vs_temp(a,b,c)
+    #carte_conso(geojson)
+    #carte_prod(monthly_2022(),geojson)
+    #a, b, c = aggreg_period()
+    #conso_vs_temp(a,b,c)
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
