@@ -15,10 +15,9 @@ def import_files():
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
     st.write("ka")
+    return df
 
-
-
-import_files()
+df=import_files()
 st.title("Heeey")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
