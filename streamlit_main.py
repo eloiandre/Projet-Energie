@@ -66,7 +66,7 @@ def show_definition():
 
 
 df,geojson=import_files()
-st.title("Projet Energie")
+st.title("Projet2 Energie")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
