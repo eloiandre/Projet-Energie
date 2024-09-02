@@ -8,7 +8,7 @@ import os
 from PIL import Image
 
 
-st.title("Hello")
+st.title("Hey")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
