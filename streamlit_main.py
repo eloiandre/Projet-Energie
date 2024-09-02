@@ -24,6 +24,7 @@ def import_files():
     output_initial_csv = "initial.csv"
     gdown.download(url_initial_csv, output_initial_csv, quiet=False)
     df_initial = pd.read_csv(output_initial_csv,sep=';')
+    df_initial['eolien'] = pd.to_numeric(df_initial['eolien'], errors='coerce')#corrige les'-' dans certaine valeurs de l'ile de france
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
