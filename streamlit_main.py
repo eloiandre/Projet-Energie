@@ -482,7 +482,6 @@ def show_model():
 def main():
     st.title("Projet Energie1")
     st.sidebar.title("Sommaire")
-    st.write(df_initial.head())
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
     if page ==pages[0]:
