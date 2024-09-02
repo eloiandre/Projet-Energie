@@ -30,4 +30,4 @@ st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
 if page==pages[1]:
-    show_exploration()
+    show_exploration(df)
