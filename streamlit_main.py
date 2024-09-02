@@ -17,18 +17,13 @@ def import_files():
 
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
     output_temperature_csv = "additional_data.csv"
-    gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
+    gdown.download(url_temprature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
     
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
     return(df,geojson,temperature)
-
-    st.write('### Exploration')
-    st.dataframe(df.head(10))
-    st.write(f"Dimensions du DataFrame: {df.shape}")
-    st.dataframe(df.describe())
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -484,5 +479,4 @@ def main():
     if page==pages[3]:
         show_model()
 df,geojson,temperature=import_files()
-st.dataframe(temperature.describe())
 main()
