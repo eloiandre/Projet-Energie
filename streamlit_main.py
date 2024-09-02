@@ -20,12 +20,12 @@ def import_files():
     geojson = gpd.read_file(url_geojson)
     
     # Download the additional CSV file
-    url_additional_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
-    output_additional_csv = "additional_data.csv"
-    gdown.download(url_additional_csv, output_additional_csv, quiet=False)
-    additional_df = pd.read_csv(output_additional_csv)
+    url_temp_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
+    output_temp_csv = "additional_data.csv"
+    gdown.download(url_additional_csv, output_temp_csv, quiet=False)
+    temperature = pd.read_csv(output_temp_csv)
     
-    return df, geojson, additional_df
+    return df, geojson, temperature
 
 # Example usage:
 df, geojson, additional_df = import_files()
@@ -138,6 +138,7 @@ def show_exploration():
         """
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.dataframe(temperature.head(10))
+            
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
