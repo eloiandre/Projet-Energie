@@ -414,7 +414,7 @@ def show_data_viz():
               une vague de froid en janvier 2021 engendre un pic de consommation.')
     st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
     carte_conso()
-    #carte_prod(monthly_2022(),geojson)
+    carte_prod(monthly_2022())
     #a, b, c = aggreg_period()
     #conso_vs_temp(a,b,c)
 def conso_temp():
