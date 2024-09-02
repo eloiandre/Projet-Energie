@@ -482,7 +482,6 @@ def show_model():
 def main():
     st.title("Projet Energie12")
     st.sidebar.title("Sommaire")
-    st.table(initial.head())
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
     if page ==pages[0]:
