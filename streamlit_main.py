@@ -20,9 +20,7 @@ def import_files():
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
 
-    # Traiter chaque morceau (chunk) séparément ou les combiner
-    df_initial = pd.concat(df_chunks, ignore_index=True)
-    df_initial['eolien'] = pd.to_numeric(df_initial['eolien'], errors='coerce')#corrige les'-' dans certaine valeurs de l'ile de france
+
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
