@@ -76,31 +76,35 @@ def show_exploration():
         - les échanges d'électricité entre régions, en MW
         """
     
-        if st.checkbox('Afficher un extrait du DataFrame',key='checkbox_df'):
+        if st.checkbox('Afficher un extrait du DataFrame', key='checkbox_df'):
             st.dataframe(df.head(10))
             st.dataframe(df.describe().round(2))
+        
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
-        st.dataframe(df.isna().sum()*100/len(df))
+        
+        st.dataframe(df.isna().sum() * 100 / len(df))
+        
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
+        
         st.write('Les différentes actions effectuées sur ce fichier:')
+        
         st.write('**Suppressions**')
         """
-        - supression des données avant 2020 car manque de données tco et tch
+        - suppression des données avant 2020 car manque de données tco et tch
         - suppression des colonnes vides: 'column_30', 'stockage_batterie', 'destockage_batterie','eolien_terrestre','eolien_offshore'
         - suppression des 12 premières lignes vides du dataframe
         - les doublons lors du passage en heures d'été ont été supprimés
-        
         """
+        
         st.write('**Conversions**')
         """
         - variable 'date_heure' en format datetime
         - variable eolien en float
         - variable code_insee en string
-        
         """
 
         st.write('**Remplacements**')
@@ -110,23 +114,21 @@ def show_exploration():
         Bretagne, Bourgogne Franche Comté
         - mise à zéro des NaN dans la variable pompage
         - gestion des données incohérentes: tch hydraulique > 200%
-
         """
 
         st.write('**Enrichissements**')
         """
         - ajout des colonnes année, mois, jour et jour de la semaine
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
-        
         """
+    
     with st.expander('**Dataset température**'):
         """
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
         - changement de la variable date_heure au format datetime
         - passage de la région en type string
-
         """
-        if st.checkbox('Afficher un extrait du DataFrame',key='checkbox_temperature'):
+        if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
 
 @st.cache_data
