@@ -32,7 +32,6 @@ def import_files():
     geojson = gpd.read_file(url_geojson)
     
     return df, geojson, temperature, df_short
-
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -146,15 +145,12 @@ def show_final_df():
         """
         if st.checkbox('Afficher un extrait du fichier final'):
             st.table(df.head(10))
-
 def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
     show_initial_df()
     show_temperature_df()
     show_final_df()
-    
-    
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
@@ -500,6 +496,9 @@ def conso_temp():
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('## Model :')
+    st.image('Courbe_apprentissage')
+
+
 def main():
     st.title("Projet Energie12")
     st.sidebar.title("Sommaire")
@@ -513,5 +512,9 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
+
+
+
+# debut du code
 df,geojson,temperature,df_short=import_files()
 main()
