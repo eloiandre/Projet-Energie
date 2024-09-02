@@ -409,7 +409,7 @@ def carte_conso(geojson):
     st.plotly_chart(fig, use_container_width=True)
 def show_data_viz():
     st.write('### DataVisualization')
-    #conso_temp()
+    conso_temp()
     st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
               une vague de froid en janvier 2021 engendre un pic de consommation.')
     st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
@@ -473,5 +473,4 @@ if page ==pages[0]:
 if page==pages[1]:
     show_exploration()
 if page==pages[2]:
-    st.write('data_viz')
     show_data_viz()
