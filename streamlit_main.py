@@ -63,7 +63,7 @@ def show_definition():
     )
     st.markdown('<p class="right-align">Membres du groupe: Eloi Andre, Pierre Valmont, Siyamala Rollot, Léa Henry-Beaupied,  </p>', unsafe_allow_html=True)
     st.markdown('<p class="right-align">Date: Septembre 2024</p>', unsafe_allow_html=True)
-def show_exploration(df, temperature, df_clean):
+def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
     with st.expander('**Dataset initial**'):
