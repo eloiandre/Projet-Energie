@@ -8,13 +8,13 @@ import os
 from PIL import Image
 
 def import_files():
-    Use the direct download link from Google Drive
+    #Use the direct download link from Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
 
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
-    st.write("ok")
+    st.write("ka")
 
 
 
