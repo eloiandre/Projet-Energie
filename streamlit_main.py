@@ -8,11 +8,18 @@ import os
 from PIL import Image
 
 def import_files():
-    # Use the direct download link from Google Drive
+    # Use requests to download the CSV file
     url_csv = "https://drive.google.com/uc?export=download&id=1uW-GP29vVrHz-Whh5LYCaCDckuqnCbGj"
     output_csv = "data.csv"
-    gdown.download(url_csv, output_csv, quiet=False)
-    df = pd.read_csv(output_csv)
+    
+    response = requests.get(url_csv)
+    if response.status_code == 200:
+        with open(output_csv, 'wb') as file:
+            file.write(response.content)
+        df = pd.read_csv(output_csv)
+    else:
+        st.error("Failed to download CSV file.")
+        df = None
 
 
 
