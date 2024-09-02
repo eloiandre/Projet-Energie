@@ -465,12 +465,9 @@ def conso_temp():
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('## Model :')
-
-
-#main
 def main():
-    df,geojson=import_files()
-    st.title("Projetaa Energie")
+   
+    st.title("Projet Energie")
     st.sidebar.title("Sommaire")
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
@@ -482,5 +479,5 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-
+df,geojson=import_files()
 main()
