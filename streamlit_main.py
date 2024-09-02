@@ -70,7 +70,7 @@ st.title("Projet2 Energie")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
-if page ==page[0]:
+if page ==pages[0]:
     show_definition()
 if page==pages[1]:
     show_exploration()
