@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import os
 from PIL import Image
+st.set_page_config(layout="wide")
 @st.cache_data
 def import_files():
     #Use the direct download link from Google Drive
