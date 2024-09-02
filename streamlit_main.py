@@ -136,6 +136,16 @@ def show_temperature_df():
         """
         if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
+def show_finale_df():
+        st.title('Nettoyage et consolidation des deux fichiers')
+    with st.expander('**Dataset final**'):
+        """
+        - les deux fichiers sont maintenant fusionnés et prêts à être utilisés.
+
+        """
+        if st.checkbox('Afficher un extrait du fichier final'):
+            st.table(df.head(10))
+
 def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
