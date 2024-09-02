@@ -496,7 +496,7 @@ def conso_temp():
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('## Model :')
-    st.image('Courbe_apprentissage')
+    st.image(Courbe_apprentissage.jpg)
 
 
 def main():
