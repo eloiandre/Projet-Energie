@@ -14,9 +14,6 @@ def import_files():
     gdown.download(url_csv, "data.csv", quiet=False)
     df = pd.read_csv(output_csv)
 
-    url_geojson = "https://raw.githubusercontent.com/eloiandre/test_stream/main/regions.geojson"
-    geojson = gpd.read_file(url_geojson)
-    return(df,geojson)
 
 
 
