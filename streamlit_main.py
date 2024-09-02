@@ -374,11 +374,11 @@ def conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
     )
     st.plotly_chart(fig, use_container_width=True)
 def carte_conso():
-
-    df=df.groupby(['code_insee_region','libelle_region']).agg({'consommation':'sum'})
+    # Make a copy of df to avoid modifying the global df
+    df_grouped = df.groupby(['code_insee_region', 'libelle_region']).agg({'consommation': 'sum'}).reset_index()
 
     fig = px.choropleth(
-        df.reset_index(), 
+        df_grouped,  # Use the grouped DataFrame
         geojson=geojson,  
         locations='code_insee_region',  
         featureidkey='properties.code',  
