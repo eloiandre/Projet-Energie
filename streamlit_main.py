@@ -472,3 +472,5 @@ if page ==pages[0]:
     show_definition()
 if page==pages[1]:
     show_exploration()
+if page==pages[2]:
+    show_data_viz
