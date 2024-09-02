@@ -119,12 +119,7 @@ def show_initial_df():
         - ajout des colonnes année, mois, jour et jour de la semaine
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         """
-
-def show_exploration():
-    st.title('Exploration')
-    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
-    show_initial_df()
-    
+def show_temperature_df():
     with st.expander('**Dataset température**'):
         """
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
@@ -134,6 +129,13 @@ def show_exploration():
         if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
 
+def show_exploration():
+    st.title('Exploration')
+    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
+    show_initial_df()
+    show_temperature_df()
+    
+    
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
