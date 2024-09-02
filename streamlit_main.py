@@ -151,6 +151,7 @@ def show_exploration():
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
     show_initial_df()
     show_temperature_df()
+    show_final_df()
     
     
 @st.cache_data
