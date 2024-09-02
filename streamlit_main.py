@@ -16,7 +16,7 @@ def import_files():
     df = pd.read_csv(output_csv)
 
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
-    output_temperature_csv = "additional_data.csv"
+    output_temperature_csv = "temperature.csv"
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
     
@@ -474,8 +474,7 @@ def main():
     if page ==pages[0]:
         show_definition()
     if page==pages[1]:
-        #show_exploration()
-        st;write('hello')
+        show_exploration()
     if page==pages[2]:
         show_data_viz()
     if page==pages[3]:
