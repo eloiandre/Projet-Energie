@@ -474,4 +474,4 @@ if page==pages[1]:
     show_exploration()
 if page==pages[2]:
     st.write('data_viz')
-    show_data_viz()
+    #show_data_viz()
