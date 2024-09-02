@@ -136,8 +136,9 @@ def show_temperature_df():
         """
         if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
-def show_finale_df():
-        st.title('Nettoyage et consolidation des deux fichiers')
+def show_final_df():
+    st.title('Nettoyage et consolidation des deux fichiers')
+
     with st.expander('**Dataset final**'):
         """
         - les deux fichiers sont maintenant fusionnés et prêts à être utilisés.
