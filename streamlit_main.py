@@ -20,7 +20,7 @@ def import_files():
 
 
 
-import files
+import_files()
 st.title("Heeey")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
