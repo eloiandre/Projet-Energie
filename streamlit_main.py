@@ -9,19 +9,28 @@ from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
 def import_files():
-    #Use the direct download link from Google Drive
+    # Download the first CSV file
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
-
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
     
-
+    # Download the GeoJSON file
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson)
+    
+    # Download the additional CSV file
+    url_temp_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
+    output_temp_csv = "additional_data.csv"
+    gdown.download(url_additional_csv, output_temp_csv, quiet=False)
+    temperature = pd.read_csv(output_temp_csv)
+    
+    return df, geojson, temperature
 
-    st.write('### Exploration')
+# Example usage:
+df, geojson, additional_df = import_files()
+
+    st.write('### Exploration2a')
     st.dataframe(df.head(10))
     st.write(f"Dimensions du DataFrame: {df.shape}")
     st.dataframe(df.describe())
@@ -120,6 +129,16 @@ def show_exploration():
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         
         """
+    with st.expander('**Dataset température**'):
+        """
+        - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
+        - changement de la variable date_heure au format datetime
+        - passage de la région en type string
+
+        """
+        if st.checkbox('Afficher un extrait du DataFrame'):
+            st.dataframe(temperature.head(10))
+
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
@@ -465,8 +484,7 @@ def conso_temp():
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('## Model :')
-def main():
-   
+def main(): 
     st.title("Projet Energie")
     st.sidebar.title("Sommaire")
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
