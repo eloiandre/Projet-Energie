@@ -22,7 +22,7 @@ def import_files():
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson,temperature,df_initial)
+    return(df,geojson,temperature)
 
 def show_definition():
     st.write('## Definition du projet :')
