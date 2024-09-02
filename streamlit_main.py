@@ -468,16 +468,19 @@ def show_model():
 
 
 #main
-df,geojson=import_files()
-st.title("Projet Energie")
-st.sidebar.title("Sommaire")
-pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
-page=st.sidebar.radio("Aller vers", pages)
-if page ==pages[0]:
-    show_definition()
-if page==pages[1]:
-    show_exploration()
-if page==pages[2]:
-    show_data_viz()
-if page==pages[3]:
-    show_model()
+def main():
+    df,geojson=import_files()
+    st.title("Projet Energie")
+    st.sidebar.title("Sommaire")
+    pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
+    page=st.sidebar.radio("Aller vers", pages)
+    if page ==pages[0]:
+        show_definition()
+    if page==pages[1]:
+        show_exploration()
+    if page==pages[2]:
+        show_data_viz()
+    if page==pages[3]:
+        show_model()
+
+main()
