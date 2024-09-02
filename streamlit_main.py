@@ -19,9 +19,15 @@ def import_files():
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
     return(df,geojson)
-
+def show_exploration(df):
+    st.write('### Exploration')
+    st.dataframe(df.head(10))
+    st.write(f"Dimensions du DataFrame: {df.shape}")
+    st.dataframe(df.describe())
 df,geojson=import_files()
 st.title("Projet Energie")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
+if page==pages[1]:
+    show_exploration()
