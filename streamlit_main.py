@@ -501,5 +501,5 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-df,geojson,temperature=import_files()
+df,geojson,temperature,df_short=import_files()
 main()
