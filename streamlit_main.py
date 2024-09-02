@@ -63,9 +63,7 @@ def show_definition():
     )
     st.markdown('<p class="right-align">Membres du groupe: Eloi Andre, Pierre Valmont, Siyamala Rollot, Léa Henry-Beaupied,  </p>', unsafe_allow_html=True)
     st.markdown('<p class="right-align">Date: Septembre 2024</p>', unsafe_allow_html=True)
-def show_exploration():
-    st.title('Exploration')
-    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
+def show_initial_df():
     with st.expander('**Dataset initial**'):
         """
         Le fichier initial contient 32 colonnes et 2 108 840 lignes. Dans ce fichier, nous disposons, par demie heure et par région:
@@ -121,6 +119,11 @@ def show_exploration():
         - ajout des colonnes année, mois, jour et jour de la semaine
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         """
+
+def show_exploration():
+    st.title('Exploration')
+    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
+    show_initial_df()
     
     with st.expander('**Dataset température**'):
         """
