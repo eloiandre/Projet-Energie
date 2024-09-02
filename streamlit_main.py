@@ -415,8 +415,8 @@ def show_data_viz():
     st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
     carte_conso()
     carte_prod(monthly_2022())
-    #a, b, c = aggreg_period()
-    #conso_vs_temp(a,b,c)
+    a, b, c = aggreg_period()
+    conso_vs_temp(a,b,c)
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
