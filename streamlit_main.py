@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import os
 from PIL import Image
-
+@st.cache_data
 def import_files():
     #Use the direct download link from Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
@@ -21,7 +21,7 @@ def import_files():
     return(df,geojson)
 
 df,geojson=import_files()
-st.title("Heeey")
+st.title("Projet Energie")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
