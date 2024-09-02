@@ -9,7 +9,8 @@ from PIL import Image
 
 
 def import_files():
-    url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
+    
+    url_csv = "https://drive.google.com/file/d/1uW-GP29vVrHz-Whh5LYCaCDckuqnCbGj/view?usp=sharing"
     output_csv = "data.csv"
     gdown.download(url_csv, "data.csv", quiet=False)
     df = pd.read_csv(output_csv)
