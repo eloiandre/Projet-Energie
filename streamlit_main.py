@@ -20,8 +20,6 @@ def import_files():
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
 
-
-
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
     return(df,geojson,temperature,df_initial)
@@ -495,5 +493,5 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-df,geojson,temperature,df_initial=import_files()
+df,geojson,temperature=import_files()
 main()
