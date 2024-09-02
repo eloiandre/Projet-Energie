@@ -475,6 +475,7 @@ def main():
         show_definition()
     if page==pages[1]:
         #show_exploration()
+        st;write('hello')
     if page==pages[2]:
         show_data_viz()
     if page==pages[3]:
