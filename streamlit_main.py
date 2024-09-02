@@ -477,7 +477,7 @@ def conso_temp():
 def show_model():
     st.write('## Model :')
 def main():
-    st.title("Projet Energie 122")
+    st.title("Projet Energie 123")
     st.sidebar.title("Sommaire")
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
