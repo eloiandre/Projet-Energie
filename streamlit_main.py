@@ -14,10 +14,13 @@ def import_files():
 
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
-    st.write("ka")
-    return df
+    
 
-df=import_files()
+    url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
+    geojson = gpd.read_file(url_geojson)
+    return(df,geojson)
+
+df,geojson=import_files()
 st.title("Heeey")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
