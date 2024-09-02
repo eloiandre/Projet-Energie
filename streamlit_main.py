@@ -7,12 +7,11 @@ import plotly.express as px
 import os
 from PIL import Image
 
-
 def import_files():
-    
-    url_csv = "https://drive.google.com/file/d/1uW-GP29vVrHz-Whh5LYCaCDckuqnCbGj/view?usp=sharing"
+    # Use the direct download link from Google Drive
+    url_csv = "https://drive.google.com/uc?export=download&id=1uW-GP29vVrHz-Whh5LYCaCDckuqnCbGj"
     output_csv = "data.csv"
-    gdown.download(url_csv, "data.csv", quiet=False)
+    gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
 
 
