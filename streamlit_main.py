@@ -130,7 +130,7 @@ def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022['total_production'] = df_2022[productions_columns].sum(axis=1)
     df_2022_grouped = df_2022.groupby(['code_insee_region', 'libelle_region', 'mois']).sum().reset_index()
     return df_2022_grouped
-def carte_prod(df_2022, geojson):
+def carte_prod(df_2022):
     # Calculer la production totale nationale pour chaque type de production
     total_production = df_2022['total_production'].sum()
     thermique_production = df_2022['thermique'].sum()
@@ -373,7 +373,7 @@ def conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
         ]
     )
     st.plotly_chart(fig, use_container_width=True)
-def carte_conso(geojson):
+def carte_conso():
 
     df=df.groupby(['code_insee_region','libelle_region']).agg({'consommation':'sum'})
 
