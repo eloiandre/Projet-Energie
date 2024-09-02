@@ -12,14 +12,18 @@ def import_files():
     #Use the direct download link from Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
-
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
+
+    url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
+    output_temperature_csv = "additional_data.csv"
+    gdown.download(url_temprature_csv, output_temperature_csv, quiet=False)
+    temperature = pd.read_csv(output_temperature_csv)
     
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson)
+    return(df,geojson,temperature)
 
     st.write('### Exploration')
     st.dataframe(df.head(10))
@@ -479,5 +483,6 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-df,geojson=import_files()
+df,geojson,temperature=import_files()
+st.dataframe(temperature.describe())
 main()
