@@ -25,7 +25,7 @@ def show_exploration():
     st.write(f"Dimensions du DataFrame: {df.shape}")
     st.dataframe(df.describe())
 df,geojson=import_files()
-st.title("Projet Energie")
+st.title("Projet aaEnergie")
 st.sidebar.title("Sommaire")
 pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
 page=st.sidebar.radio("Aller vers", pages)
