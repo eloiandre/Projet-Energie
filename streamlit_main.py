@@ -9,20 +9,29 @@ from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
 def import_files():
-    #Use the direct download link from Google Drive
+    # Download the main CSV file
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
 
+    # Download the temperature CSV file
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
     output_temperature_csv = "temperature.csv"
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
 
+    # Download the new file from Google Drive
+    url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
+    output_short = "new_data.csv"
+    gdown.download(url_short, output_short, quiet=False)
+    df_short = pd.read_csv(output_short)
+
+    # Download the GeoJSON file
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson,temperature)
+    
+    return df, geojson, temperature, df_short
 
 def show_definition():
     st.write('## Definition du projet :')
@@ -74,15 +83,15 @@ def show_initial_df():
         """
     
         if st.checkbox('Afficher un extrait du DataFrame', key='checkbox_df'):
-            st.dataframe(df.head(10))
-            st.dataframe(df.describe().round(2))
+            st.dataframe(df_short.head(10))
+            st.dataframe(df_short.describe().round(2))
         
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
         
-        st.dataframe(df.isna().sum() * 100 / len(df))
+        st.dataframe(df_short.isna().sum() * 100 / len(df))
         
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
