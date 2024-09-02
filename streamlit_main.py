@@ -17,7 +17,8 @@ def import_files():
     st.write("ok")
 
 
-
+import streamlit as st
+st.cache_data.clear()
 #import_files()
 st.title("Heeey")
 st.sidebar.title("Sommaire")
