@@ -80,8 +80,7 @@ def show_exploration():
 
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.dataframe(df.head(10))
-    
-        st.dataframe(df.describe().round(2))
+            st.dataframe(df.describe().round(2))
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
