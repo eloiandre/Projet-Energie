@@ -76,7 +76,7 @@ def show_exploration():
         - les échanges d'électricité entre régions, en MW
         """
     
-        if st.checkbox('Afficher un extrait du DataFrame'):
+        if st.checkbox('Afficher un extrait du DataFrame',key='checkbox_df'):
             st.dataframe(df.head(10))
             st.dataframe(df.describe().round(2))
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
