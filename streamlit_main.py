@@ -20,6 +20,10 @@ def import_files():
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
     
+    url_initial_csv = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
+    output_initial_csv = "initial.csv"
+    gdown.download(url_initial_csv, output_initial_csv, quiet=False)
+    new_data = pd.read_csv(output_initial_csv)
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
@@ -128,7 +132,6 @@ def show_temperature_df():
         """
         if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
-
 def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
