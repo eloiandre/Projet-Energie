@@ -23,7 +23,7 @@ def import_files():
     url_initial_csv = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
     output_initial_csv = "initial.csv"
     gdown.download(url_initial_csv, output_initial_csv, quiet=False)
-    df_initial = pd.read_csv(output_initial_csv)
+    df_initial = pd.read_csv(output_initial_csv,sep=';')
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
