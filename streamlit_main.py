@@ -20,14 +20,9 @@ def import_files():
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
 
-    url_new_file = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
-    output_new_file = "new_file.csv"
-    gdown.download(url_new_file, output_new_file, quiet=False)
-    new_data = pd.read_csv(output_new_file)
-
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-    return(df,geojson,temperature,new_data)
+    return(df,geojson,temperature)
 
 def show_definition():
     st.write('## Definition du projet :')
@@ -498,5 +493,5 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-df,geojson,temperature,initial=import_files()
+df,geojson,temperature=import_files()
 main()
