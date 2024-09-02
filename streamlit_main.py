@@ -407,7 +407,7 @@ def carte_conso(geojson):
         margin={"r":0,"t":0,"l":0,"b":0}  
     )
     st.plotly_chart(fig, use_container_width=True)
-def show_data_viz(df,geojson):
+def show_data_viz():
     st.write('### DataVisualization')
     #conso_temp()
     st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
@@ -474,4 +474,4 @@ if page==pages[1]:
     show_exploration()
 if page==pages[2]:
     st.write('data_viz')
-    #show_data_viz()
+    show_data_viz()
