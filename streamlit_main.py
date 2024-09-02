@@ -497,7 +497,7 @@ def conso_temp():
 def show_model():
     st.write('## Model :')
     courbe_apprentissage=Image.open('COurbe_apprentissage.jpg')
-    st.image(courbe_apprentissage.jpg)
+    st.image(courbe_apprentissage)
 
 
 def main():
