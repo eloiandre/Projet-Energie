@@ -23,7 +23,12 @@ def import_files():
     url_initial_csv = "https://drive.google.com/uc?export=download&id=1dTO2ME4O5OuDKbfshDBqfiovLo8-s0O-"
     output_initial_csv = "initial.csv"
     gdown.download(url_initial_csv, output_initial_csv, quiet=False)
-    df_initial = pd.read_csv(output_initial_csv,sep=';')
+    # Lire le fichier CSV en morceaux (chunks) pour éviter les problèmes de mémoire
+    chunk_size = 100000  # Par exemple, 100 000 lignes par morceau
+    df_chunks = pd.read_csv(output_initial_csv, sep=';', chunksize=chunk_size, low_memory=False)
+
+    # Traiter chaque morceau (chunk) séparément ou les combiner
+    df_initial = pd.concat(df_chunks, ignore_index=True)
     df_initial['eolien'] = pd.to_numeric(df_initial['eolien'], errors='coerce')#corrige les'-' dans certaine valeurs de l'ile de france
 
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
