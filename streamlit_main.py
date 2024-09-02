@@ -7,7 +7,7 @@ import plotly.express as px
 import os
 from PIL import Image
 st.set_page_config(layout="wide")
-#@st.cache_data
+@st.cache_data
 def import_files():
     #Use the direct download link from Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
