@@ -17,7 +17,7 @@ def import_files():
 
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
     output_temperature_csv = "additional_data.csv"
-    gdown.download(url_temprature_csv, output_temperature_csv, quiet=False)
+    gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
     
 
