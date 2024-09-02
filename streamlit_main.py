@@ -482,7 +482,7 @@ def conso_temp():
 def show_model():
     st.write('## Model :')
 def main():
-    st.title("Projet Energie")
+    st.title("Projet Energie1")
     st.sidebar.title("Sommaire")
     st.write(df_initial.head())
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
