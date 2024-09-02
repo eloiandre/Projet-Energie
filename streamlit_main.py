@@ -119,14 +119,14 @@ def show_exploration():
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         
         """
-    with st.expander('**Dataset température**',key='checkbox_temperature'):
+    with st.expander('**Dataset température**'):
         """
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
         - changement de la variable date_heure au format datetime
         - passage de la région en type string
 
         """
-        if st.checkbox('Afficher un extrait du DataFrame'):
+        if st.checkbox('Afficher un extrait du DataFrame',key='checkbox_temperature'):
             st.dataframe(temperature.head(10))
 
 @st.cache_data
