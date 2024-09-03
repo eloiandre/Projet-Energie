@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import os
 import pickle 
+
 from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
@@ -40,7 +41,10 @@ def import_files():
     # Download and load the pickle model
     url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
     output_model = "model.pkl"
-    gdown.download(url_model, output_model, quiet=False)
+    try:
+        gdown.download(url_csv, output_csv, quiet=False)
+    except Exception as e:
+        print(f"Failed to download the file: {e}")
     
     # Load the model using pickle
     model = None
