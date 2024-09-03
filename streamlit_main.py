@@ -34,7 +34,7 @@ def import_files():
     # Downloat model feature importance
     url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
     df_features=pd.read_csv(url_features)
-    
+    print(df_features.head())
     return df, geojson, temperature, df_short,df_features
 
 def show_definition():
