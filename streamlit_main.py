@@ -495,7 +495,9 @@ def conso_temp():
     # Afficher la figure dans l'application Streamlit
     st.plotly_chart(fig, use_container_width=True)
 def show_model():
-    st.write('## Model :')
+    st.write('### Model :')
+    st.write('Objectif : Prédire la consommation par région')
+    #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
 
