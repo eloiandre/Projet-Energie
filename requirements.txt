@@ -4,4 +4,3 @@ geopandas
 gdown
 plotly
 Pillow
-pickle
