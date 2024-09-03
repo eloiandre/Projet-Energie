@@ -494,7 +494,8 @@ def conso_temp():
 
     # Afficher la figure dans l'application Streamlit
     st.plotly_chart(fig, use_container_width=True)
-def tableaux_modeles():data = {
+def tableaux_modeles():
+    data = {
         "Modèle": ["RandomForestRegressor", "XGBoostRegressor", "Decision Tree Regressor", "Régression linéaire"],
         "Taille test": [0.3, 0.3, 0.3, 0.3],
         "Max Depth": [10, 10, 10, None],
