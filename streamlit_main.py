@@ -519,8 +519,8 @@ def feature_importance():
     fig = go.Figure()
     df_sorted=df_features.sort_values(by=['Importance'],ascending=False)
     fig.add_trace(go.Bar(
-        y=df_features.Feature,
-        x=df_features.Importance,
+        y=df_sorted.Feature,
+        x=df_sorted.Importance,
         orientation='h'
     ))
 
