@@ -517,7 +517,7 @@ def tableaux_modeles():
     st.dataframe(df_results)
 def feature_importance():
     fig = go.Figure()
-    df_features=df_features.sort_values(by=Importance,ascending=False)
+    df_features=df_features.sort_values(by='Importance',ascending=False)
     fig.add_trace(go.Bar(
         y=df_features.Feature,
         x=df_features.Importance,
