@@ -513,7 +513,7 @@ def tableaux_modeles():
 
 def show_model():
     st.write('### Modéles :')
-    st.write('Objectif : Prédire la consommation par région')
+    st.write('#Objectif : Prédire la consommation par région')
     st.write('Tableau comparatif de nos modéles :')
     tableaux_modeles()
     #courbe d'aprentissage
