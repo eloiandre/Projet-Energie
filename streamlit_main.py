@@ -552,8 +552,11 @@ def feature_importance():
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
-#def split_dataset():
-
+def split_dataset():
+    col_to_keep=['code_insee_region','date_heure','consommation','temperature']
+    df=df[col_to_keep]
+    df.date_heure=pd.to_datetime(df.date_heure)
+    st.write(df.head())
 
 def show_model():
     st.write('### Modéles :')
@@ -569,13 +572,12 @@ def show_model():
     st.write('## Feature Importance :')
     st.write(df_features.head())
     feature_importance()
-
+    split_dataset()
 
 
 def main():
     st.title("Projet Energie12")
     st.sidebar.title("Sommaire")
-    st.write(region_dict)
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
     if page ==pages[0]:
