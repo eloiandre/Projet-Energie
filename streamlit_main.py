@@ -527,7 +527,7 @@ def show_model():
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     # Données sous forme de dictionnaire
-    
+    st.write(df_features)
 
 def main():
     st.title("Projet Energie12")
