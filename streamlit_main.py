@@ -548,7 +548,8 @@ def show_model():
     st.image(courbe_apprentissage)
     # Données sous forme de dictionnaire
     st.write('## Feature Importance :')
-    feature_importance()
+    st.write(df_features.head())
+    #feature_importance()
 
 
 def main():
