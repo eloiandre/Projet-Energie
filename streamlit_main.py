@@ -590,6 +590,7 @@ def show_model():
         st.write('Exemple de y_train :')
         st.write(y_train)
 
+    st.write(model)
 
 def main():
     st.title("Projet Energie12")
