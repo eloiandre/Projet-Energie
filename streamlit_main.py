@@ -30,6 +30,10 @@ def import_files():
     # Download the GeoJSON file
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
+
+    # Downloat model feature importance
+    url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_mportances.csv"
+    df_features=pd.read_csv(url_features)
     
     return df, geojson, temperature, df_short
 def show_definition():
@@ -513,8 +517,8 @@ def tableaux_modeles():
 
 def show_model():
     st.write('### Modéles :')
-    st.write('# Objectif : Prédire la consommation par région')
-    st.write('Tableau comparatif de nos modéles :')
+    st.write('## Objectif : Prédire la consommation par région')
+    st.write('#Tableau comparatif de nos modéles :')
     tableaux_modeles()
     st.write("Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
              ressembe à du suraprentissage. Nous selectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicitée")
