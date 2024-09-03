@@ -517,7 +517,7 @@ def tableaux_modeles():
     st.dataframe(df_results)
 def feature_importance():
     fig = go.Figure()
-    df_feature=df_features.sort_values(by='Importance',ascending=False)
+    df_feature=df_features.sort_values(by='Importance',ascending=True)
     fig.add_trace(go.Bar(
         y=df_features.Feature,
         x=df_features.Importance,
@@ -537,7 +537,7 @@ def feature_importance():
 
 
 def show_model():
-    st.write('### Modéles 1:')
+    st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('#Tableau comparatif de nos modéles :')
     tableaux_modeles()
