@@ -4,3 +4,4 @@ geopandas
 gdown
 plotly
 Pillow
+scikit-learn
