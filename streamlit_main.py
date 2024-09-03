@@ -560,7 +560,7 @@ def split_dataset(df):
     X=df.drop(target,axis=1)
     y=df[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=151)
-    st.write(X_test.head())
+    return(X_train, X_test, y_train, y_test)
 
 def show_model():
     st.write('### Modéles :')
@@ -577,6 +577,25 @@ def show_model():
     st.write(df_features.head())
     feature_importance()
     split_dataset(df)
+    X_train,X_test,y_train,y_test = split_dataset(df)
+    option = st.selectbox(
+    'Choisissez les données à afficher:',
+    ('X_train', 'X_test', 'y_train', 'y_test')
+    )
+
+    # Afficher les données sélectionnées
+    if option == 'X_train':
+        st.write("Ensemble d'entraînement X:")
+        st.write(X_train)
+    elif option == 'X_test':
+        st.write("Ensemble de test X:")
+        st.write(X_test)
+    elif option == 'y_train':
+        st.write("Ensemble d'entraînement y:")
+        st.write(y_train)
+    elif option == 'y_test':
+        st.write("Ensemble de test y:")
+        st.write(y_test)
 
 
 def main():
