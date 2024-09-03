@@ -32,7 +32,7 @@ def import_files():
     geojson = gpd.read_file(url_geojson)
 
     # Downloat model feature importance
-    url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_mportances.csv"
+    url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
     df_features=pd.read_csv(url_features)
     
     return df, geojson, temperature, df_short,df_features
