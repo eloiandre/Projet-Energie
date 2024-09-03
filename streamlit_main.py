@@ -527,7 +527,7 @@ def feature_importance():
     fig.update_layout(
         xaxis_title="Importance",
         yaxis_title="Feature",
-        title="Feature Importances",s
+        title="Feature Importances",
         margin=dict(l=150, r=50, t=50, b=50),
         width=800,
         height=600,
