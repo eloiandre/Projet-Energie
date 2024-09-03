@@ -515,6 +515,25 @@ def tableaux_modeles():
     df_results = pd.DataFrame(data)
     # Afficher le DataFrame dans Streamlit
     st.dataframe(df_results)
+def feature_importance():
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        y=df_features.Feature,
+        x=df_features.Importance,
+        orientation='h'
+    ))
+
+    fig.update_layout(
+        xaxis_title="Importance",
+        yaxis_title="Feature",
+        title="Feature Importances",
+        margin=dict(l=150, r=50, t=50, b=50),
+        width=800,
+        height=600,
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+
 
 def show_model():
     st.write('### Modéles :')
@@ -527,7 +546,8 @@ def show_model():
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     # Données sous forme de dictionnaire
-    st.write(df_features)
+    st.write('## Feature Importance :')
+
 
 def main():
     st.title("Projet Energie12")
