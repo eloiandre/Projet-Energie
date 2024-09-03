@@ -590,7 +590,11 @@ def show_model():
         st.write('Exemple de y_train :')
         st.write(y_train)
 
-    st.write(model)
+    # Configurer l'affichage du pipeline en mode 'diagram'
+    set_config(display='diagram')
+
+    # Afficher le diagramme du pipeline
+    st.write(pipeline)
 
 def main():
     st.title("Projet Energie12")
