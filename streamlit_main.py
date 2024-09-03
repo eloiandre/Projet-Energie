@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import os
 import pickle 
-
+from sklearn.model_selection import train_test_split
 from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
@@ -556,7 +556,11 @@ def split_dataset(df):
     col_to_keep=['code_insee_region','date_heure','consommation','temperature']
     df=df[col_to_keep]
     df.date_heure=pd.to_datetime(df.date_heure)
-    st.write(df.head())
+    target='consommation'
+    X=df.drop(target,axis=1)
+    y=df[target]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=151)
+    st.write(X_test.head())
 
 def show_model():
     st.write('### Modéles :')
