@@ -9,33 +9,37 @@ from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
 def import_files():
-    # Download the main CSV file
+    
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
     gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
 
-    # Download the temperature CSV file
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
     output_temperature_csv = "temperature.csv"
     gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
     temperature = pd.read_csv(output_temperature_csv)
 
-    # Download the new file from Google Drive
     url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
     output_short = "new_data.csv"
     gdown.download(url_short, output_short, quiet=False)
     df_short = pd.read_csv(output_short)
 
-    # Download the GeoJSON file
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
 
-    # Downloat model feature importance
     url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
-    df_features=pd.read_csv(url_features,index_col=0)
+    df_features = pd.read_csv(url_features, index_col=0)
     print(df_features.head())
-    return df, geojson, temperature, df_short,df_features
+
+    url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
+    output_model = "model.pkl"
+    gdown.download(url_model, output_model, quiet=False)
+    
+    with open(output_model, 'rb') as file:
+        model = pickle.load(file)
+    
+    return df, geojson, temperature, df_short, df_features, model
 
 def show_definition():
     st.write('## Definition du projet :')
@@ -533,7 +537,7 @@ def feature_importance():
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
-
+def performance():
 
 
 def show_model():
@@ -550,6 +554,7 @@ def show_model():
     st.write('## Feature Importance :')
     st.write(df_features.head())
     feature_importance()
+
 
 
 def main():
@@ -569,5 +574,5 @@ def main():
 
 
 # debut du code
-df,geojson,temperature,df_short,df_features=import_files()
+df,geojson,temperature,df_short,df_features,model=import_files()
 main()
