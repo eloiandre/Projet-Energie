@@ -537,7 +537,6 @@ def feature_importance():
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
-def performance():
 
 
 def show_model():
