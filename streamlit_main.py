@@ -39,6 +39,7 @@ def import_files():
     df_features = pd.read_csv(url_features, index_col=0)
 
     # Download and load the pickle model
+    
     url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
     output_model = "model.pkl"
     try:
@@ -551,6 +552,7 @@ def feature_importance():
         height=600,
     )
     st.plotly_chart(fig, use_container_width=True)
+#def split_dataset():
 
 
 def show_model():
@@ -573,6 +575,7 @@ def show_model():
 def main():
     st.title("Projet Energie12")
     st.sidebar.title("Sommaire")
+    st.write(region_dict)
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
     if page ==pages[0]:
@@ -587,5 +590,8 @@ def main():
 
 
 # debut du code
+#importation de tous les fichiers necessaire
 df,geojson,temperature,df_short,df_features,model=import_files()
+#creaction d'un dictionnaire des ferions
+region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 main()
