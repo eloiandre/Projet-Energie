@@ -35,7 +35,8 @@ def import_files():
     url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_mportances.csv"
     df_features=pd.read_csv(url_features)
     
-    return df, geojson, temperature, df_short
+    return df, geojson, temperature, df_short,df_features
+
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -545,5 +546,5 @@ def main():
 
 
 # debut du code
-df,geojson,temperature,df_short=import_files()
+df,geojson,temperature,df_short,df_features=import_files()
 main()
