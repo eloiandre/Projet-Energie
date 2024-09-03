@@ -494,14 +494,7 @@ def conso_temp():
 
     # Afficher la figure dans l'application Streamlit
     st.plotly_chart(fig, use_container_width=True)
-def show_model():
-    st.write('### Modéles :')
-    st.write('Objectif : Prédire la consommation par région')
-    #courbe d'aprentissage
-    courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
-    st.image(courbe_apprentissage)
-    # Données sous forme de dictionnaire
-    data = {
+def tableaux_modeles():data = {
         "Modèle": ["RandomForestRegressor", "XGBoostRegressor", "Decision Tree Regressor", "Régression linéaire"],
         "Taille test": [0.3, 0.3, 0.3, 0.3],
         "Max Depth": [10, 10, 10, None],
@@ -509,15 +502,24 @@ def show_model():
         "MSE": [187145, 40173, 288024, 1374712.81],
         "RMSE": [432.60, 200.43, 536.67, 1172.48],
         "MAE": [318.53, 133.65, 408.60, 861.51],
-        "Score Train": [0.957, 0.994, 0.934, 0.679],
-        "Score Test": [0.956, 0.990, 0.933, 0.682]
+        "R2 score Train": [0.957, 0.994, 0.934, 0.679],
+        "R2 score Test": [0.956, 0.990, 0.933, 0.682]
     }
-
     # Créer un DataFrame
     df_results = pd.DataFrame(data)
-
     # Afficher le DataFrame dans Streamlit
     st.dataframe(df_results)
+
+def show_model():
+    st.write('### Modéles :')
+    st.write('Objectif : Prédire la consommation par région')
+    st.write('Tableau comparatif de nos modéles :')
+    tableaux_modeles()
+    #courbe d'aprentissage
+    courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
+    st.image(courbe_apprentissage)
+    # Données sous forme de dictionnaire
+    
 
 def main():
     st.title("Projet Energie12")
