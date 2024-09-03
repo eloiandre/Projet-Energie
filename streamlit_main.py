@@ -5,6 +5,7 @@ import gdown
 import plotly.graph_objects as go
 import plotly.express as px
 import os
+import pickle 
 from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
