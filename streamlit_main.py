@@ -537,7 +537,7 @@ def feature_importance():
 
 
 def show_model():
-    st.write('### Modéles :')
+    st.write('### Modéles 1:')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('#Tableau comparatif de nos modéles :')
     tableaux_modeles()
