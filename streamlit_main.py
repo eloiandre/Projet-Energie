@@ -583,18 +583,18 @@ def show_model():
     # Afficher X_train dans la première colonne
     with col1:
         st.write('Exemple de X_train :')
-        st.write(X_train)
+        st.write(X_train.head())
 
     # Afficher y_train dans la seconde colonne
     with col2:
         st.write('Exemple de y_train :')
-        st.write(y_train)
+        st.write(y_train.head())
 
     # Configurer l'affichage du pipeline en mode 'diagram'
     set_config(display='diagram')
 
     # Afficher le diagramme du pipeline
-    st.write(pipeline)
+    st.write(model)
 
 def main():
     st.title("Projet Energie12")
