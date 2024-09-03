@@ -516,6 +516,8 @@ def show_model():
     st.write('# Objectif : Prédire la consommation par région')
     st.write('Tableau comparatif de nos modéles :')
     tableaux_modeles()
+    st.write('Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
+             ressembe à du suraprentissage')
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
