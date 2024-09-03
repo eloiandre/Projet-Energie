@@ -578,24 +578,17 @@ def show_model():
     feature_importance()
     split_dataset(df)
     X_train,X_test,y_train,y_test = split_dataset(df)
-    option = st.selectbox(
-    'Choisissez les données à afficher:',
-    ('X_train', 'X_test', 'y_train', 'y_test')
-    )
+    col1, col2 = st.columns(2)
 
-    # Afficher les données sélectionnées
-    if option == 'X_train':
-        st.write("Ensemble d'entraînement X:")
+    # Afficher X_train dans la première colonne
+    with col1:
+        st.write('Exemple de X_train :')
         st.write(X_train)
-    elif option == 'X_test':
-        st.write("Ensemble de test X:")
-        st.write(X_test)
-    elif option == 'y_train':
-        st.write("Ensemble d'entraînement y:")
+
+    # Afficher y_train dans la seconde colonne
+    with col2:
+        st.write('Exemple de y_train :')
         st.write(y_train)
-    elif option == 'y_test':
-        st.write("Ensemble de test y:")
-        st.write(y_test)
 
 
 def main():
