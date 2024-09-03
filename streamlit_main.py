@@ -549,6 +549,7 @@ def show_model():
     # Données sous forme de dictionnaire
     st.write('## Feature Importance :')
     feature_importance()
+    st.write(df_features.head())
 
 
 def main():
