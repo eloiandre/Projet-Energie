@@ -531,7 +531,7 @@ def show_model():
     st.write("## Transformation des données :" )
     st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures:")
     image_heures_sin=Image.open('heures.jpg')
-    st.image(image_heures_sin,width=300)
+    st.image(image_heures_sin,width=500)
 
     
     
