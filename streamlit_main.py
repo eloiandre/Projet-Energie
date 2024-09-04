@@ -612,8 +612,6 @@ def plot_comparison(y_test, y_pred, num_values=50):
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_pred,y_test):
     st.write('### create result')
-    #col_to_keep=['previson','consommation_x','code_insee_region','date','heure','date_heure']
-    col_to_keep=['consommation_x','code_insee_region','date','heure','date_heure']
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
@@ -622,8 +620,8 @@ def create_result_df(y_pred,y_test):
     col_to_keep=['prevision','consommation_x','code_insee_region','date','heure','date_heure']
     df_result=df_result[col_to_keep]
     df_result = df_result.rename(columns={'consommation_x': 'consommation'})
-    st.write(df_result.head())
-    st.write(df_result.columns)
+    #st.write(df_result.head())
+    return(df_result)
 
 def show_model():
     st.write('### Modéles :')
@@ -673,9 +671,10 @@ def show_model():
 
     # Inverser la mise à l'échelle des prédictions
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
-    plot_comparison(y_test,y_pred)
+    df_result=create_result_df(y_test,y_pred)
+    plot_comparison(df_result['consommation'],df_result['prevision'])
 
-    create_result_df(y_test,y_pred)
+    
 
     st.write('## Feature Importance :')
     
