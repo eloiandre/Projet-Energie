@@ -623,7 +623,7 @@ def create_result_df(y_pred,y_test):
     df_result['mois'] = df['date_heure'].dt.month
     st.write(df_result.head())
 def show_model():
-    st.write('### Modéles :')
+    st.write('### Modéles 2:')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
     tableaux_modeles()
