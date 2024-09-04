@@ -673,18 +673,18 @@ def reel_vs_predict_mois(df_result):
     df_melted = pd.melt(df_result, id_vars=['mois'], value_vars=['y_test', 'y_pred'],
                     var_name='Type', value_name='Consommation')
 
-# Créer un barplot avec Plotly
-fig = px.bar(df_melted, x='mois', y='Consommation', color='Type', barmode='group',
-             labels={'mois': 'Mois', 'Consommation': 'Consommation (MW)'},
-             title='Consommation réelle vs prédite par mois')
+    
+    fig = px.bar(df_melted, x='mois', y='Consommation', color='Type', barmode='group',
+                labels={'mois': 'Mois', 'Consommation': 'Consommation (MW)'},
+                title='Consommation réelle vs prédite par mois')
 
-# Ajuster la mise en page
-fig.update_layout(
-    title='Consommation réelle vs prédite par mois',
-    xaxis_title='Mois',
-    yaxis_title='Consommation (MW)',
-    legend_title_text='Type'
-)
+    
+    fig.update_layout(
+        title='Consommation réelle vs prédite par mois',
+        xaxis_title='Mois',
+        yaxis_title='Consommation (MW)',
+        legend_title_text='Type'
+    )
 
 # Afficher le graphique dans Streamlit
 st.plotly_chart(fig, use_container_width=True)
