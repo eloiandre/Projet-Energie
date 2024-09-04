@@ -645,6 +645,7 @@ def show_model():
     st.write('## Prédicionns : ')
     y_pred=model.predict(X_test)
     plot_comparison(y_test,y_pred)
+    st.write(y_pred[:50])
 
     st.write('## Feature Importance :')
     
