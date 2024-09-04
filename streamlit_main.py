@@ -615,8 +615,6 @@ def create_result_df(y_pred,y_test):
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
-    #df_result['heure'] = df['date_heure'].dt.hour
-    #df_result['mois'] = df['date_heure'].dt.month
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
     st.write(df_result)
 
@@ -685,7 +683,8 @@ def show_model():
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
-    # Données sous forme de dictionnaire
+    
+    st.write(df.columns)
 
     
     
