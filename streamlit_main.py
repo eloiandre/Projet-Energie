@@ -611,11 +611,6 @@ def plot_comparaison(y_test, y_pred, num_values=50):
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_test,y_pred,X_test):
-    st.write('### create result')
-    y_pred=pd.Series(y_pred,index=X_test.index, name='y_pred')
-    y_test = pd.Series(y_test, index=X_test.index, name='y_test')
-    st.write(y_pred[:5])
-    st.write(y_test[:5])
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
@@ -660,8 +655,6 @@ def intro_model(X_train,y_train):
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
 def prediction(X_test,y_train,y_test):
     # Mise à l'échelle de y_train et y_test
-    st.write('predicion')
-    st.write('X_test')
     y_scaler = StandardScaler()
     y_train_scaled = y_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
     y_test_scaled = y_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
@@ -678,10 +671,6 @@ def prediction(X_test,y_train,y_test):
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
-    st.write('## Prédicions : ')
-    st.write(X_test.head())
-    st.write('hello')
-    st.write(y_test.head())
     df_result=prediction(X_test,y_train,y_test)
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
