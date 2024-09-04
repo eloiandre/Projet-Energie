@@ -617,6 +617,7 @@ def create_result_df(y_test,y_pred):
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
+    st.write(df_result.head())
     col_to_keep=['prevision','consommation_x','code_insee_region','date','heure','date_heure']
     df_result=df_result[col_to_keep]
     df_result = df_result.rename(columns={'consommation_x': 'consommation'})
