@@ -538,16 +538,16 @@ def show_model():
     st.image(image_pipeline)
     st.write("Le pipeline extrait l'année, la saison, le moi et le jour de la semaine de la variable 'date_heure' et decompose les heures en cos et sin.")
     
-    
+    st.write('## Feature Importance :')
+    st.write(df_features.head())
+    feature_importance()
+    split_dataset(df)
     
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     # Données sous forme de dictionnaire
-    st.write('## Feature Importance :')
-    st.write(df_features.head())
-    feature_importance()
-    split_dataset(df)
+
     
     
 
