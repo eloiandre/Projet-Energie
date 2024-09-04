@@ -41,8 +41,9 @@ def import_files():
     
     url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
     gdown.download(url_model, output_model, quiet=False)
-    model = pickle.load(file)
-    
+    with open(output_model, 'rb') as file:
+        model = pickle.load(file)
+
     return df, geojson, temperature, df_features, model
 def show_definition():
     st.write('## Definition du projet :')
