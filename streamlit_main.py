@@ -648,11 +648,23 @@ def show_model():
 
 
     st.write('## Prédicions : ')
+    # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
+
+    # Mise à l'échelle des données d'entraînement
     y_train_scaled = y_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
+
+    # Mise à l'échelle des données de test
     y_test_scaled = y_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
-    y_pred_scaled=model.predict(X_test)
-    y_pred = y_scaler.inverse_transform(y_pred_scaled)
+
+    # Prédiction avec le modèle (y_pred_scaled sera aussi en échelle normalisée)
+    y_pred_scaled = model.predict(X_test)
+
+    # Inverser la mise à l'échelle des prédictions
+    y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
+
+    # Afficher les 5 premières prédictions inversées
+    st.write("Prédictions inversées :", y_pred[:5])
 
     #plot_comparison(y_test,y_pred)
     st.write(y_pred_scaled[:5])
