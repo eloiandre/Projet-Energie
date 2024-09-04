@@ -620,7 +620,7 @@ def create_result_df(y_test,y_pred):
     col_to_keep=['prevision','consommation_x','code_insee_region','date','heure','date_heure']
     df_result=df_result[col_to_keep]
     df_result = df_result.rename(columns={'consommation_x': 'consommation'})
-    #st.write(df_result.head())
+    st.write(df_result.head())
     return(df_result)
 
 def intro_model(X_train,y_train):
