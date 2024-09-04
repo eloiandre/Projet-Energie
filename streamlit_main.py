@@ -614,7 +614,7 @@ def create_result_df(y_pred,y_test):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
-    df_result=pd.concat([y_test,y_pred],axis=1)
+    df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     st.write(df_result)
 def show_model():
     st.write('### Modéles :')
