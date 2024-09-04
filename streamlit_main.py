@@ -611,6 +611,7 @@ def plot_comparaison(y_test, y_pred, num_values=50):
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_test,y_pred,X_test):
+    st.write(y_test)
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
