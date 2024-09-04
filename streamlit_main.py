@@ -572,17 +572,17 @@ def show_model():
     
     #Separation 
     st.write('Notre modéles prend en compte la region, le temps et la temperature pour estimer la consommation regionale.')
-        # Afficher X_train dans la première colonne
-        with col1:
-            st.write('Exemple de X_train :')
-            st.write(X_train.head())
+    # Afficher X_train dans la première colonne
+    with col1:
+        st.write('Exemple de X_train :')
+        st.write(X_train.head())
 
-        # Afficher y_train dans la seconde colonne
-        with col2:
-            st.write('Exemple de y_train :')
-            st.write(y_train.head())
-        image_pipeline=Image.open('pipeline.png')
-        st.image(image_pipeline)
+    # Afficher y_train dans la seconde colonne
+    with col2:
+        st.write('Exemple de y_train :')
+        st.write(y_train.head())
+    image_pipeline=Image.open('pipeline.png')
+    st.image(image_pipeline)
     
     
     
