@@ -703,7 +703,7 @@ def show_model():
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     st.write(df_result.dtypes)
-    #reel_vs_predict_mois(df_result)
+    reel_vs_predict_mois(df_result)
     
 
 def main():
