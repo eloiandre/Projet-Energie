@@ -659,6 +659,8 @@ def intro_model(X_train,y_train):
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
 def prediction(X_test,y_train,y_test):
     # Mise à l'échelle de y_train et y_test
+    st.write('predicion')
+    st.write('X_test')
     y_scaler = StandardScaler()
     y_train_scaled = y_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
     y_test_scaled = y_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
