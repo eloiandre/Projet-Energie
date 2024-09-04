@@ -561,7 +561,7 @@ def main():
 
 # debut du code
 #importation de tous les fichiers necessaire
-df,geojson,temperature,df_short,df_features,model=import_files()
+df,geojson,temperature,df_features,model=import_files()
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 main()
