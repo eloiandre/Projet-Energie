@@ -610,7 +610,7 @@ def plot_comparaison(y_test, y_pred, num_values=50):
 
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
-def create_result_df(y_test,y_pred):
+def create_result_df(y_test,y_pred,X_test):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=X_test.index, name='y_test')
