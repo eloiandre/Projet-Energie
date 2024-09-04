@@ -528,7 +528,12 @@ def show_model():
         st.write('Cible :')
         st.write(y_train.head())
 
-    
+    st.write("## Transformation des données :" )
+    st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures:")
+    image_heures_sin=Image.open('cos_sin.jpg')
+    st.image(image_heures_sin)
+
+
     image_pipeline=Image.open('pipeline.png')
     st.image(image_pipeline)
     
