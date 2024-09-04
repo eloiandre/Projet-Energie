@@ -648,10 +648,10 @@ def show_model():
 
 
     st.write('## Prédicionns : ')
-    y_pred=model.predict(X_test)
-    #preprocessor = model.named_steps['preprocessor']  # Accéder à l'étape de preprocessing
-    #scaler = preprocessor.named_transformers_['num'].named_steps['scaler']
-    #y_pred = scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
+    y_pred_scaled=model.predict(X_test)
+    preprocessor = model.named_steps['preprocessor']  # Accéder à l'étape de preprocessing
+    scaler = preprocessor.named_transformers_['num'].named_steps['scaler']
+    y_pred = scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
 
     plot_comparison(y_test,y_pred)
     st.write(y_pred[:5])
