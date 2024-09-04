@@ -665,7 +665,7 @@ def prediction(X_test,y_train,y_test):
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
     y_pred = pd.Series(y_pred, index=X_test.index, name='y_pred')
     y_test = pd.Series(y_test.values, index=X_test.index, name='y_test')
-    df_result['date_heure']=df_reult['date_heure'].to_datetime()
+    df_result['date_heure']=df_result['date_heure'].to_datetime()
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
