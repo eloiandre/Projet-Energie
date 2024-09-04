@@ -623,7 +623,7 @@ def create_result_df(y_pred,y_test):
     #st.write(df_result.head())
     return(df_result)
 
-def intro_model(df,X_train,y_train):
+def intro_model(df,X_train,X_test,y_train,y_test):
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
