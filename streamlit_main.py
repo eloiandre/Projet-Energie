@@ -669,12 +669,15 @@ def prediction(X_test,y_train,y_test):
     
     return df_result
 def reel_vs_predict_mois(df_result):
-    df_result['mois']=df_result['date_heure'].dt.month
-    df_melted = pd.melt(df_result, id_vars=['mois'], value_vars=['consommation', 'prevision'],
-                    var_name='Type', value_name='Consommation')
+    # Échantillonner 1000 lignes pour alléger la charge
+    df_result_sample = df_result.sample(n=1000, random_state=42)
+
+    df_result_sample['mois'] = df_result_sample['date_heure'].dt.month
+    df_melted = pd.melt(df_result_sample, id_vars=['mois'], value_vars=['consommation', 'prevision'],
+                        var_name='Type', value_name='Consommation')
     fig = px.bar(df_melted, x='mois', y='Consommation', color='Type', barmode='group',
-                labels={'mois': 'Mois', 'Consommation': 'Consommation (MW)'},
-                title='Consommation réelle vs prédite par mois')
+                 labels={'mois': 'Mois', 'Consommation': 'Consommation (MW)'},
+                 title='Consommation réelle vs prédite par mois')
     fig.update_layout(
         title='Consommation réelle vs prédite par mois',
         xaxis_title='Mois',
