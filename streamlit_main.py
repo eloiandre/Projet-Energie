@@ -623,7 +623,7 @@ def create_result_df(y_pred,y_test):
     #st.write(df_result.head())
     return(df_result)
 
-def intro_model(df,X_train,X_test,y_train,y_test):
+def intro_model(df,X_train,y_train):
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
@@ -655,6 +655,7 @@ def intro_model(df,X_train,X_test,y_train,y_test):
               Les heures et la temperatures sont considérés comme des variables numeriques, les autres variables sont considérés comme categorielle.\
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
+#def prediction()
 
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
