@@ -565,7 +565,46 @@ def split_dataset(df):
     y=df[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=151)
     return(X_train, X_test, y_train, y_test)
+def plot_comparison(y_test, y_pred, num_values=50):
+    # Créer un DataFrame avec y_test et y_pred
+    df_result = pd.DataFrame({
+        'y_test': y_test,
+        'y_pred': y_pred
+    })
 
+    # Prendre les 50 premières valeurs
+    df_scatter = df_result.head(num_values).reset_index()
+
+    # Créer la figure
+    fig = go.Figure()
+
+    # Ajouter les points de y_test
+    fig.add_trace(go.Scatter(
+        y=df_scatter['y_test'],
+        x=df_scatter.index,
+        mode='markers',
+        marker=dict(color='blue'),
+        name='y_test'
+    ))
+
+    # Ajouter les points de y_pred
+    fig.add_trace(go.Scatter(
+        y=df_scatter['y_pred'],
+        x=df_scatter.index,
+        mode='markers',
+        marker=dict(color='red'),
+        name='y_pred'
+    ))
+
+    # Mettre à jour le layout de la figure
+    fig.update_layout(
+        title=f'Écart entre test et prévisions pour les {num_values} premières valeurs',
+        xaxis_title='Index',
+        yaxis_title='Values (MW)'
+    )
+
+    # Afficher la figure
+    st.plotly_chart(fig, use_container_width=True)
 def show_model():
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
@@ -597,16 +636,20 @@ def show_model():
     image_pipeline=Image.open('pipeline.png')
     st.image(image_pipeline)
     st.write("Le pipeline extrait l'année, la saison, le moi et le jour de la semaine de la variable 'date_heure' et decompose les heures en cos et sin.\
-              Les heures et la temperatures sont considérés comme des varaibles numeriques, les autres varaibles sont considérés comme categorielle.\
+              Les heures et la temperatures sont considérés comme des variables numeriques, les autres variables sont considérés comme categorielle.\
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
     
 
 
     st.write('## Prédicionns : ')
-    y_test_predict=model.predict(X_test)
-    st.write(y_test_predict[:5])
+    y_pred=model.predict(X_test)
+    plot_comparison(y_test,y_pred)
+
     st.write('## Feature Importance :')
+    
+    
+    
     st.write(df_features.head())
     
     
