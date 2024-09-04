@@ -652,11 +652,11 @@ def show_model():
     y_train_scaled = y_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
     y_test_scaled = y_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
     y_pred_scaled=model.predict(X_test)
-    
+    y_pred = y_scaler.inverse_transform(y_pred_scaled)
 
     #plot_comparison(y_test,y_pred)
     st.write(y_pred_scaled[:5])
-    st.write(y_test_scaled[:5])
+    st.write(y_test)
 
     st.write('## Feature Importance :')
     
