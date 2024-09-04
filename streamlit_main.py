@@ -529,7 +529,7 @@ def show_model():
         st.write(y_train.head())
 
     st.write("## Transformation des données :" )
-    st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures :")
+    st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures:")
     image_heures_sin=Image.open('heures.jpg')
     st.image(image_heures_sin)
 
