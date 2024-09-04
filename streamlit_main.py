@@ -54,7 +54,7 @@ def import_files():
     except Exception as e:
         print("Error loading the model:", e)
 
-    return df, geojson, temperature, df_short, df_features, model
+    return df, geojson, temperature, df_features, model
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
