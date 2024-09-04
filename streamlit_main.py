@@ -667,6 +667,7 @@ def prediction(X_test,y_train,y_test ):
     # Inverser la mise à l'échelle des prédictions
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
     df_result=create_result_df(y_test,y_pred)
+    st.write('ok')
     return df_result
 
 def show_model():
