@@ -621,7 +621,6 @@ def create_result_df(y_test,y_pred,X_test):
     st.write(df_result.head())
     st.write(df_result.columns)
     return(df_result)
-
 def intro_model(X_train,y_train):
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
@@ -674,19 +673,18 @@ def prediction(X_test,y_train,y_test):
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
+
     df_result=prediction(X_test,y_train,y_test)
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
-    
     st.write('## Feature Importance :')
-    st.write(df_features.head())
+    #st.write(df_features.head())
     plot_feature_importance()
     split_dataset(df)
     
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
-
 
     
 
