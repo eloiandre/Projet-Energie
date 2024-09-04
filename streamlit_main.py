@@ -612,12 +612,11 @@ def plot_comparaison(y_test, y_pred, num_values=50):
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_test,y_pred,X_test):
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
-    df_result = df_result.rename(columns={'y_test': 'prevision'})
+    df_result = df_result.rename(columns={'y_test': 'consommation'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
     st.write(df_result.head())
-    col_to_keep=['prevision','consommation_x','code_insee_region','date','heure','date_heure']
-    #df_result=df_result[col_to_keep]
-    #df_result = df_result.rename(columns={'consommation_x': 'consommation'})
+    col_to_keep=['y_pred','consommation','code_insee_region','date','heure','date_heure']
+    df_result=df_result[col_to_keep]
     st.write(df_result.head())
     st.write(df_result.columns)
     return(df_result)
