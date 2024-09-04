@@ -654,7 +654,8 @@ def show_model():
     #y_pred = scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
 
     plot_comparison(y_test,y_pred)
-    st.write(y_pred[:50])
+    st.write(y_pred[:5])
+    st.write(y_test[:5])
 
     st.write('## Feature Importance :')
     
