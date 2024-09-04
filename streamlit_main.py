@@ -614,6 +614,7 @@ def create_result_df(y_test,y_pred):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
+    st.write(y_pred[:5])
     st.write(y_test[:5])
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
