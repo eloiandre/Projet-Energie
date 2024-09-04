@@ -617,7 +617,7 @@ def create_result_df(y_test,y_pred,X_test):
     st.write(df_result.head())
     col_to_keep=['y_pred','consommation_x','code_insee_region','date','heure','date_heure']
     df_result=df_result[col_to_keep]
-    df_result = df_result.rename(columns={'consommation_x': 'consommation'})
+    df_result = df_result.rename(columns={'consommation_x': 'consommation','y_pred':'prevision'})
     st.write(df_result.head())
     st.write(df_result.columns)
     return(df_result)
