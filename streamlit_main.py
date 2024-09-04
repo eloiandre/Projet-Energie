@@ -541,6 +541,12 @@ def show_model():
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
     
+
+
+    st.write('## Prédicionns : ')
+    y_test_predict=model.predict(X_test)
+
+
     st.write('## Feature Importance :')
     st.write(df_features.head())
     feature_importance()
