@@ -669,6 +669,39 @@ def prediction(X_test,y_train,y_test):
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
+def reel_vs_predict_heure():
+    # Créer la figure Plotly
+    fig = go.Figure()
+
+    # Tracer les points pour y_test
+    fig.add_trace(go.Scatter(
+        x=df_result['index'],  # index ou autre information temporelle
+        y=df_result['y_test'],
+        mode='markers',
+        marker=dict(color='blue'),
+        name='y_test'
+    ))
+
+    # Tracer les points pour y_pred
+    fig.add_trace(go.Scatter(
+        x=df_result['index'],  # même index pour y_pred
+        y=df_result['y_pred'],
+        mode='markers',
+        marker=dict(color='red'),
+        name='y_pred'
+    ))
+
+    # Mettre à jour les éléments de la mise en page
+    fig.update_layout(
+        title='Comparaison entre y_test et y_pred',
+        xaxis_title='Index',
+        yaxis_title='Valeurs (MW)',
+        legend=dict(x=0.1, y=1.1, orientation='h'),
+        autosize=False,
+        width=800,
+        height=500
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
