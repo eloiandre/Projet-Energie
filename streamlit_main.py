@@ -611,8 +611,8 @@ def plot_comparaison(y_test, y_pred, num_values=50):
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_test,y_pred,X_test):
-    st.write(y_test.head())
-    st.write(y_pred.head())
+    st.write(y_test[:5])
+    st.write(y_pred.head[:5s])
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
@@ -664,9 +664,10 @@ def prediction(X_test,y_train,y_test):
     # Prédiction 
     y_pred_scaled = model.predict(X_test)
 
-    # Inverser la mise à l'échelle des prédictions
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
-    y_pred=pd.DataFrame(y_pred)
+    y_pred = pd.Series(y_pred, index=X_test.index, name='y_pred')
+    y_test = pd.Series(y_test.values, index=X_test.index, name='y_test')
+
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
