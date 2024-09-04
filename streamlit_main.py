@@ -674,7 +674,7 @@ def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
     st.write('## Prédicions : ')
-    df_result=prediction(X_test,X_train,y_test)
+    df_result=prediction(X_test,y_train,y_test)
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     
