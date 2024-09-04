@@ -534,7 +534,7 @@ def show_model():
     st.image(image_heures_sin)
 
 
-    image_pipeline=Image.open('pipeline.png')
+    image_pipeline=Image.open('heures.png')
     st.image(image_pipeline)
     
     
