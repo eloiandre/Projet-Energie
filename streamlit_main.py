@@ -10,6 +10,11 @@ import pickle
 from sklearn.model_selection import train_test_split
 from PIL import Image
 from sklearn.base import BaseEstimator, TransformerMixin 
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.tree import DecisionTreeRegressor
+
+
 st.set_page_config(layout="wide")
 
 # Déclarer la classe heures_sinus
@@ -643,7 +648,10 @@ def show_model():
 
 
     st.write('## Prédicionns : ')
-    y_pred=model.predict(X_test)
+    y_pred_scaled=model.predict(X_test)
+    scaler = model.named_steps['scaler']
+    y_pred = scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
+
     plot_comparison(y_test,y_pred)
     st.write(y_pred[:50])
 
