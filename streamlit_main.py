@@ -617,6 +617,7 @@ def create_result_df(y_pred,y_test):
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
     st.write(df_result)
+    st.write(df_result.columns)
 
 def show_model():
     st.write('### Modéles :')
@@ -683,11 +684,7 @@ def show_model():
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
-    
-    st.write(df.columns)
 
-    
-    
 
     
 
