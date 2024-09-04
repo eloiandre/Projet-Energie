@@ -45,14 +45,6 @@ def import_files():
         gdown.download(url_csv, output_csv, quiet=False)
     except Exception as e:
         print(f"Failed to download the file: {e}")
-    
-    # Load the model using pickle
-    model = None
-    try:
-        with open(output_model, 'rb') as file:
-            model = pickle.load(file)
-    except Exception as e:
-        st.write("Error loading the model:", e)
 
     return df, geojson, temperature, df_features, model
 def show_definition():
