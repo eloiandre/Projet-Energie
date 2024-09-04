@@ -623,18 +623,16 @@ def create_result_df(y_pred,y_test):
     #st.write(df_result.head())
     return(df_result)
 
-def show_model():
+def intro_model(df,X_train,X_test,y_train,y_test):
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
     tableaux_modeles()
     st.write("Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
              ressembe à du suraprentissage. Nous selectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicitée")
-    
-    #Separation 
     st.write('Notre modéles prend en compte la region, le temps et la temperature pour estimer la consommation regionale.')
     # Afficher X_train dans la première colonne
-    X_train,X_test,y_train,y_test = split_dataset(df)
+    
     col1, col2 = st.columns(2)
     with col1:
         st.write("Exemple de nos données d'entrainement:")
@@ -657,7 +655,10 @@ def show_model():
               Les heures et la temperatures sont considérés comme des variables numeriques, les autres variables sont considérés comme categorielle.\
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
-    
+
+def show_model():
+    X_train,X_test,y_train,y_test = split_dataset(df)
+    intro_model(df,X_train,X_test,y_train,y_test)
     st.write('## Prédicions : ')
     # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
@@ -673,7 +674,6 @@ def show_model():
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     
-
     st.write('## Feature Importance :')
     st.write(df_features.head())
     plot_feature_importance()
