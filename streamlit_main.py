@@ -517,6 +517,7 @@ def show_model():
     #Separation 
     st.write('Notre modéles prend en compte la region, le temps et la temperature pour estimer la consommation regionale.')
     # Afficher X_train dans la première colonne
+    col1, col2 = st.columns(2)
     with col1:
         st.write('Exemple de X_train :')
         st.write(X_train.head())
@@ -539,7 +540,7 @@ def show_model():
     feature_importance()
     split_dataset(df)
     X_train,X_test,y_train,y_test = split_dataset(df)
-    col1, col2 = st.columns(2)
+    
 
     
 
