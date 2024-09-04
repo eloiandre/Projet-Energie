@@ -610,7 +610,7 @@ def plot_comparison(y_test, y_pred, num_values=50):
 
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
-def create_result_df(y_pred,y_test):
+def create_result_df(y_pred,y_test,X_test):
     y_pred=pd.Series(y_pred,index=X_test.index)
     df_result=pd.concat([y_test,y_pred],axis=1)
     df_result.columns=['y_test','y_pred']
@@ -623,7 +623,7 @@ def create_result_df(y_pred,y_test):
     df_result['mois'] = df['date_heure'].dt.month
     st.write(df_result.head())
 def show_model():
-    st.write('### Modéles 2:')
+    st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
     tableaux_modeles()
@@ -672,7 +672,7 @@ def show_model():
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
     plot_comparison(y_test,y_pred)
 
-    create_result_df(y_test,y_pred)
+    create_result_df(y_test,y_pred,X_test)
 
     st.write('## Feature Importance :')
     
