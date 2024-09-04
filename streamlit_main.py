@@ -667,7 +667,7 @@ def show_model():
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
     plot_comparison(y_test,y_pred)
 
-    create_result_df(y_test,y_pred,X_test)
+    create_result_df(y_test,y_pred)
 
     st.write('## Feature Importance :')
     
