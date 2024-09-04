@@ -613,7 +613,8 @@ def plot_comparison(y_test, y_pred, num_values=50):
 def create_result_df(y_pred,y_test,X_test):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
-    st.write(y_pred.head())
+    df_result=pd.concat([y_test,y_pred],axis=1)
+    st.write(df_result.head())
 def show_model():
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
