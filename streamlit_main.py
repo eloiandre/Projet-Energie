@@ -614,9 +614,8 @@ def create_result_df(y_pred,y_test):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
-    #df_result=pd.concat([y_test,y_pred],axis=1)
-    st.write(y_pred.head())
-    st.write(y_test.head())
+    df_result=pd.concat([y_test,y_pred],axis=1)
+
 def show_model():
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
