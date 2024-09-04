@@ -610,7 +610,7 @@ def plot_comparaison(y_test, y_pred, num_values=50):
 
     # Afficher la figure
     st.plotly_chart(fig, use_container_width=True)
-def create_result_df(y_pred,y_test):
+def create_result_df(y_test,y_pred):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
@@ -674,7 +674,7 @@ def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
     st.write('## Prédicions : ')
-    df_result=prediction(X_test,X_train,y_test,model)
+    df_result=prediction(X_test,X_train,y_test)
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     
