@@ -618,7 +618,7 @@ def create_result_df(y_pred,y_test):
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
-    df_result=df_result[col_to_keep]
+    #df_result=df_result[col_to_keep]
     st.write(df_result.head())
     st.write(df_result.columns)
 
