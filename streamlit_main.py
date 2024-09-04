@@ -8,6 +8,7 @@ import os
 import pickle 
 from sklearn.model_selection import train_test_split
 from PIL import Image
+from sklearn.base import BaseEstimator, TransformerMixin 
 st.set_page_config(layout="wide")
 @st.cache_data
 # Déclarer la classe heures_sinus
