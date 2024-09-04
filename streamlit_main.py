@@ -605,7 +605,7 @@ def show_model():
 
     st.write('## Prédicionns : ')
     y_test_predict=model.predict(X_test)
-    st.write(y_test_predict.head())
+    st.write(y_test_predict[:5])
     st.write('## Feature Importance :')
     st.write(df_features.head())
     
