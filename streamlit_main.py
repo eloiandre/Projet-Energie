@@ -78,7 +78,7 @@ def import_files():
         if not os.path.exists(output_csv):
             gdown.download(url_csv, output_csv, quiet=False)
         df = pd.read_csv(output_csv)
-        st.write("Fichier CSV principal téléchargé et chargé.")
+        #st.write("Fichier CSV principal téléchargé et chargé.")
 
         # Télécharger le fichier des températures
         url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
@@ -86,17 +86,17 @@ def import_files():
         if not os.path.exists(output_temperature_csv):
             gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
         temperature = pd.read_csv(output_temperature_csv)
-        st.write("Fichier CSV des températures téléchargé et chargé.")
+        #st.write("Fichier CSV des températures téléchargé et chargé.")
 
         # Télécharger le fichier GeoJSON
         url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
         geojson = gpd.read_file(url_geojson)
-        st.write("Fichier GeoJSON téléchargé et chargé.")
+        #st.write("Fichier GeoJSON téléchargé et chargé.")
 
         # Télécharger le fichier des features
         url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
         df_features = pd.read_csv(url_features, index_col=0)
-        st.write("Fichier des features téléchargé et chargé.")
+        #st.write("Fichier des features téléchargé et chargé.")
 
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
@@ -105,7 +105,7 @@ def import_files():
             gdown.download(url_model, output_model, quiet=False)
         with open(output_model, 'rb') as file:
             model = pickle.load(file)
-        st.write("Modèle téléchargé et chargé.")
+        #st.write("Modèle téléchargé et chargé.")
 
         # Code commenté pour df_short
         # url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
