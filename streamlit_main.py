@@ -509,7 +509,7 @@ def split_dataset(df):
 def show_model():
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
-    st.write('#Tableau comparatif de nos modéles :')
+    st.write('# Tableau comparatif de nos modéles :')
     tableaux_modeles()
     st.write("Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
              ressembe à du suraprentissage. Nous selectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicitée")
@@ -532,6 +532,10 @@ def show_model():
     st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures:")
     image_heures_sin=Image.open('heures.jpg')
     st.image(image_heures_sin,width=500)
+
+    st.write("# Pipeline : ")
+    image_pipeline=Image.open('pipeline.png')
+    st.image(image_pipeline)
 
     
     
