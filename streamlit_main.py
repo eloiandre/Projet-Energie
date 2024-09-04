@@ -623,7 +623,7 @@ def create_result_df(y_pred,y_test):
     #st.write(df_result.head())
     return(df_result)
 
-def intro_model(df,X_train,X_test,y_train,y_test):
+def intro_model(X_train,y_train):
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
     st.write('# Tableau comparatif de nos modéles :')
@@ -659,7 +659,7 @@ def intro_model(df,X_train,X_test,y_train,y_test):
 
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
-    intro_model(df,X_train,X_test,y_train,y_test)
+    intro_model(X_train,y_train)
     st.write('## Prédicions : ')
     # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
