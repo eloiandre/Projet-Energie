@@ -40,6 +40,7 @@ def import_files():
 
     
     url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
+    output_model = "model.pkl"
     gdown.download(url_model, output_model, quiet=False)
     with open(output_model, 'rb') as file:
         model = pickle.load(file)
