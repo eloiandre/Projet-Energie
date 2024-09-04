@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 from sklearn.base import BaseEstimator, TransformerMixin 
 st.set_page_config(layout="wide")
-@st.cache_data
+
 # Déclarer la classe heures_sinus
 class heures_sinus(BaseEstimator, TransformerMixin):
     def __init__(self, datetime_col):
@@ -42,6 +42,7 @@ class heures_sinus(BaseEstimator, TransformerMixin):
         X['saison'] = self.saison
 
         return X
+@st.cache_data
 def import_files():
     
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
