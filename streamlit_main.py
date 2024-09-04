@@ -613,7 +613,7 @@ def plot_comparison(y_test, y_pred, num_values=50):
 def create_result_df(y_pred,y_test,X_test):
     st.write('### create result')
     y_pred=pd.Series(y_pred)
-    y_test = pd.Series(y_test, index=X_test.index, name='y_test')
+    y_test = pd.Series(y_test, name='y_test')
     #df_result=pd.concat([y_test,y_pred],axis=1)
     st.write(y_pred.head())
     st.write(y_test.head())
