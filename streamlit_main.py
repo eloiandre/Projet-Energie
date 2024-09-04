@@ -612,16 +612,7 @@ def plot_comparison(y_test, y_pred, num_values=50):
     st.plotly_chart(fig, use_container_width=True)
 def create_result_df(y_pred,y_test,X_test):
     y_pred=pd.Series(y_pred,index=X_test.index)
-    df_result=pd.concat([y_test,y_pred],axis=1)
-    df_result.columns=['y_test','y_pred']
-
-    #jointure par index pour retrouver la date des echantillons
-    df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
-
-    #ajout de l'heure et du mois
-    df_result['heure'] = df['date_heure'].dt.hour
-    df_result['mois'] = df['date_heure'].dt.month
-    st.write(df_result.head())
+    st.write(y_pred.head())
 def show_model():
     st.write('### Modéles :')
     st.write('## Objectif : Prédire la consommation par région')
