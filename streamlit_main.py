@@ -10,7 +10,37 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 st.set_page_config(layout="wide")
 @st.cache_data
+# Déclarer la classe heures_sinus
+class heures_sinus(BaseEstimator, TransformerMixin):
+    def __init__(self, datetime_col):
+        self.datetime_col = datetime_col
 
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X, y=None):
+        self.datetime = pd.to_datetime(X[self.datetime_col])
+
+        # Ajout des colonnes extraites de date_heure
+        X['annee'] = self.datetime.dt.year
+        X['mois'] = self.datetime.dt.month
+        X['jour'] = self.datetime.dt.day
+        X['jour_ouvre'] = X[self.datetime_col].dt.dayofweek <= 5
+        X['jour_sem'] = X[self.datetime_col].dt.dayofweek
+
+        # Transformation des heures
+        self.heures = self.datetime.dt.hour + self.datetime.dt.minute / 60
+        X['heures_sin'] = np.sin(2 * np.pi * self.heures / 24)
+        X['heures_cos'] = np.cos(2 * np.pi * self.heures / 24)
+        X['heures'] = self.heures
+
+        # Transformation des saisons
+        self.saison = pd.cut(X['mois'], bins=[0, 2, 5, 8, 11, 12], labels=[1, 2, 3, 4, 1], ordered=False).astype(int)
+        X['saison_sin'] = np.sin(2 * np.pi * self.saison / 4)
+        X['saison_cos'] = np.cos(2 * np.pi * self.saison / 4)
+        X['saison'] = self.saison
+
+        return X
 def import_files():
     
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
