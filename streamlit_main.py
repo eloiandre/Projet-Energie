@@ -677,6 +677,7 @@ def show_model():
     intro_model(X_train,y_train)
     st.write('## Prédicions : ')
     st.write(X_test.head())
+    st;write(y_test.head())
     df_result=prediction(X_test,y_train,y_test)
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
