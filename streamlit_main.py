@@ -617,7 +617,7 @@ def create_result_df(y_pred,y_test):
     y_test = pd.Series(y_test, index=y_pred.index, name='y_test')
     df_result=pd.concat([y_test.round(0),y_pred],axis=1)
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
-    df_result=df_result[col_to_keep]
+    #df_result=df_result[col_to_keep]
     st.write(df_result)
     st.write(df_result.columns)
 
