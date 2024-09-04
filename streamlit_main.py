@@ -52,7 +52,7 @@ def import_files():
         with open(output_model, 'rb') as file:
             model = pickle.load(file)
     except Exception as e:
-        print("Error loading the model:", e)
+        st.write("Error loading the model:", e)
 
     return df, geojson, temperature, df_features, model
 def show_definition():
