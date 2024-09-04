@@ -669,9 +669,9 @@ def prediction(X_test,y_train,y_test):
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
-def reel_vs_predict_heure():
+def reel_vs_predict_heure(df_result):
     # Créer la figure Plotly
-    fig = go.Figure(df_result)
+    fig = go.Figure()
 
     # Tracer les points pour y_test
     fig.add_trace(go.Scatter(
