@@ -569,6 +569,23 @@ def show_model():
     tableaux_modeles()
     st.write("Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
              ressembe à du suraprentissage. Nous selectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicitée")
+    
+    #Separation 
+    st.write('Notre modéles prend en compte la region, le temps et la temperature pour estimer la consommation regionale.')
+        # Afficher X_train dans la première colonne
+        with col1:
+            st.write('Exemple de X_train :')
+            st.write(X_train.head())
+
+        # Afficher y_train dans la seconde colonne
+        with col2:
+            st.write('Exemple de y_train :')
+            st.write(y_train.head())
+        image_pipeline=Image.open('pipeline.png')
+        st.image(image_pipeline)
+    
+    
+    
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
@@ -580,17 +597,7 @@ def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     col1, col2 = st.columns(2)
 
-    # Afficher X_train dans la première colonne
-    with col1:
-        st.write('Exemple de X_train :')
-        st.write(X_train.head())
-
-    # Afficher y_train dans la seconde colonne
-    with col2:
-        st.write('Exemple de y_train :')
-        st.write(y_train.head())
-    image_pipeline=Image.open('pipeline.png')
-    st.image(image_pipeline)
+    
 
 def main():
     st.title("Projet Energie12")
