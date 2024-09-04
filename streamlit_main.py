@@ -22,26 +22,47 @@ class heures_sinus(BaseEstimator, TransformerMixin):
     def transform(self, X, y=None):
         self.datetime = pd.to_datetime(X[self.datetime_col])
 
-        # Ajout des colonnes extraites de date_heure
+        #Collections des annes,saison, mois, jours et heures depuis datetime
         X['annee'] = self.datetime.dt.year
         X['mois'] = self.datetime.dt.month
         X['jour'] = self.datetime.dt.day
-        X['jour_ouvre'] = X[self.datetime_col].dt.dayofweek <= 5
-        X['jour_sem'] = X[self.datetime_col].dt.dayofweek
+        X['jour_ouvre']=X[self.datetime_col].dt.dayofweek<=5
+        X['jour_sem']=X[self.datetime_col].dt.dayofweek
 
-        # Transformation des heures
-        self.heures = self.datetime.dt.hour + self.datetime.dt.minute / 60
+        #Transformation des heures minutes
+        self.heures = self.datetime.dt.hour + self.datetime.dt.minute / 60 # passage des heures en dizaines de minutes
         X['heures_sin'] = np.sin(2 * np.pi * self.heures / 24)
         X['heures_cos'] = np.cos(2 * np.pi * self.heures / 24)
         X['heures'] = self.heures
+        #X.drop(['date_heure'], axis=1, inplace=True)
 
-        # Transformation des saisons
-        self.saison = pd.cut(X['mois'], bins=[0, 2, 5, 8, 11, 12], labels=[1, 2, 3, 4, 1], ordered=False).astype(int)
+        #Transformation des saisons
+        self.saison=pd.cut(X['mois'], bins = [0,2,5,8,11,12],
+                           labels = [1,2,3,4,1],
+                           right = True, include_lowest=True, ordered = False).astype(int)
         X['saison_sin'] = np.sin(2 * np.pi * self.saison / 4)
         X['saison_cos'] = np.cos(2 * np.pi * self.saison / 4)
-        X['saison'] = self.saison
-
+        X['saison']=self.saison
         return X
+
+    def inverse_transform(self, X, y=None):
+        self.sin_heures = X['heures_sin']
+        self.cos_heures = X['heures_cos']
+        heures = np.arctan2(self.sin_heures, self.cos_heures) * 24 / (2 * np.pi)
+        heures = heures % 24
+        minutes = (heures - np.floor(heures)) * 60
+        heures_int = np.floor(heures).astype(int)
+        minutes_int = np.floor(minutes).astype(int)
+        X['date_heure'] = pd.to_datetime(
+            X['annee'].astype(str) + '-' +
+            X['mois'].astype(str) + '-' +
+            X['jour'].astype(str) + ' ' +
+            heures_int.astype(str) + ':' +
+            minutes_int.astype(str)
+        )
+        X.drop(['annee', 'mois', 'jour', 'heures_sin', 'heures_cos','saison_sin','saison_cos'], axis=1, inplace=True)
+        return X
+    
 @st.cache_data
 def import_files():
     
