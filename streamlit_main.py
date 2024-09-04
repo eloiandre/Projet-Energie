@@ -605,7 +605,7 @@ def plot_comparaison(y_test, y_pred, num_values=50):
     fig.update_layout(
         title=f'Écart entre test et prévisions pour les {num_values} premières valeurs',
         xaxis_title='Echantillon',
-        yaxis_title='Values (MW)'
+        yaxis_title='Valeur s(MW)'
     )
 
     # Afficher la figure
