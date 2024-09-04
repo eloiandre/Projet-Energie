@@ -620,8 +620,8 @@ def create_result_df(y_pred,y_test):
     df_result = df_result.rename(columns={'y_test': 'prevision'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
     col_to_keep=['prevision','consommation_x','code_insee_region','date','heure','date_heure']
-    df_result = df_result.rename(columns={'consommation_x': 'consommation'})
     df_result=df_result[col_to_keep]
+    df_result = df_result.rename(columns={'consommation_x': 'consommation'})
     st.write(df_result.head())
     st.write(df_result.columns)
 
