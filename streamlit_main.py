@@ -688,6 +688,7 @@ def show_model():
     intro_model(X_train,y_train)
 
     df_result=prediction(X_test,y_train,y_test)
+    st.write(df_result.head())
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     st.write('## Feature Importance :')
