@@ -25,10 +25,10 @@ def import_files():
     temperature = pd.read_csv(output_temperature_csv)
 
     
-    url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
-    output_short = "new_data.csv"
-    gdown.download(url_short, output_short, quiet=False)
-    df_short = pd.read_csv(output_short)
+    #url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
+    #output_short = "new_data.csv"
+    #gdown.download(url_short, output_short, quiet=False)
+    #df_short = pd.read_csv(output_short)
 
     
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
