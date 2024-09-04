@@ -675,7 +675,7 @@ def reel_vs_predict_heure():
 
     # Tracer les points pour y_test
     fig.add_trace(go.Scatter(
-        x=df_result['index'],  # index ou autre information temporelle
+        x=df_result.index,  # index ou autre information temporelle
         y=df_result['y_test'],
         mode='markers',
         marker=dict(color='blue'),
