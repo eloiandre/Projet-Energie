@@ -588,11 +588,12 @@ def show_model():
 
 
     st.write('## Prédicionns : ')
-    #y_test_predict=model.predict(X_test)
-    st.write(model)
-    st.write("Forme de X_test:", X_test.shape)
+    y_test_predict=model.predict(X_test)
+    
     st.write('## Feature Importance :')
     st.write(df_features.head())
+    
+    
     feature_importance()
     split_dataset(df)
     
