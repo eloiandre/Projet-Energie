@@ -520,12 +520,12 @@ def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     col1, col2 = st.columns(2)
     with col1:
-        st.write('Exemple de X_train :')
+        st.write("Exemple de nos données d'entrainement:")
         st.write(X_train.head())
 
     # Afficher y_train dans la seconde colonne
     with col2:
-        st.write('Exemple de y_train :')
+        st.write('Cible :')
         st.write(y_train.head())
 
     
