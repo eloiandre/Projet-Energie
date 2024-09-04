@@ -669,7 +669,7 @@ def prediction(X_test,y_train,y_test):
     
     return df_result
 def reel_vs_predict_mois(df_result):
-    df_result['mois']=df_result['date_heure'].dt.month()
+    df_result['mois']=df_result['date_heure'].dt.month
     df_melted = pd.melt(df_result, id_vars=['mois'], value_vars=['y_test', 'y_pred'],
                     var_name='Type', value_name='Consommation')
     fig = px.bar(df_melted, x='mois', y='Consommation', color='Type', barmode='group',
