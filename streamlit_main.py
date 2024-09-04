@@ -536,7 +536,10 @@ def show_model():
     st.write("# Pipeline : ")
     image_pipeline=Image.open('pipeline.png')
     st.image(image_pipeline)
-    st.write("Le pipeline extrait l'année, la saison, le moi et le jour de la semaine de la variable 'date_heure' et decompose les heures en cos et sin.")
+    st.write("Le pipeline extrait l'année, la saison, le moi et le jour de la semaine de la variable 'date_heure' et decompose les heures en cos et sin.\
+              Les heures et la temperatures sont considérés comme des varaibles numeriques, les autres varaibles sont considérés comme categorielle.\
+             Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
+              résultats lors de l'apprentissage et ne seront pas utilisées.   ")
     
     st.write('## Feature Importance :')
     st.write(df_features.head())
