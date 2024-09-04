@@ -543,7 +543,7 @@ def tableaux_modeles():
     df_results = pd.DataFrame(data)
     # Afficher le DataFrame dans Streamlit
     st.dataframe(df_results)
-def feature_importance():
+def plot_feature_importance():
     fig = go.Figure()
     df_sorted=df_features.sort_values(by=['Importance'],ascending=True)
     fig.add_trace(go.Bar(
@@ -570,7 +570,7 @@ def split_dataset(df):
     y=df[target]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=151)
     return(X_train, X_test, y_train, y_test)
-def plot_comparison(y_test, y_pred, num_values=50):
+def plot_comparaison(y_test, y_pred, num_values=50):
     # Créer un DataFrame avec y_test et y_pred
     df_result = pd.DataFrame({
         'y_test': y_test,
@@ -658,8 +658,6 @@ def show_model():
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
     
-
-
     st.write('## Prédicions : ')
     # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
@@ -672,18 +670,13 @@ def show_model():
     # Inverser la mise à l'échelle des prédictions
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
     df_result=create_result_df(y_test,y_pred)
-    plot_comparison(df_result['consommation'],df_result['prevision'])
+    plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     
 
     st.write('## Feature Importance :')
-    
-    
-    
     st.write(df_features.head())
-    
-    
-    feature_importance()
+    plot_feature_importance()
     split_dataset(df)
     
     #courbe d'aprentissage
