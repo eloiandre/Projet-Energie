@@ -5,3 +5,4 @@ gdown
 plotly
 Pillow
 scikit-learn
+numpy
