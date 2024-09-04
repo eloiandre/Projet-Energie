@@ -655,7 +655,7 @@ def intro_model(X_train,y_train):
               Les heures et la temperatures sont considérés comme des variables numeriques, les autres variables sont considérés comme categorielle.\
              Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
-def prediction(X_test,y_train,y_test,model):
+def prediction(X_test,y_train,y_test):
     # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
     y_train_scaled = y_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
