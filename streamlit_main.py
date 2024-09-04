@@ -658,8 +658,6 @@ def show_model():
 
     # Inverser la mise à l'échelle des prédictions
     y_pred = y_scaler.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
-    st.write("Prédictions inversées :", y_pred[:5])
-    st.write(y_test)
     plot_comparison(y_test,y_pred)
 
     
