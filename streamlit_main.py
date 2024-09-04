@@ -615,8 +615,9 @@ def create_result_df(y_test,y_pred,X_test):
     df_result = df_result.rename(columns={'y_test': 'consommation'})
     df_result = df_result.merge(df, how='left', left_index=True, right_index=True)
     st.write(df_result.head())
-    col_to_keep=['y_pred','consommation','code_insee_region','date','heure','date_heure']
-    #df_result=df_result[col_to_keep]
+    col_to_keep=['y_pred','consommation_x','code_insee_region','date','heure','date_heure']
+    df_result=df_result[col_to_keep]
+    df_result = df_result.rename(columns={'consommation_x': 'consommation'})
     st.write(df_result.head())
     st.write(df_result.columns)
     return(df_result)
