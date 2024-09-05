@@ -668,7 +668,6 @@ def prediction(X_test,y_train,y_test):
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
-
 def reel_vs_predict_interactive(df_result):
     # Échantillonner 1000 lignes pour alléger la charge
     df_result_sample = df_result.sample(n=1000, random_state=42)
@@ -729,7 +728,7 @@ def reel_vs_predict_interactive(df_result):
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
-def reel_vs_predict_heure(df_result):
+
     # Échantillonner 1000 lignes pour alléger la charge
     df_result_sample = df_result.sample(n=1000, random_state=42)
 
@@ -771,8 +770,14 @@ def show_model():
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
+
+    #consommation vs prediction
     reel_vs_predict_interactive(df_result)
 
+    # etude des residus
+    st.write('# Etude des residus')
+    df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
+    st.write(df_result.head())
 def main():
     st.title("Projet Energie")
     st.sidebar.title("Sommaire")
