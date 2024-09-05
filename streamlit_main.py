@@ -692,7 +692,7 @@ def reel_vs_predict_interactive(df_result):
     fig = go.Figure()
 
     # Ajouter les barres pour les mois (valeur initiale)
-    fig.add_trace(go.Bar(x=df_melted_mois['mois'], y=df_melted_mois['Consommation'], name='Consommation par Mois', marker_color=df_melted_mois['Type']))
+    fig.add_trace(go.Bar(x=df_melted_mois['mois'], y=df_melted_mois['Consommation'], name='Consommation par Mois', marker=dict(color='blue')))
 
     # Créer le menu déroulant pour choisir le type de graphique
     fig.update_layout(
@@ -700,17 +700,17 @@ def reel_vs_predict_interactive(df_result):
             dict(
                 buttons=[
                     dict(
-                        args=[{'x': [df_melted_mois['mois']], 'y': [df_melted_mois['Consommation']], 'marker.color': [df_melted_mois['Type']]}],
+                        args=[{'x': [df_melted_mois['mois']], 'y': [df_melted_mois['Consommation']]}],
                         label="Par Mois",
                         method="restyle"
                     ),
                     dict(
-                        args=[{'x': [df_melted_jour['jour_semaine']], 'y': [df_melted_jour['Consommation']], 'marker.color': [df_melted_jour['Type']]}],
+                        args=[{'x': [df_melted_jour['jour_semaine']], 'y': [df_melted_jour['Consommation']]}],
                         label="Par Jour de la Semaine",
                         method="restyle"
                     ),
                     dict(
-                        args=[{'x': [df_melted_heure['heure']], 'y': [df_melted_heure['Consommation']], 'marker.color': [df_melted_heure['Type']]}],
+                        args=[{'x': [df_melted_heure['heure']], 'y': [df_melted_heure['Consommation']]}],
                         label="Par Heure",
                         method="restyle"
                     )
@@ -734,6 +734,7 @@ def reel_vs_predict_interactive(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
+
 
 def reel_vs_predict_heure(df_result):
     # Échantillonner 1000 lignes pour alléger la charge
