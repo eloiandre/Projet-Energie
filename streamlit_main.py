@@ -778,7 +778,6 @@ def show_model():
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     reel_vs_predict_interactive(df_result)
-    reel_vs_predict_heure(df_result)
 
 def main():
     st.title("Projet Energie")
