@@ -678,16 +678,6 @@ def reel_vs_predict_interactive(df_result):
     df_result_sample['jour_semaine'] = df_result_sample['date_heure'].dt.dayofweek
     df_result_sample['heure'] = df_result_sample['date_heure'].dt.hour
 
-    # Créer les DataFrames fondus pour les différentes dimensions
-    df_melted_mois = pd.melt(df_result_sample, id_vars=['mois'], value_vars=['consommation', 'prevision'],
-                             var_name='Type', value_name='Consommation')
-
-    df_melted_jour = pd.melt(df_result_sample, id_vars=['jour_semaine'], value_vars=['consommation', 'prevision'],
-                             var_name='Type', value_name='Consommation')
-
-    df_melted_heure = pd.melt(df_result_sample, id_vars=['heure'], value_vars=['consommation', 'prevision'],
-                              var_name='Type', value_name='Consommation')
-
     # Créer une figure vide initiale
     fig = go.Figure()
 
