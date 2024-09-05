@@ -665,7 +665,7 @@ def prediction(X_test,y_train,y_test):
     y_pred = pd.Series(y_pred, index=X_test.index, name='y_pred')
     y_test = pd.Series(y_test.values, index=X_test.index, name='y_test')
 
-    df_result=create_result_df(y_test,y_pred,X_test)
+    df_result=create_result_df(y_test,y_pred,X_test).round(0)
     
     return df_result
 def reel_vs_predict_interactive(df_result):
@@ -778,6 +778,7 @@ def show_model():
     st.write('# Etude des residus')
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
     st.write(df_result.head())
+
 def main():
     st.title("Projet Energie")
     st.sidebar.title("Sommaire")
