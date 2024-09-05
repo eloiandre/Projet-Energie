@@ -683,7 +683,7 @@ def reel_vs_predict_interactive(df_result):
 
     # Ajouter les barres pour les mois (valeur initiale)
     fig.add_trace(go.Bar(x=df_result_sample['mois'], y=df_result_sample['consommation'], name='Consommation (Mois)', marker=dict(color='light blue')))
-    fig.add_trace(go.Bar(x=df_result_sample['mois'], y=df_result_sample['prevision'], name='Prévision (Mois)', marker=dict(color='red')))
+    fig.add_trace(go.Bar(x=df_result_sample['mois'], y=df_result_sample['prevision'], name='Prévision (Mois)', marker=dict(color='blue')))
 
     # Créer le menu déroulant pour choisir le type de graphique
     fig.update_layout(
