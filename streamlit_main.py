@@ -791,7 +791,47 @@ def plot_prediction_vs_real(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
+def plot_residus(y_test, y_pred, residuals):
+    # Créer le subplot 2x2
+    fig = make_subplots(rows=2, cols=2, subplot_titles=("Graphique de Dispersion des Résidus",
+                                                        "Histogramme des Résidus",
+                                                        "Comparaison Valeurs Réelles vs. Prédites",
+                                                        "QQ Plot des Résidus"))
 
+    # 1er graphique : Dispersion des résidus
+    fig.add_trace(go.Scatter(x=y_pred, y=residuals, mode='markers',
+                             name='Résidus', marker=dict(color='blue')),
+                  row=1, col=1)
+    # Ligne horizontale à y=0
+    fig.add_trace(go.Scatter(x=[min(y_pred), max(y_pred)], y=[0, 0],
+                             mode='lines', line=dict(color='red', dash='dash'),
+                             showlegend=False), row=1, col=1)
+
+    # 2e graphique : Histogramme des résidus
+    fig.add_trace(go.Histogram(x=residuals, nbinsx=50, name='Résidus',
+                               marker_color='green'), row=1, col=2)
+
+    # 3e graphique : Comparaison Valeurs Réelles vs. Prédites
+    fig.add_trace(go.Scatter(x=y_test, y=y_pred, mode='markers',
+                             name='Réelles vs Prédites', marker=dict(color='purple')),
+                  row=2, col=1)
+    # Ligne diagonale
+    fig.add_trace(go.Scatter(x=[min(y_test), max(y_test)], y=[min(y_test), max(y_test)],
+                             mode='lines', line=dict(color='red', dash='dash'),
+                             showlegend=False), row=2, col=1)
+
+    # 4e graphique : QQ Plot des résidus
+    qq_line = np.linspace(np.min(residuals), np.max(residuals), len(residuals))
+    qq_quantiles = np.percentile(residuals, np.linspace(0, 100, len(residuals)))
+    fig.add_trace(go.Scatter(x=qq_line, y=qq_quantiles, mode='markers',
+                             name='QQ Plot', marker=dict(color='orange')), row=2, col=2)
+
+    # Mettre à jour la mise en page
+    fig.update_layout(height=800, width=1000, title_text="Analyse des Résultats du Modèle",
+                      showlegend=False)
+
+    # Afficher le graphique dans Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
@@ -819,7 +859,7 @@ def show_model():
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
     st.write(df_result.head())
     plot_prediction_vs_real(df_result)
-
+    plot_residus(df_result['consommation'],df_result['prevision'],df['residus'])
 def main():
     st.title("Projet Energie")
     st.sidebar.title("Sommaire")
