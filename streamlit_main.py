@@ -813,7 +813,7 @@ def plot_residus(df_result):
                              showlegend=False), row=1, col=1)
 
     # 2e graphique : Histogramme des résidus
-    fig.add_trace(go.Histogram(x=residuals, nbinsx=50, name='Résidus',
+    fig.add_trace(go.Histogram(x=residuals, nbinsx=100, name='Résidus',
                                marker_color='green'), row=1, col=2)
 
     # 3e graphique : Comparaison Valeurs Réelles vs. Prédites
