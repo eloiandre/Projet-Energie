@@ -796,6 +796,7 @@ def plot_residus(df_result):
     df_result = df_result.sample(n=1000, random_state=42)
     y_test=df_result['consommation']
     y_pred=df_result['prevision']
+    residuals=df_result['residus']
     # Créer le subplot 2x2
     fig = make_subplots(rows=2, cols=2, subplot_titles=("Graphique de Dispersion des Résidus",
                                                         "Histogramme des Résidus",
