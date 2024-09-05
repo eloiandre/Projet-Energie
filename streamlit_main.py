@@ -825,12 +825,15 @@ def plot_residus(df_result):
                              mode='lines', line=dict(color='red', dash='dash'),
                              showlegend=False), row=2, col=1)
 
-    # 4e graphique : QQ Plot des résidus
-    qq_line = np.linspace(np.min(residuals), np.max(residuals), len(residuals))
-    qq_quantiles = np.percentile(residuals, np.linspace(0, 100, len(residuals)))
-    fig.add_trace(go.Scatter(x=qq_line, y=qq_quantiles, mode='markers',
-                             name='QQ Plot', marker=dict(color='orange')), row=2, col=2)
+    # Quantiles théoriques de la distribution normale
+    (osm, osr), (slope, intercept, r) = stats.probplot(residuals, dist="norm")
 
+    # Points du QQ plot
+    fig.add_trace(go.Scatter(x=osm, y=osr, mode='markers', name='QQ Plot', marker=dict(color='orange')), row=2, col=2)
+    
+    # Ligne de référence dans le QQ plot
+    fig.add_trace(go.Scatter(x=osm, y=slope * osm + intercept, mode='lines', 
+                             line=dict(color='red', dash='dash'), showlegend=False), row=2, col=2)
     # Mettre à jour la mise en page
     fig.update_layout(height=800, width=1000, title_text="Analyse des Résultats du Modèle",
                       showlegend=False)
