@@ -668,54 +668,7 @@ def prediction(X_test,y_train,y_test):
     df_result=create_result_df(y_test,y_pred,X_test)
     
     return df_result
-def reel_vs_predict_mois(df_result):
-    # Échantillonner 1000 lignes pour alléger la charge
-    df_result_sample = df_result.sample(n=1000, random_state=42)
 
-    df_result_sample['mois'] = df_result_sample['date_heure'].dt.month
-    df_melted = pd.melt(df_result_sample, id_vars=['mois'], value_vars=['consommation', 'prevision'],
-                        var_name='Type', value_name='Consommation')
-    fig = px.bar(df_melted, x='mois', y='Consommation', color='Type', barmode='group',
-                 labels={'mois': 'Mois', 'Consommation': 'Consommation (MW)'},
-                 title='Consommation réelle vs prédite par mois')
-    fig.update_layout(
-        title='Consommation réelle vs prédite par mois',
-        xaxis_title='Mois',
-        yaxis_title='Consommation (MW)',
-        legend_title_text='Type'
-    )
-    st.plotly_chart(fig, use_container_width=True)
-def reel_vs_predict_jour(df_result):
-    # Échantillonner 1000 lignes pour alléger la charge
-    df_result_sample = df_result.sample(n=1000, random_state=42)
-
-    # Extraire le jour de la semaine depuis la colonne date_heure
-    df_result_sample['jour_semaine'] = df_result_sample['date_heure'].dt.dayofweek
-
-    # Fondre les colonnes 'consommation' et 'prevision' pour la comparaison
-    df_melted = pd.melt(df_result_sample, id_vars=['jour_semaine'], value_vars=['consommation', 'prevision'],
-                        var_name='Type', value_name='Consommation')
-    
-    # Mapping pour donner des noms aux jours de la semaine (0 = lundi, 6 = dimanche)
-    jours_semaines = {0: 'Lundi', 1: 'Mardi', 2: 'Mercredi', 3: 'Jeudi', 4: 'Vendredi', 5: 'Samedi', 6: 'Dimanche'}
-    df_melted['jour_semaine'] = df_melted['jour_semaine'].map(jours_semaines)
-
-    # Créer le graphique en barres
-    fig = px.bar(df_melted, x='jour_semaine', y='Consommation', color='Type', barmode='group',
-                 labels={'jour_semaine': 'Jour de la Semaine', 'Consommation': 'Consommation (MW)'},
-                 title='Consommation réelle vs prédite par jour de la semaine')
-    
-    # Ajuster les paramètres du graphique
-    fig.update_layout(
-        title='Consommation réelle vs prédite par jour de la semaine',
-        xaxis_title='Jour de la Semaine',
-        yaxis_title='Consommation (MW)',
-        legend_title_text='Type'
-    )
-
-    # Afficher le graphique dans Streamlit
-    st.plotly_chart(fig, use_container_width=True)
-def reel_vs_predict_heure(df_result):
     # Échantillonner 1000 lignes pour alléger la charge
     df_result_sample = df_result.sample(n=1000, random_state=42)
 
@@ -800,8 +753,6 @@ def reel_vs_predict_interactive(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-
-
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
@@ -818,13 +769,10 @@ def show_model():
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
-    reel_vs_predict_mois(df_result)
-    reel_vs_predict_jour(df_result)
-    reel_vs_predict_heure(df_result)
     reel_vs_predict_interactive(df_result)
 
 def main():
-    st.title("Projet Energie12")
+    st.title("Projet Energie")
     st.sidebar.title("Sommaire")
     pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
     page=st.sidebar.radio("Aller vers", pages)
