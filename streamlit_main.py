@@ -753,6 +753,32 @@ def reel_vs_predict_interactive(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
+def reel_vs_predict_heure(df_result):
+    # Échantillonner 1000 lignes pour alléger la charge
+    df_result_sample = df_result.sample(n=1000, random_state=42)
+
+    # Extraire l'heure depuis la colonne date_heure
+    df_result_sample['heure'] = df_result_sample['date_heure'].dt.hour
+
+    # Fondre les colonnes 'consommation' et 'prevision' pour la comparaison
+    df_melted = pd.melt(df_result_sample, id_vars=['heure'], value_vars=['consommation', 'prevision'],
+                        var_name='Type', value_name='Consommation')
+
+    # Créer le graphique en barres
+    fig = px.bar(df_melted, x='heure', y='Consommation', color='Type', barmode='group',
+                 labels={'heure': 'Heure de la Journée', 'Consommation': 'Consommation (MW)'},
+                 title='Consommation réelle vs prédite par heure de la journée')
+
+    # Ajuster les paramètres du graphique
+    fig.update_layout(
+        title='Consommation réelle vs prédite par heure de la journée',
+        xaxis_title='Heure de la Journée',
+        yaxis_title='Consommation (MW)',
+        legend_title_text='Type'
+    )
+
+    # Afficher le graphique dans Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
@@ -770,6 +796,7 @@ def show_model():
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
     reel_vs_predict_interactive(df_result)
+    reel_vs_predict_heure(df_result)
 
 def main():
     st.title("Projet Energie")
@@ -784,7 +811,6 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-
 
 
 # debut du code
