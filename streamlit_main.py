@@ -791,8 +791,7 @@ def plot_prediction_vs_real(df_result):
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
-# Utilisation de la fonction
-plot_prediction_vs_real(df_result, region_dict)
+
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
