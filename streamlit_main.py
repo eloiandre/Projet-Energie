@@ -791,9 +791,11 @@ def plot_prediction_vs_real(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-def plot_residus(y_test, y_pred, residuals):
+def plot_residus(df_result):
     #reduction de la taille des données:
     df_result = df_result.sample(n=1000, random_state=42)
+    y_test=df_result['consommation']
+    y_pred=df_result['prevision']
     # Créer le subplot 2x2
     fig = make_subplots(rows=2, cols=2, subplot_titles=("Graphique de Dispersion des Résidus",
                                                         "Histogramme des Résidus",
