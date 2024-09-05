@@ -754,6 +754,45 @@ def reel_vs_predict_interactive(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
+def plot_prediction_vs_real(df_result):
+    # Ajouter une colonne pour les noms de région à partir du dictionnaire
+    df_result['region'] = df_result['code_insee_region'].map(region_dict)
+
+    # Créer un graphique scatter avec plotly
+    fig = px.scatter(
+        df_result, 
+        x='prevision', 
+        y='consommation', 
+        color='region', 
+        labels={
+            'prevision': 'Prédiction (MW)',
+            'consommation': 'Consommation Réelle (MW)',
+            'region': 'Région'
+        },
+        title='Prédiction vs Consommation Réelle par Région',
+        color_continuous_scale='Viridis',
+        template='plotly_white'
+    )
+
+    # Ajouter la ligne diagonale en rouge
+    min_value = min(df_result['consommation'].min(), df_result['prevision'].min())
+    max_value = max(df_result['consommation'].max(), df_result['prevision'].max())
+
+    fig.add_trace(
+        go.Scatter(
+            x=[min_value, max_value], 
+            y=[min_value, max_value],
+            mode='lines',
+            line=dict(dash='dash', color='red'),
+            showlegend=False
+        )
+    )
+
+    # Afficher le graphique dans Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
+# Utilisation de la fonction
+plot_prediction_vs_real(df_result, region_dict)
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
@@ -776,8 +815,10 @@ def show_model():
 
     # etude des residus
     st.write('# Etude des residus')
+    # residus exprimés en pourcentage
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
     st.write(df_result.head())
+    plot_prediction_vs_real(df_result)
 
 def main():
     st.title("Projet Energie")
