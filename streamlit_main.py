@@ -395,7 +395,7 @@ def conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
         title='Consommation et Température selon différentes agrégations',
         xaxis=dict(title='Période'),
         yaxis=dict(
-            title='Consommation (MWh)',
+            title='Consommation (MW)',
             titlefont=dict(color='skyblue'),
             tickfont=dict(color='skyblue')
         ),
@@ -507,7 +507,7 @@ def conso_temp():
         title='Consommation et Température',
         xaxis=dict(title='Date/Heure'),
         yaxis=dict(
-            title='Consommation (MWh)',
+            title='Consommation (MW)',
             titlefont=dict(color='blue'),
             tickfont=dict(color='blue')
         ),
@@ -702,7 +702,6 @@ def show_model():
     #courbe d'aprentissage
     courbe_apprentissage=Image.open('Courbe_apprentissage.jpg')
     st.image(courbe_apprentissage)
-    st.write(df_result.dtypes)
     reel_vs_predict_mois(df_result)
     
 
