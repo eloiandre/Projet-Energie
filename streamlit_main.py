@@ -765,7 +765,7 @@ def reel_vs_predict_heure(df_result):
                         var_name='Type', value_name='Consommation')
 
     # Créer le graphique en barres
-    fig = px.bar(df_melted, x='heure', y='Consommation', color='Type',
+    fig = px.bar(df_melted, x='heure', y='Consommation', color='Type', barmode='group',
                  labels={'heure': 'Heure de la Journée', 'Consommation': 'Consommation (MW)'},
                  title='Consommation réelle vs prédite par heure de la journée')
 
