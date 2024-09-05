@@ -866,7 +866,9 @@ def show_model():
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
     st.write(df_result.head())
     plot_prediction_vs_real(df_result)
+    st.write("### on va surement remplacer par l'image du rapport" )
     plot_residus(df_result)
+    
 def main():
     st.title("Projet Energie")
     st.sidebar.title("Sommaire")
