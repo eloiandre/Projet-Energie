@@ -692,7 +692,8 @@ def reel_vs_predict_interactive(df_result):
     fig = go.Figure()
 
     # Ajouter les barres pour les mois (valeur initiale)
-    fig.add_trace(go.Bar(x=df_melted_mois['mois'], y=df_melted_mois['Consommation'], name='Consommation par Mois', marker=dict(color='blue')))
+    fig.add_trace(go.Bar(x=df_result_sample['mois'], y=df_result_sample['consommation'], name='Consommation (Mois)', marker=dict(color='blue')))
+    fig.add_trace(go.Bar(x=df_result_sample['mois'], y=df_result_sample['prevision'], name='Prévision (Mois)', marker=dict(color='red')))
 
     # Créer le menu déroulant pour choisir le type de graphique
     fig.update_layout(
@@ -700,17 +701,20 @@ def reel_vs_predict_interactive(df_result):
             dict(
                 buttons=[
                     dict(
-                        args=[{'x': [df_melted_mois['mois']], 'y': [df_melted_mois['Consommation']]}],
+                        args=[{'x': [df_result_sample['mois'], df_result_sample['mois']], 
+                               'y': [df_result_sample['consommation'], df_result_sample['prevision']]}],
                         label="Par Mois",
                         method="restyle"
                     ),
                     dict(
-                        args=[{'x': [df_melted_jour['jour_semaine']], 'y': [df_melted_jour['Consommation']]}],
+                        args=[{'x': [df_result_sample['jour_semaine'], df_result_sample['jour_semaine']], 
+                               'y': [df_result_sample['consommation'], df_result_sample['prevision']]}],
                         label="Par Jour de la Semaine",
                         method="restyle"
                     ),
                     dict(
-                        args=[{'x': [df_melted_heure['heure']], 'y': [df_melted_heure['Consommation']]}],
+                        args=[{'x': [df_result_sample['heure'], df_result_sample['heure']], 
+                               'y': [df_result_sample['consommation'], df_result_sample['prevision']]}],
                         label="Par Heure",
                         method="restyle"
                     )
@@ -734,7 +738,6 @@ def reel_vs_predict_interactive(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-
 
 def reel_vs_predict_heure(df_result):
     # Échantillonner 1000 lignes pour alléger la charge
