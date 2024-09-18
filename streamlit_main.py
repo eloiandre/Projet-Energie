@@ -102,11 +102,14 @@ def import_files():
 
         # URL du fichier Google Drive (utiliser l'ID de fichier dans le lien)
 
-        #telecharger scaler 
+        # Télécharger le scaler depuis Google Drive
         url = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
         output = 'y_scaler.pkl'
         gdown.download(url, output, quiet=False)
-        y_scaler = pickle.load(output)
+
+        # Ouvrir le fichier et charger le scaler
+        with open(output, 'rb') as f:
+        y_scaler = pickle.load(f)
 
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
@@ -116,7 +119,7 @@ def import_files():
         with open(output_model, 'rb') as file:
             model = pickle.load(file)
 
-        return df, geojson, temperature, df_features, model,y_scaler
+        return df, geojson, temperature, df_features, model, y_scaler
 
     except Exception as e:
         st.write(f"Erreur lors du téléchargement ou du chargement des fichiers : {e}")
