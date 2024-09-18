@@ -1006,11 +1006,24 @@ def plot_conso_region():
 
     fig["layout"].pop("updatemenus")
     st.plotly_chart(fig, use_container_width=True)
-
+regions_dict = {
+    "11": "Île-de-France",
+    "24": "Centre-Val de Loire",
+    "27": "Bourgogne-Franche-Comté",
+    "28": "Normandie",
+    "32": "Hauts-de-France",
+    "44": "Grand Est",
+    "52": "Pays de la Loire",
+    "53": "Bretagne",
+    "75": "Nouvelle-Aquitaine",
+    "76": "Occitanie",
+    "84": "Auvergne-Rhône-Alpes",
+    "93": "Provence-Alpes-Côte d'Azur"
+}
 def show_prediction():
     # Interface pour sélectionner la région
-    selected_region_name = st.selectbox("Sélectionnez une région :", list(region_dict.values()))
-    selected_region_code = [code for code, name in region_dict.items() if name == selected_region_name][0]
+    selected_region_name = st.selectbox("Sélectionnez une région :", list(regions_dict.values()))
+    selected_region_code = [code for code, name in regions_dict.items() if name == selected_region_name][0]
 
     # Interface pour ajuster la température (curseur de -10 à 30)
     selected_temperature = st.slider("Ajustez la température (°C) :", min_value=-10, max_value=30, value=15)
