@@ -1100,7 +1100,7 @@ def main():
         **Membres du Groupe** :                   
             - Léa HENRY                    
             - Pierre VALMONT                  
-            - Siyamala ROLLOT\n
+            - Siyamala ROLLOTs
             - Eloi ANDRE   
         """)
     
