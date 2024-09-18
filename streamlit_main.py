@@ -883,6 +883,7 @@ def main():
         **Mois** : Juillet 2024
                         
         **Membres du Groupe** :
+                        
             - Eloi ANDRE                   
             - Léa HENRY                    
             - Pierre VALMONT                  
