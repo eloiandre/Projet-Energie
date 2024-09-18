@@ -243,11 +243,6 @@ def carte_prod(df_2022):
 
     # Ajouter des boutons de filtre pour sélectionner les différentes sources de production
     fig2.update_layout(
-        title={
-            'text': 'BOXPLOT Energie vs Consommation en MW',
-            'x': 0.5,
-            'xanchor': 'center',
-        },
         updatemenus=[
             dict(
                 buttons=[
@@ -320,7 +315,7 @@ def carte_prod(df_2022):
         width=1000,  # Largeur de l'image en pixels
         height=900,  # Hauteur de l'image en pixels pour l'étirement vertical
         margin={"r": 0, "t": 50, "l": 0, "b": 0},  # Réduire les marges pour maximiser l'espace
-        title="Production électrique par source"
+        title="Production électrique par source en 2022"
     )
 
     st.plotly_chart(fig2, use_container_width=True)
