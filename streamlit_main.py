@@ -477,7 +477,7 @@ def carte_conso():
         autosize=False,
         width=1000,  
         height=900,  
-        margin={"r":0,"t":0,"l":0,"b":0}  
+        margin={"r":0,"t":0,"l":0,"b":0}  ,
         title={
             'text': "Consommation electrique en 2022",
             'x': 0.5,
