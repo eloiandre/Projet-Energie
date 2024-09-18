@@ -243,6 +243,11 @@ def carte_prod(df_2022):
 
     # Ajouter des boutons de filtre pour sélectionner les différentes sources de production
     fig2.update_layout(
+        title={
+            'text': 'BOXPLOT Energie vs Consommation en MW',
+            'x': 0.5,
+            'xanchor': 'center',
+        },
         updatemenus=[
             dict(
                 buttons=[
