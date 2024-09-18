@@ -106,7 +106,7 @@ def import_files():
         url = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
         output = 'scaler.pkl'
         gdown.download(url, output, quiet=False)
-        y_scaler = joblib.load(output)
+        y_scaler = pickle.load(output)
 
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
