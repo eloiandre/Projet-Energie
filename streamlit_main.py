@@ -111,7 +111,7 @@ def import_files():
         with open(output, 'rb') as f:
             y_scaler = pickle.load(f)
         #st.write('scaler telechargé')
-        
+
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
         output_model = "model.pkl"
@@ -1026,10 +1026,10 @@ def show_prediction():
     # Interface pour sélectionner la région avec un identifiant unique (key)
     selected_region_name = st.selectbox(
         "Sélectionnez une région :", 
-        list(regions_dict.values()), 
+        list(regions_dic.values()), 
         key="region_selectbox"
     )
-    selected_region_code = [code for code, name in regions_dict.items() if name == selected_region_name][0]
+    selected_region_code = [code for code, name in region_dict.items() if name == selected_region_name][0]
 
     # Interface pour ajuster la température (curseur de -10 à 30) avec un identifiant unique
     selected_temperature = st.slider(
