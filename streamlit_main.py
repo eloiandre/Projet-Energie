@@ -844,15 +844,18 @@ def plot_residus(df_result):
     st.plotly_chart(fig, use_container_width=True)
 @st.cache_data
 def plot_box_energie_conso():
-        # Créez une liste des données à tracer
+    # Réduire les données si elles sont trop volumineuses (par exemple, prendre un échantillon)
+    df_sampled = df.sample(frac=0.1)  # Prendre un échantillon de 10 % des données pour accélérer le rendu
+
+    # Créez une liste des données à tracer avec l'échantillon
     data = [
-        go.Box(y=df['consommation'], name='Consommation',width=0.8),
-        go.Box(y=df['thermique'], name='Thermique',width=0.8),
-        go.Box(y=df['nucleaire'], name='Nucléaire',width=0.8),
-        go.Box(y=df['solaire'], name='Solaire',width=0.8),
-        go.Box(y=df['eolien'], name='Éolien',width=0.8),
-        go.Box(y=df['hydraulique'], name='Hydraulique',width=0.8),
-        go.Box(y=df['bioenergies'], name='Bioénergies',width=0.8)
+        go.Box(y=df_sampled['consommation'], name='Consommation', width=0.8),
+        go.Box(y=df_sampled['thermique'], name='Thermique', width=0.8),
+        go.Box(y=df_sampled['nucleaire'], name='Nucléaire', width=0.8),
+        go.Box(y=df_sampled['solaire'], name='Solaire', width=0.8),
+        go.Box(y=df_sampled['eolien'], name='Éolien', width=0.8),
+        go.Box(y=df_sampled['hydraulique'], name='Hydraulique', width=0.8),
+        go.Box(y=df_sampled['bioenergies'], name='Bioénergies', width=0.8)
     ]
 
     # Créez la figure
@@ -870,11 +873,11 @@ def plot_box_energie_conso():
         xaxis=dict(
             tickvals=list(range(len(data))),
             ticktext=['Consommation', 'Thermique', 'Nucléaire', 'Solaire', 'Éolien', 'Hydraulique', 'Bioénergies'],
-            tickangle=-25  # Rotation des étiquettes de l'axe des x
+            tickangle=-25
         ),
-        boxmode='group',  # Grouper les boxplots
-        height=800,  # Hauteur de la figure
-        width=800  # Largeur de la figure
+        boxmode='group',
+        height=800,
+        width=800
     )
     st.plotly_chart(fig, use_container_width=True)
 
