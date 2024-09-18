@@ -482,7 +482,7 @@ def show_data_viz():
     carte_prod(monthly_2022())
     a, b, c = aggreg_period()
     conso_vs_temp(a,b,c)
-    conso_region()
+    plot_conso_region()
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
@@ -919,7 +919,7 @@ def show_conclusion():
         consommation d'énergie. Ces modèles sont particulièrement efficaces pour gérer les variations saisonnières et améliorer les prévisions à long terme.
         
      """)
-def conso_region():
+def plot_conso_region():
     df_tot = df.groupby(['mois', 'libelle_region','annee'])['consommation'].sum().reset_index()
 
     fig = px.bar (df_tot,
