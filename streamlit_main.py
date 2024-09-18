@@ -1080,9 +1080,12 @@ def show_prediction():
     #st.write (data_df.dtypes)
     #st.write(data_df)
     
-    pred=model.predict(data_df)[0]
+    pred_scaled=model.predict(data_df)[0]
+    pred=y_scaler.transform(pred_scaled)
     st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} : {round(pred,2)} Mw")
     st.header(f"Prédiction : {round(pred,2)} Mw")
+
+
 def main():
     st.title("Projet Energie")
     
