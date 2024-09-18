@@ -1033,7 +1033,7 @@ def show_prediction():
     st.write(f"Région sélectionnée : {selected_region}")
     st.write(f"Température sélectionnée : {selected_temperature}°C")
     st.write(f"Heure sélectionnée : {time_label}")
-    
+    st.write(region_dict)
 
 
 
