@@ -104,7 +104,7 @@ def import_files():
 
         #telecharger scaler 
         url = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
-        output = 'scaler.pkl'
+        output = 'y_scaler.pkl'
         gdown.download(url, output, quiet=False)
         y_scaler = pickle.load(output)
 
@@ -115,15 +115,6 @@ def import_files():
             gdown.download(url_model, output_model, quiet=False)
         with open(output_model, 'rb') as file:
             model = pickle.load(file)
-        #st.write("Modèle téléchargé et chargé.")
-
-        # Code commenté pour df_short
-        # url_short = "https://drive.google.com/uc?export=download&id=1rewlkcnR1IbGjXtRakY6i8bDGO6Hc-Ku"
-        # output_short = "new_data.csv"
-        # if not os.path.exists(output_short):
-        #     gdown.download(url_short, output_short, quiet=False)
-        # df_short = pd.read_csv(output_short)
-        # st.write("Fichier new_data.csv téléchargé et chargé.")
 
         return df, geojson, temperature, df_features, model,y_scaler
 
