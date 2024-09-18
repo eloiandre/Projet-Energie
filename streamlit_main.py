@@ -482,6 +482,7 @@ def show_data_viz():
     carte_prod(monthly_2022())
     a, b, c = aggreg_period()
     conso_vs_temp(a,b,c)
+    conso_region()
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
@@ -918,6 +919,31 @@ def show_conclusion():
         consommation d'énergie. Ces modèles sont particulièrement efficaces pour gérer les variations saisonnières et améliorer les prévisions à long terme.
         
      """)
+def conso_region():
+    df_tot = df.groupby(['mois', 'libelle_region','annee'])['consommation'].sum().reset_index()
+
+    fig = px.bar (df_tot,
+                x ='mois',
+                y = 'consommation',
+                animation_frame ='annee',
+                color = 'libelle_region',
+                hover_name='libelle_region',
+                labels={'mois': 'Mois', 'consommation': 'Consommation totale (MW)'}
+                )
+
+
+    fig.update_layout(plot_bgcolor= 'white')
+    fig.update_layout(
+        title={
+            'text': "Conso totale par région sur la période 2020-2023",
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        })
+
+    fig["layout"].pop("updatemenus")
+    fig.show()
+
 def main():
     st.title("Projet Energie")
     
