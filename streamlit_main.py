@@ -870,9 +870,27 @@ def show_model():
     
 def main():
     st.title("Projet Energie")
+    
     st.sidebar.title("Sommaire")
-    pages=["Definition du Projet","Exploration", "DataVizualization", "Modélisation"]
+    pages=[ "👋 Définition du projet", "🔍Exploration des données", " 📊 Data visualisation", " 🧩 Modélisation", "🔮 Prédiction", "📌Conclusion"]
     page=st.sidebar.radio("Aller vers", pages)
+    st.sidebar.markdown("""                
+  
+                  
+    
+        **Cursus**: Data Analyst  
+        **Format** : Bootcamp                    
+        **Mois** : Juillet 2024
+                        
+        **Membres du Groupe** :
+            - Eloi ANDRE                   
+            - Léa HENRY                    
+            - Pierre VALMONT                  
+            - Siyamala ROLLOT
+        """)
+    
+    
+    
     if page ==pages[0]:
         show_definition()
     if page==pages[1]:
