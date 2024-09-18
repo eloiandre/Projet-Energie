@@ -1089,20 +1089,20 @@ def main():
     st.sidebar.title("Sommaire")
     pages=[ "👋 Définition du projet", "🔍Exploration des données", " 📊 Data visualisation", " 🧩 Modélisation", "🔮 Prédiction", "📌Conclusion"]
     page=st.sidebar.radio("Aller vers", pages)
-    st.sidebar.markdown("""                
-  
-                  
-    
+    st.sidebar.markdown("""  
+        <br><br>  
         **Cursus**: Data Analyst  
-        **Format** : Bootcamp                    
-        **Mois** : Juillet 2024
-                        
-        **Membres du Groupe** :                   
-            - Léa HENRY                    
-            - Pierre VALMONT                  
-            - Siyamala ROLLOT
-            - Eloi ANDRE   
-        """)
+        **Format** : Bootcamp  
+        **Mois** : Juillet 2024  
+        <br>  
+        **Membres du Groupe** :  
+        <ul>
+            <li>Léa HENRY</li>  
+            <li>Pierre VALMONT</li>  
+            <li>Siyamala ROLLOT</li>  
+            <li>Eloi ANDRE</li>  
+        </ul>
+        """, unsafe_allow_html=True)
     
     
     
