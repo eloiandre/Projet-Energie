@@ -473,7 +473,7 @@ def carte_conso():
     )
     st.plotly_chart(fig, use_container_width=True)
 def show_data_viz():
-    st.write('### DataVisualization')
+    st.write('### DataVisualization2')
     conso_temp()
     st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
               une vague de froid en janvier 2021 engendre un pic de consommation.')
