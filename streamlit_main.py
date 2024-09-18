@@ -1047,7 +1047,7 @@ def show_prediction():
     selected_time = st.slider(
         "Sélectionnez l'heure :", 
         min_value=0.0, max_value=23.5, step=0.5, value=12.0, 
-        format="%.1f", sa
+        format="%.1f", 
         key="time_slider"
     )
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
