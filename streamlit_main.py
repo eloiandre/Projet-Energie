@@ -1076,6 +1076,9 @@ def show_prediction():
     data_df=pd.DataFrame(data)
     st.write(data_df)
 
+    pred=model.predictdata_df
+    st.write(pred)
+
 def main():
     st.title("Projet Energie")
     
