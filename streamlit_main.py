@@ -1016,10 +1016,20 @@ def show_prediction():
     # Interface pour ajuster la température (curseur de -10 à 30)
     selected_temperature = st.slider("Ajustez la température (°C) :", min_value=-10, max_value=30, value=15)
 
-    # Afficher la sélection actuelle
+    # Interface pour ajuster l'heure (curseur de 0h à 24h par pas de 30 minutes)
+    time_options = np.arange(0, 24.5, 0.5)  # Crée une liste d'heures avec des pas de 0.5 (soit 30 minutes)
+    time_labels = [f"{int(h)}:{'30' if h % 1 != 0 else '00'}" for h in time_options]  # Labels d'affichage 00:00, 00:30, etc.
+
+    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=24.0, step=0.5, value=12.0, format="%.1f")
+
+    # Conversion de l'heure sélectionnée en format lisible
+    time_label = f"{int(selected_time)}:{'30' if selected_time % 1 != 0 else '00'}"
+
+    # Afficher les sélections actuelles
     st.write(f"Région sélectionnée : {selected_region}")
     st.write(f"Température sélectionnée : {selected_temperature}°C")
-
+    st.write(f"Heure sélectionnée : {time_label}")
+    
 
 
 
