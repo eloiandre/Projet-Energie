@@ -110,7 +110,7 @@ def import_files():
         # Ouvrir le fichier et charger le scaler
         with open(output, 'rb') as f:
             y_scaler = pickle.load(f)
-
+        st.write('scaler telechargé')
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
         output_model = "model.pkl"
