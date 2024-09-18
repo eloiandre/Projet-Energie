@@ -1007,18 +1007,18 @@ def plot_conso_region():
     fig["layout"].pop("updatemenus")
     st.plotly_chart(fig, use_container_width=True)
 regions_dict = {
-    "11": "Île-de-France",
-    "24": "Centre-Val de Loire",
-    "27": "Bourgogne-Franche-Comté",
-    "28": "Normandie",
-    "32": "Hauts-de-France",
-    "44": "Grand Est",
-    "52": "Pays de la Loire",
-    "53": "Bretagne",
-    "75": "Nouvelle-Aquitaine",
-    "76": "Occitanie",
-    "84": "Auvergne-Rhône-Alpes",
-    "93": "Provence-Alpes-Côte d'Azur"
+    11: "Île-de-France",
+    24: "Centre-Val de Loire",
+    27: "Bourgogne-Franche-Comté",
+    28: "Normandie",
+    32: "Hauts-de-France",
+    44: "Grand Est",
+    52: "Pays de la Loire",
+    53: "Bretagne",
+    75: "Nouvelle-Aquitaine",
+    76: "Occitanie",
+    84: "Auvergne-Rhône-Alpes",
+    93: "Provence-Alpes-Côte d'Azur"
 }
 def show_prediction():
     # Interface pour sélectionner la région avec un identifiant unique (key)
