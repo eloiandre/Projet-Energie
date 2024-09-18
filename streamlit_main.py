@@ -867,7 +867,57 @@ def show_model():
     st.write(df_result.head())
     st.write("### on va surement remplacer par l'image du rapport" )
     plot_residus(df_result)
+def show_conclusion()
+        st.write("### Conclusion")
+    st.write("\n")
+    st.write("\n")
+
+    st.write("""
+                          
+     La capacité de puissance électrique instantanée délivrable en France est d’environ 150GW. 
+     Sur la période d’étude, la consommation maximum instantanée en France a été de 88.5GW. 
+     Notre modèle a un résidu avec une médiane de 2GW (4GW maximum dans quelques cas). 
+             
+     Nous pouvons donc conclure qu'actuellement, les risques de blackout sont écartés, bien que des pics de consommation puissent être observés, 
+      particulièrement durant les mois d'hiver.    
+    """)  
+          
+     
+
+    st.write("\n")
+    st.write ("""
+        Notre modèle Decision Tree Regressor montre une bonne capacité de généralisation avec un R² élevé. Les écarts moyens entre les prédictions 
+        et les valeurs réelles sont raisonnables, mais certaines erreurs significatives suggèrent qu'il serait nécessaire de réexaminer les valeurs
+        extrêmes pour améliorer la précision globale.
+        """)
+    st.write("\n")
+           
+    st.write("#### Perspective d'évolution ")
+
+    st.write(""" 
+        Amélioration des prévisions : Intégrer les prévisions météorologiques fournies par des API de Météo France permettrait d'anticiper les fluctuations 
+        de consommation d'énergie, particulièrement en fonction des variations de température ou des événements climatiques extrêmes.
+             
+
+        Optimisation de la production d’énergies renouvelables : L'intégration des sources intermittentes comme l’éolien et le solaire dans les modèles
+        permettrait de mieux anticiper la production d'énergie renouvelable en fonction des conditions météorologiques (ensoleillement, vitesse du vent, etc.), 
+        améliorant ainsi l'ajustement entre la production et la consommation d'énergie. 
+             
+        Approfondissement des analyses des erreurs : En tenant compte des effets météorologiques et des effets calendaires. Cela permettrait de mieux comprendre 
+        les résidus, et de corriger ces biais pour affiner encore davantage les modèles de prédiction. 
+    """)
     
+    st.write("\n")
+    st.write("\n")
+
+    st.write("#### Critique ")
+
+    st.write(""" 
+             
+        Un modèle de Machine Learning avec des séries temporelles aurait pu mieux capturer la saisonnalité et les tendances liées aux données historiques de 
+        consommation d'énergie. Ces modèles sont particulièrement efficaces pour gérer les variations saisonnières et améliorer les prévisions à long terme.
+        
+     """)
 def main():
     st.title("Projet Energie")
     
@@ -899,7 +949,8 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
-
+    if page==pages[5]:
+        show_conclusion()
 
 # debut du code
 #importation de tous les fichiers necessaire
