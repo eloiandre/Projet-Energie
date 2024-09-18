@@ -80,7 +80,7 @@ def import_files():
         if not os.path.exists(output_csv):
             gdown.download(url_csv, output_csv, quiet=False)
         df = pd.read_csv(output_csv)
-        st.write("Fichier CSV principal téléchargé et chargé.")
+        #st.write("Fichier CSV principal téléchargé et chargé.")
 
         # Télécharger le fichier des températures
         url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
@@ -110,7 +110,8 @@ def import_files():
         # Ouvrir le fichier et charger le scaler
         with open(output, 'rb') as f:
             y_scaler = pickle.load(f)
-        st.write('scaler telechargé')
+        #st.write('scaler telechargé')
+        
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
         output_model = "model.pkl"
