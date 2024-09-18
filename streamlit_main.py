@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.tree import DecisionTreeRegressor
 from plotly.subplots import make_subplots
-from datetime import date
+from datetime import datetime, timedelta, date
 import scipy.stats as stats
 
 st.set_page_config(layout="wide")
@@ -1021,20 +1021,15 @@ def show_prediction():
     # Sélection de l'heure (curseur avec pas de 30 minutes)
     selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
-    selected_time_formatted = f"{int(hours):02}:{int(minutes):02}:00"
-
-    # Conversion de l'heure sélectionnée en format lisible
-    time_label = f"{int(selected_time)}:{'30' if selected_time % 1 != 0 else '00'}"
 
     # Afficher les sélections actuelles
-    st.write(f"Région sélectionnée 2: {selected_region_name} (Code INSEE : {selected_region_code})")
+    st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
     st.write(f"Température sélectionnée : {selected_temperature}°C")
-    st.write(f"Heure sélectionnée : {time_label}")
+    st.write(f"Heure sélectionnée : {int(hours):02}:{int(minutes):02}")
     st.write(f"Date sélectionnée : {selected_date}")
 
-    # Correction : Combinaison de la date (datetime.date) et de l'heure (datetime.time)
-    selected_time_combined = datetime.strptime(f"{int(hours):02}:{int(minutes):02}:00", "%H:%M:%S").time()
-    selected_datetime = datetime.combine(selected_date, selected_time_combined)
+    # Combinaison de la date et de l'heure
+    selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
 
     # Format final : 'YYYY-MM-DD HH:MM:SS+00:00'
     selected_datetime_formatted = selected_datetime.strftime("%Y-%m-%d %H:%M:%S+00:00")
@@ -1042,6 +1037,8 @@ def show_prediction():
     # Affichage du format de la date et heure pour le modèle
     st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
 
+# Appel de la fonction show_prediction dans Streamlit
+show_prediction()
 
 
 
