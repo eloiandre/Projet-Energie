@@ -161,8 +161,7 @@ def show_definition():
     - Focus sur les énergies renouvelables (où sont- elles implantées ?)
     """
     )
-    st.markdown('<p class="right-align">Membres du groupe: Eloi Andre, Pierre Valmont, Siyamala Rollot, Léa Henry-Beaupied,  </p>', unsafe_allow_html=True)
-    st.markdown('<p class="right-align">Date: Septembre 2024</p>', unsafe_allow_html=True)
+
 
 def show_temperature_df():
     with st.expander('**Dataset température**'):
@@ -1081,7 +1080,7 @@ def show_prediction():
 
 
 def main():
-    st.title("Projet Energie")
+    st.title("Projet Energie2")
     
     st.sidebar.title("Sommaire")
     pages=[ "👋 Définition du projet", "🔍Exploration des données", " 📊 Data visualisation", " 🧩 Modélisation", "🔮 Prédiction", "📌Conclusion"]
