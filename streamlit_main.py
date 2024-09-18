@@ -1047,7 +1047,7 @@ def show_prediction():
     selected_time = st.slider(
         "Sélectionnez l'heure :", 
         min_value=0.0, max_value=23.5, step=0.5, value=12.0, 
-        format="%.1f", 
+        format="%.1f", sa
         key="time_slider"
     )
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
@@ -1068,9 +1068,9 @@ def show_prediction():
     st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
 
     data={
-        'code_insee_region':selected_region_code,
-        'date_heure':selected_datetime_formatted,
-        'temperature':selected_temperature
+        'code_insee_region':[selected_region_code],
+        'date_heure':[selected_datetime_formatted],
+        'temperature':[selected_temperature]
     }
     st.write(data)
     data_df=pd.DataFrame(data)
