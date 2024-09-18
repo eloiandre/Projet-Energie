@@ -1067,6 +1067,13 @@ def show_prediction():
     # Affichage du format de la date et heure pour le modèle
     st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
 
+    data={
+        'code_insee_region':selected_region_code,
+        'date_heure':selected_datetime_formatted,
+        'temperature':selected_temperature
+    }
+    data_df=pd.DataFrame(data)
+    st.write(data_df)
 
 
 def main():
