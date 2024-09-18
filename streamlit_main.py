@@ -1021,6 +1021,8 @@ regions_dict = {
     93: "Provence-Alpes-Côte d'Azur"
 }
 def show_prediction():
+st.write("## Predictions")
+
     # Interface pour sélectionner la région avec un identifiant unique (key)
     selected_region_name = st.selectbox(
         "Sélectionnez une région :", 
