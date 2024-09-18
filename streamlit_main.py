@@ -80,7 +80,7 @@ def import_files():
         if not os.path.exists(output_csv):
             gdown.download(url_csv, output_csv, quiet=False)
         df = pd.read_csv(output_csv)
-        #st.write("Fichier CSV principal téléchargé et chargé.")
+        st.write("Fichier CSV principal téléchargé et chargé.")
 
         # Télécharger le fichier des températures
         url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
