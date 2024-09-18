@@ -1082,7 +1082,7 @@ def show_prediction():
     
     pred_scaled=model.predict(data_df)[0]
     pred=y_scaler.inverse_transform([[pred_scaled]])[0][0]
-    st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} : )
+    st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} :" )
     st.header(f"Prédiction : {round(pred,2)} Mw")
 
 
