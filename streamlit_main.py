@@ -1053,10 +1053,10 @@ def show_prediction():
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
 
     # Afficher les sélections actuelles
-    st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
-    st.write(f"Température sélectionnée : {selected_temperature}°C")
-    st.write(f"Heure sélectionnée : {int(hours):02}:{int(minutes):02}")
-    st.write(f"Date sélectionnée : {selected_date}")
+    #st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
+    #st.write(f"Température sélectionnée : {selected_temperature}°C")
+    #st.write(f"Heure sélectionnée : {int(hours):02}:{int(minutes):02}")
+    #st.write(f"Date sélectionnée : {selected_date}")
 
     # Combinaison de la date et de l'heure
     selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
