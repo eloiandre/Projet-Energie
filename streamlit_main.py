@@ -1054,11 +1054,6 @@ def show_prediction():
     )
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
 
-    # Afficher les sélections actuelles
-    #st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
-    #st.write(f"Température sélectionnée : {selected_temperature}°C")
-    #st.write(f"Heure sélectionnée : {int(hours):02}:{int(minutes):02}")
-    #st.write(f"Date sélectionnée : {selected_date}")
 
     # Combinaison de la date et de l'heure
     selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
@@ -1079,7 +1074,6 @@ def show_prediction():
     data_df['date_heure']=pd.to_datetime(data_df['date_heure'])
     #st.write (data_df.dtypes)
     #st.write(data_df)
-    st.write('hello',data_df)
     pred_scaled=model.predict(data_df)[0]
     pred=y_scaler.inverse_transform([[pred_scaled]])[0][0]
     st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} :" )
