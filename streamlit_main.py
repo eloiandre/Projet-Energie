@@ -1097,11 +1097,11 @@ def main():
         **Format** : Bootcamp                    
         **Mois** : Juillet 2024
                         
-        **Membres du Groupe** :   
-            - Eloi ANDRE                   
+        **Membres du Groupe** :                   
             - Léa HENRY                    
             - Pierre VALMONT                  
             - Siyamala ROLLOT
+            - Eloi ANDRE   
         """)
     
     
