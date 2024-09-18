@@ -474,9 +474,10 @@ def carte_conso():
 
     # Redimensionner l'image
     fig.update_layout(
+        autosize=True,  # Utiliser autosize pour s'assurer que la carte s'adapte bien
         width=1000,  
         height=900,  
-        margin={"r":0,"t":0,"l":0,"b":0}  ,
+        margin={"r":0,"t":50,"l":0,"b":0},  # Laisser de la marge en haut pour le titre
         title={
             'text': "Consommation electrique en 2022",
             'x': 0.5,
@@ -484,6 +485,10 @@ def carte_conso():
             'yanchor': 'top'
         }
     )
+
+    # Affichage dans Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
         
     st.plotly_chart(fig, use_container_width=True)
 def show_data_viz():
