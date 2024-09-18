@@ -1072,9 +1072,9 @@ def show_prediction():
         'date_heure':selected_datetime_formatted,
         'temperature':selected_temperature
     }
-    #data_df=pd.DataFrame(data)
     st.write(data)
-
+    data_df=pd.DataFrame(data)
+    st.write(data_df)
 
 def main():
     st.title("Projet Energie")
