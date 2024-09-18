@@ -1101,8 +1101,8 @@ def main():
             - Léa HENRY                    
             - Pierre VALMONT                  
             - Siyamala ROLLOT
-            - Eloi ANDRE   
-        """)
+            - Eloi ANDRE   2s
+        """)s
     
     
     
