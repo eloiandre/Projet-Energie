@@ -842,6 +842,7 @@ def plot_residus(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
+@st.cache_data
 def plot_box_energie_conso():
         # Créez une liste des données à tracer
     data = [
