@@ -1065,7 +1065,7 @@ def show_prediction():
     selected_datetime_formatted = selected_datetime.strftime("%Y-%m-%d %H:%M:%S+00:00")
 
     # Affichage du format de la date et heure pour le modèle
-    st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
+    #st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
 
     data={
         'code_insee_region':[selected_region_code],
@@ -1079,7 +1079,7 @@ def show_prediction():
     #st.write(data_df)
     
     pred=model.predict(data_df)[0]
-    st.write(f"Prédiction pour le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} : {round(pred,2)}")
+    st.write(f"Prédiction pour le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} : {round(pred,2)} Mw")
 
 def main():
     st.title("Projet Energie")
