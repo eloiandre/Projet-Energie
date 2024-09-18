@@ -1021,18 +1021,35 @@ regions_dict = {
     "93": "Provence-Alpes-Côte d'Azur"
 }
 def show_prediction():
-    # Interface pour sélectionner la région
-    selected_region_name = st.selectbox("Sélectionnez une région :", list(regions_dict.values()))
+    # Interface pour sélectionner la région avec un identifiant unique (key)
+    selected_region_name = st.selectbox(
+        "Sélectionnez une région :", 
+        list(regions_dict.values()), 
+        key="region_selectbox"
+    )
     selected_region_code = [code for code, name in regions_dict.items() if name == selected_region_name][0]
 
-    # Interface pour ajuster la température (curseur de -10 à 30)
-    selected_temperature = st.slider("Ajustez la température (°C) :", min_value=-10, max_value=30, value=15)
+    # Interface pour ajuster la température (curseur de -10 à 30) avec un identifiant unique
+    selected_temperature = st.slider(
+        "Ajustez la température (°C) :", 
+        min_value=-10, max_value=30, value=15, 
+        key="temperature_slider"
+    )
 
-    # Interface pour sélectionner la date
-    selected_date = st.date_input("Sélectionnez une date :", value=date.today())
+    # Interface pour sélectionner la date avec un identifiant unique
+    selected_date = st.date_input(
+        "Sélectionnez une date :", 
+        value=date.today(), 
+        key="date_input"
+    )
 
-    # Sélection de l'heure (curseur avec pas de 30 minutes)
-    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
+    # Sélection de l'heure (curseur avec pas de 30 minutes) avec un identifiant unique
+    selected_time = st.slider(
+        "Sélectionnez l'heure :", 
+        min_value=0.0, max_value=23.5, step=0.5, value=12.0, 
+        format="%.1f", 
+        key="time_slider"
+    )
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
 
     # Afficher les sélections actuelles
@@ -1049,9 +1066,6 @@ def show_prediction():
 
     # Affichage du format de la date et heure pour le modèle
     st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
-
-# Appel de la fonction show_prediction dans Streamlit
-show_prediction()
 
 
 
