@@ -1027,7 +1027,7 @@ def show_prediction():
     time_label = f"{int(selected_time)}:{'30' if selected_time % 1 != 0 else '00'}"
 
     # Afficher les sélections actuelles
-    st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
+    st.write(f"Région sélectionnée 2: {selected_region_name} (Code INSEE : {selected_region_code})")
     st.write(f"Température sélectionnée : {selected_temperature}°C")
     st.write(f"Heure sélectionnée : {time_label}")
     st.write(f"Date sélectionnée : {selected_date}")
