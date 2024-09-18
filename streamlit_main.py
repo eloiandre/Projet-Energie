@@ -478,14 +478,14 @@ def carte_conso():
         width=1000,  
         height=900,  
         margin={"r":0,"t":0,"l":0,"b":0}  
-    )
-    fig.update_layout(
         title={
             'text': "Consommation electrique en 2022",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top'
-        })
+        }
+    )
+        
     st.plotly_chart(fig, use_container_width=True)
 def show_data_viz():
     st.write('### DataVisualization2')
