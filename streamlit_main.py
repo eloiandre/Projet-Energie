@@ -335,7 +335,7 @@ def aggreg_period():
     df_agg_jour_semaine = df[['consommation', 'temperature', 'jour_semaine']].groupby('jour_semaine').mean().reset_index()
     df_agg_heure = df[['consommation', 'temperature', 'heure']].groupby('heure').mean().reset_index()
     return(df_agg_mois,df_agg_jour_semaine,df_agg_heure)
-def conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
+def plot_conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
         # Créer une figure
     fig = go.Figure()
 
@@ -401,7 +401,13 @@ def conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
 
     # Mise en page avec menu déroulant
     fig.update_layout(
-        title='Consommation et Température selon différentes agrégations',
+        title={
+        'text': 'Consommation et Température selon différentes agrégations',
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+        })
+        
         xaxis=dict(title='Période'),
         yaxis=dict(
             title='Consommation (MW)',
@@ -500,7 +506,7 @@ def show_data_viz():
     carte_conso()
     carte_prod(monthly_2022())
     a, b, c = aggreg_period()
-    conso_vs_temp(a,b,c)
+    plot_conso_vs_temp(a,b,c)
     plot_conso_region()
     plot_box_energie_conso()
 def conso_temp():
@@ -861,7 +867,6 @@ def plot_residus(df_result):
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-@st.cache_data
 def plot_box_energie_conso():
     # Réduire les données si elles sont trop volumineuses (par exemple, prendre un échantillon)
     df_sampled = df.sample(frac=0.1)  # Prendre un échantillon de 10 % des données pour accélérer le rendu
