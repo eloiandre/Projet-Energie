@@ -1012,7 +1012,7 @@ def show_prediction():
     regions = df['libelle_region'].unique()
 
     # Interface pour sélectionner la région
-    selected_region = st.selectbox("Sélectionnez une région :", regions)
+    selected_region = st.selectbox("Sélectionnez une région :", list(region_dict.values()))
 
     # Interface pour ajuster la température (curseur de -10 à 30)
     selected_temperature = st.slider("Ajustez la température (°C) :", min_value=-10, max_value=30, value=15)
