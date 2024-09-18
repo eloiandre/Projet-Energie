@@ -494,9 +494,6 @@ def carte_conso():
 
     # Affichage dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-
-        
-    st.plotly_chart(fig, use_container_width=True)
 def show_data_viz():
     st.write('### DataVisualization2')
     conso_temp()
@@ -1103,8 +1100,6 @@ def main():
             <li>Eloi ANDRE</li>  
         </ul>
         """, unsafe_allow_html=True)
-    
-    
     
     if page ==pages[0]:
         show_definition()
