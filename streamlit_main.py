@@ -1079,7 +1079,7 @@ def show_prediction():
     data_df['date_heure']=pd.to_datetime(data_df['date_heure'])
     #st.write (data_df.dtypes)
     #st.write(data_df)
-    
+    st.write(selected_datetime_formatted)
     pred_scaled=model.predict(data_df)[0]
     pred=y_scaler.inverse_transform([[pred_scaled]])[0][0]
     st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} :" )
