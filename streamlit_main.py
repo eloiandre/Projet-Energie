@@ -100,6 +100,14 @@ def import_files():
         df_features = pd.read_csv(url_features, index_col=0)
         #st.write("Fichier des features téléchargé et chargé.")
 
+        # URL du fichier Google Drive (utiliser l'ID de fichier dans le lien)
+
+        #telecharger scaler 
+        url = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
+        output = 'scaler.pkl'
+        gdown.download(url, output, quiet=False)
+        y_scaler = joblib.load(output)
+
         # Télécharger et charger le modèle
         url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
         output_model = "model.pkl"
@@ -117,7 +125,7 @@ def import_files():
         # df_short = pd.read_csv(output_short)
         # st.write("Fichier new_data.csv téléchargé et chargé.")
 
-        return df, geojson, temperature, df_features, model
+        return df, geojson, temperature, df_features, model,y_scaler
 
     except Exception as e:
         st.write(f"Erreur lors du téléchargement ou du chargement des fichiers : {e}")
