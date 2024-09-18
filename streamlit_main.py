@@ -1021,9 +1021,10 @@ def show_prediction():
     # Interface pour sélectionner la date
     selected_date = st.date_input("Sélectionnez une date :", value=date.today())
 
-    # Interface pour ajuster l'heure (curseur de 0h à 24h par pas de 30 minutes)
-    time_options = np.arange(0, 24, 0.5)  # Crée une liste d'heures avec des pas de 0.5 (soit 30 minutes)
-    time_labels = [f"{int(h)}:{'30' if h % 1 != 0 else '00'}" for h in time_options]  # Labels d'affichage 00:00, 00:30, etc.
+    # Sélection de l'heure (curseur avec pas de 30 minutes)
+    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
+    hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
+    selected_time_formatted = f"{int(hours):02}:{int(minutes):02}:00"
 
     selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
 
@@ -1035,6 +1036,9 @@ def show_prediction():
     st.write(f"Température sélectionnée : {selected_temperature}°C")
     st.write(f"Heure sélectionnée : {time_label}")
     st.write(region_dict)
+
+    selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
+    selected_datetime_formatted = selected_datetime.strftime("%Y-%m-%d %H:%M:%S+00:00")
 
 
 
