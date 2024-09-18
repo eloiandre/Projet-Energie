@@ -1020,7 +1020,7 @@ def show_prediction():
     time_options = np.arange(0, 24, 0.5)  # Crée une liste d'heures avec des pas de 0.5 (soit 30 minutes)
     time_labels = [f"{int(h)}:{'30' if h % 1 != 0 else '00'}" for h in time_options]  # Labels d'affichage 00:00, 00:30, etc.
 
-    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=24.0, step=0.5, value=12.0, format="%.1f")
+    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
 
     # Conversion de l'heure sélectionnée en format lisible
     time_label = f"{int(selected_time)}:{'30' if selected_time % 1 != 0 else '00'}"
