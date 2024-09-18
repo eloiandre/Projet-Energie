@@ -1072,11 +1072,11 @@ def show_prediction():
         'date_heure':[selected_datetime_formatted],
         'temperature':[selected_temperature]
     }
-    st.write(data)
+    #st.write(data)
     data_df=pd.DataFrame(data)
     data_df['date_heure']=pd.to_datetime(data_df['date_heure'])
-    st.write (data_df.dtypes)
-    st.write(data_df)
+    #st.write (data_df.dtypes)
+    #st.write(data_df)
     
     pred=model.predict(data_df)
     st.write(pred)
