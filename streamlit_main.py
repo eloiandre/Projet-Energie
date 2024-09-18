@@ -1008,9 +1008,6 @@ def plot_conso_region():
     st.plotly_chart(fig, use_container_width=True)
 
 def show_prediction():
-    # Liste des régions disponibles (à adapter selon votre DataFrame)
-    regions = df['libelle_region'].unique()
-
     # Interface pour sélectionner la région
     selected_region_name = st.selectbox("Sélectionnez une région :", list(region_dict.values()))
     selected_region_code = [code for code, name in region_dict.items() if name == selected_region_name][0]
@@ -1026,19 +1023,21 @@ def show_prediction():
     hours, minutes = divmod(selected_time * 60, 60)  # Convertit l'heure en heures et minutes
     selected_time_formatted = f"{int(hours):02}:{int(minutes):02}:00"
 
-    selected_time = st.slider("Sélectionnez l'heure :", min_value=0.0, max_value=23.5, step=0.5, value=12.0, format="%.1f")
-
     # Conversion de l'heure sélectionnée en format lisible
     time_label = f"{int(selected_time)}:{'30' if selected_time % 1 != 0 else '00'}"
 
     # Afficher les sélections actuelles
-    st.write(f"Région sélectionnée : {selected_region_name}")
+    st.write(f"Région sélectionnée : {selected_region_name} (Code INSEE : {selected_region_code})")
     st.write(f"Température sélectionnée : {selected_temperature}°C")
     st.write(f"Heure sélectionnée : {time_label}")
-    st.write(region_dict)
+    st.write(f"Date sélectionnée : {selected_date}")
 
+    # Combinaison de la date et de l'heure
     selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
     selected_datetime_formatted = selected_datetime.strftime("%Y-%m-%d %H:%M:%S+00:00")
+
+    # Affichage du format de la date et heure pour le modèle
+    st.write(f"Date et heure formatées pour le modèle : {selected_datetime_formatted}")
 
 
 
