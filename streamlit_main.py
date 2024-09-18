@@ -942,7 +942,7 @@ def conso_region():
         })
 
     fig["layout"].pop("updatemenus")
-    fig.show()
+    st.plotly_chart(fig, use_container_width=True)
 
 def main():
     st.title("Projet Energie")
