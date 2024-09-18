@@ -483,6 +483,7 @@ def show_data_viz():
     a, b, c = aggreg_period()
     conso_vs_temp(a,b,c)
     plot_conso_region()
+    plot_box_energie_conso()
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
@@ -840,6 +841,40 @@ def plot_residus(df_result):
                       showlegend=False)
 
     # Afficher le graphique dans Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+def plot_box_energie_conso():
+        # Créez une liste des données à tracer
+    data = [
+        go.Box(y=df['consommation'], name='Consommation',width=0.8),
+        go.Box(y=df['thermique'], name='Thermique',width=0.8),
+        go.Box(y=df['nucleaire'], name='Nucléaire',width=0.8),
+        go.Box(y=df['solaire'], name='Solaire',width=0.8),
+        go.Box(y=df['eolien'], name='Éolien',width=0.8),
+        go.Box(y=df['hydraulique'], name='Hydraulique',width=0.8),
+        go.Box(y=df['bioenergies'], name='Bioénergies',width=0.8)
+    ]
+
+    # Créez la figure
+    fig = go.Figure(data=data)
+
+    # Mise à jour de la mise en page
+    fig.update_layout(
+        title={
+            'text': 'BOXPLOT Energie vs Consommation en MW',
+            'x': 0.5,
+            'xanchor': 'center',
+        },
+        xaxis_title='Type',
+        yaxis_title='MW',
+        xaxis=dict(
+            tickvals=list(range(len(data))),
+            ticktext=['Consommation', 'Thermique', 'Nucléaire', 'Solaire', 'Éolien', 'Hydraulique', 'Bioénergies'],
+            tickangle=-25  # Rotation des étiquettes de l'axe des x
+        ),
+        boxmode='group',  # Grouper les boxplots
+        height=800,  # Hauteur de la figure
+        width=800  # Largeur de la figure
+    )
     st.plotly_chart(fig, use_container_width=True)
 
 def show_model():
