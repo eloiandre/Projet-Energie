@@ -1075,7 +1075,7 @@ def show_prediction():
     st.write(data)
     data_df=pd.DataFrame(data)
     st.write(data_df)
-
+    data_df['date_heure']=pd.to_datetime(data_df['date_heure'])
     pred=model.predict(data_df)
     st.write(pred)
 
