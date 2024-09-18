@@ -1006,6 +1006,24 @@ def plot_conso_region():
     fig["layout"].pop("updatemenus")
     st.plotly_chart(fig, use_container_width=True)
 
+def show_prediction():
+    # Liste des régions disponibles (à adapter selon votre DataFrame)
+    regions = df['libelle_region'].unique()
+
+    # Interface pour sélectionner la région
+    selected_region = st.selectbox("Sélectionnez une région :", regions)
+
+    # Interface pour ajuster la température (curseur de -10 à 30)
+    selected_temperature = st.slider("Ajustez la température (°C) :", min_value=-10, max_value=30, value=15)
+
+    # Afficher la sélection actuelle
+    st.write(f"Région sélectionnée : {selected_region}")
+    st.write(f"Température sélectionnée : {selected_temperature}°C")
+
+
+
+
+
 def main():
     st.title("Projet Energie")
     
@@ -1037,6 +1055,8 @@ def main():
         show_data_viz()
     if page==pages[3]:
         show_model()
+    if page==pages[4]:
+        show_prediction()
     if page==pages[5]:
         show_conclusion()
 
