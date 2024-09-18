@@ -315,8 +315,15 @@ def carte_prod(df_2022):
         width=1000,  # Largeur de l'image en pixels
         height=900,  # Hauteur de l'image en pixels pour l'étirement vertical
         margin={"r": 0, "t": 50, "l": 0, "b": 0},  # Réduire les marges pour maximiser l'espace
-        title="Production électrique par source en 2022"
+        
     )
+    fig2.update_layout(
+    title={
+        'text': "Production electrique par source en 2022",
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    })
 
     st.plotly_chart(fig2, use_container_width=True)
 def aggreg_period():
