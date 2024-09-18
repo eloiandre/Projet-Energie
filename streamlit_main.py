@@ -1032,8 +1032,11 @@ def show_prediction():
     st.write(f"Heure sélectionnée : {time_label}")
     st.write(f"Date sélectionnée : {selected_date}")
 
-    # Combinaison de la date et de l'heure
-    selected_datetime = datetime.combine(selected_date, datetime.min.time()) + timedelta(hours=hours, minutes=minutes)
+    # Correction : Combinaison de la date (datetime.date) et de l'heure (datetime.time)
+    selected_time_combined = datetime.strptime(f"{int(hours):02}:{int(minutes):02}:00", "%H:%M:%S").time()
+    selected_datetime = datetime.combine(selected_date, selected_time_combined)
+
+    # Format final : 'YYYY-MM-DD HH:MM:SS+00:00'
     selected_datetime_formatted = selected_datetime.strftime("%Y-%m-%d %H:%M:%S+00:00")
 
     # Affichage du format de la date et heure pour le modèle
