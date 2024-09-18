@@ -1078,8 +1078,8 @@ def show_prediction():
     #st.write (data_df.dtypes)
     #st.write(data_df)
     
-    pred=model.predict(data_df)
-    st.write(pred[0])
+    pred=model.predict(data_df)[0]
+    st.write(pred)
 
 def main():
     st.title("Projet Energie")
