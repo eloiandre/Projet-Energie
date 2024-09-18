@@ -1079,7 +1079,7 @@ def show_prediction():
     #st.write(data_df)
     
     pred=model.predict(data_df)[0]
-    st.write(f"Prédiction pour le {selected_date} à {int(hours):02}:{int(minutes):02} : {pred}")
+    st.write(f"Prédiction pour le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} : {pred,round(2)}")
 
 def main():
     st.title("Projet Energie")
