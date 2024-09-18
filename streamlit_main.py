@@ -1102,7 +1102,7 @@ def main():
             - Pierre VALMONT                  
             - Siyamala ROLLOT
             - Eloi ANDRE   2s
-        """)s
+        """)
     
     
     
