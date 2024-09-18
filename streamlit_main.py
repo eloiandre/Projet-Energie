@@ -406,7 +406,7 @@ def plot_conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
-        }
+        },
         xaxis=dict(title='Période'),
         yaxis=dict(
             title='Consommation (MW)',
