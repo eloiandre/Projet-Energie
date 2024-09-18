@@ -1026,7 +1026,7 @@ def show_prediction():
     # Interface pour sélectionner la région avec un identifiant unique (key)
     selected_region_name = st.selectbox(
         "Sélectionnez une région :", 
-        list(regions_dic.values()), 
+        list(region_dic.values()), 
         key="region_selectbox"
     )
     selected_region_code = [code for code, name in region_dict.items() if name == selected_region_name][0]
