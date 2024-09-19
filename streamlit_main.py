@@ -129,7 +129,7 @@ def import_files():
     df_na=pd.read_csv(url_na)
 
     url_describe='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_describe.csv'
-    df_describe=pd.read_csv(url_describe)
+    df_describe=pd.read_csv(url_describe,index_col=None)
 
     return df,df_head,df_na,df_describe,geojson, temperature, df_features, model, y_scaler
 def show_definition():
