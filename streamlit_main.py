@@ -224,12 +224,12 @@ def show_exploration():
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         """
     with st.expander('**Dataset température**'):
-        st.markdown("""
+        """
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
         - changement de la variable date_heure au format datetime
         - passage de la région en type string
 
-        """)
+        """
         
 
 @st.cache_data
