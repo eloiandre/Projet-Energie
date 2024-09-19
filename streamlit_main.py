@@ -72,47 +72,53 @@ class heures_sinus(BaseEstimator, TransformerMixin):
         return X
     
 @st.cache_data
-def import_files():
-    
-    # Télécharger le fichier CSV principal
+def github_import():
+    # Télécharger le fichier GeoJSON depuis GitHub
+    url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
+    geojson = gpd.read_file(url_geojson)
+
+    # Télécharger le fichier des features depuis GitHub
+    url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
+    df_features = pd.read_csv(url_features, index_col=0)
+
+    # Télécharger les 5 premières lignes du DataFrame
+    url_head = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_head%20(1).csv"
+    df_head = pd.read_csv(url_head, index_col=0)
+
+    # Télécharger les pourcentages de valeurs manquantes (NA)
+    url_na = 'https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage%20(1).csv'
+    df_na = pd.read_csv(url_na)
+
+    # Télécharger la description du DataFrame
+    url_describe = 'https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_describe.csv'
+    df_describe = pd.read_csv(url_describe, index_col=None)
+
+    return df_head, df_na, df_describe, geojson, df_features
+
+# Fonction pour les fichiers téléchargés depuis Google Drive
+def drive_import():
+    # Télécharger le fichier CSV principal depuis Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
     output_csv = "data.csv"
     if not os.path.exists(output_csv):
         gdown.download(url_csv, output_csv, quiet=False)
     df = pd.read_csv(output_csv)
-    #st.write("Fichier CSV principal téléchargé et chargé.")
 
-    # Télécharger le fichier des températures
+    # Télécharger le fichier des températures depuis Google Drive
     url_temperature_csv = "https://drive.google.com/uc?export=download&id=1dmNMpWNhQuDyPxu0f4Un_wE38iDcOcuY"
     output_temperature_csv = "temperature.csv"
     if not os.path.exists(output_temperature_csv):
         gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
-    temperature = pd.read_csv(output_temperature_csv,index_col=0)
-    #st.write("Fichier CSV des températures téléchargé et chargé.")
-
-    # Télécharger le fichier GeoJSON
-    url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
-    geojson = gpd.read_file(url_geojson)
-    #st.write("Fichier GeoJSON téléchargé et chargé.")
-
-    # Télécharger le fichier des features
-    url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
-    df_features = pd.read_csv(url_features, index_col=0)
-    #st.write("Fichier des features téléchargé et chargé.")
-
-    # URL du fichier Google Drive (utiliser l'ID de fichier dans le lien)
+    temperature = pd.read_csv(output_temperature_csv, index_col=0)
 
     # Télécharger le scaler depuis Google Drive
-    url = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
-    output = 'y_scaler.pkl'
-    gdown.download(url, output, quiet=False)
-
-    # Ouvrir le fichier et charger le scaler
-    with open(output, 'rb') as f:
+    url_scaler = 'https://drive.google.com/uc?id=17fVK3rUA47E6mO6GWHd4RxxTPHJ63il_'
+    output_scaler = 'y_scaler.pkl'
+    gdown.download(url_scaler, output_scaler, quiet=False)
+    with open(output_scaler, 'rb') as f:
         y_scaler = pickle.load(f)
-    #st.write('scaler telechargé')
 
-    # Télécharger et charger le modèle
+    # Télécharger et charger le modèle depuis Google Drive
     url_model = "https://drive.google.com/uc?export=download&id=1-7_N8OZF4QfzDjAhVOjArFMrEcpL87z6"
     output_model = "model.pkl"
     if not os.path.exists(output_model):
@@ -120,18 +126,9 @@ def import_files():
     with open(output_model, 'rb') as file:
         model = pickle.load(file)
 
-    #Télecharger ddes 5 premieres lignes de df
-    url_head = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_head%20(1).csv"
-    df_head = pd.read_csv(url_head,index_col=0)
+    return df, temperature, model, y_scaler
 
-    #Télecharger les NA
-    url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage%20(1).csv'
-    df_na=pd.read_csv(url_na)
 
-    url_describe='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_describe.csv'
-    df_describe=pd.read_csv(url_describe,index_col=None)
-
-    return df,df_head,df_na,df_describe,geojson, temperature, df_features, model, y_scaler
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -183,7 +180,7 @@ def show_exploration():
 
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.write(df_head)
-            
+
         df_describe.rename(columns={df.columns[0]: ''}, inplace=True)
         st.write(df_describe)
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
@@ -1175,8 +1172,8 @@ def main():
 
 # debut du code
 #importation de tous les fichiers necessaire
-df,df_head,df_na,df_describe,geojson,temperature,df_features,model,y_scaler=import_files()
-
+df_head, df_na, df_describe, geojson, df_features=github_import()
+df, temperature, model, y_scaler=drive_import()
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 # Télécharger la df_head
