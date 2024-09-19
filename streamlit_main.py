@@ -122,7 +122,7 @@ def import_files():
 
     # Télécharger la df_head
     url_head="https://github.com/eloiandre/Projet-Energie/blob/becae1f88ae5650712a044e77c86f3efe29d705d/df_head.csv"
-    df_head=pd.read_csv(url_head)
+    df_head = pd.read_csv(url_head, on_bad_lines='skip')
 
     return df,df_head, geojson, temperature, df_features, model, y_scaler
 
