@@ -966,18 +966,19 @@ def show_model():
     st.write("### on va surement remplacer par l'image du rapport" )
     plot_residus(df_result)
 def show_conclusion():
-    st.write("### Conclusion")
+st.write("### Conclusion")
     st.write("\n")
     st.write("\n")
 
     st.write("""
-        La capacité de puissance électrique instantanée délivrable en France est d’environ **150GW**.  
-        Sur la période d’étude, la consommation maximum instantanée en France a été de **88.5GW**.  
-        Notre modèle a un résidu avec une médiane de **2GW** (4GW maximum dans quelques cas).  
-    
-        Nous pouvons donc conclure qu'actuellement, les risques de blackout sont écartés, bien que des pics de consommation puissent être observés, 
-        particulièrement durant les mois d'hiver.
-    """) 
+                          
+     La capacité de puissance électrique instantanée délivrable en France est d’environ 150GW. 
+     Sur la période d’étude, la consommation maximum instantanée en France a été de 88.5GW. 
+     Notre modèle a un résidu avec une médiane de 2GW (4GW maximum dans quelques cas). 
+             
+     Nous pouvons donc conclure qu'actuellement, les risques de blackout sont écartés, bien que des pics de consommation puissent être observés, 
+      particulièrement durant les mois d'hiver.    
+    """)  
           
      
 
