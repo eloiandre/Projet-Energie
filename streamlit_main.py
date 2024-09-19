@@ -1114,11 +1114,11 @@ def main():
 # debut du code
 #importation de tous les fichiers necessaire
 df,geojson,temperature,df_features,model,y_scaler=import_files()
-st.write(df_head)
+
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 # Télécharger la df_head
 url_head="https://github.com/eloiandre/Projet-Energie/blob/becae1f88ae5650712a044e77c86f3efe29d705d/df_head.csv"
 df_head = pd.read_csv(url_head, on_bad_lines='skip',index_col=0)
-
+st.write(df_head)
 main()
