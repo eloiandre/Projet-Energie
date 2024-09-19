@@ -91,7 +91,7 @@ def github_import():
 
     # Télécharger la description du DataFrame
     url_describe = 'https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_describe.csv'
-    df_describe = pd.read_csv(url_describe, index_col=None)
+    df_describe = pd.read_csv(url_describe)
 
     return df_head, df_na, df_describe, geojson, df_features
 @st.cache_data
