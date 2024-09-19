@@ -187,7 +187,7 @@ def show_exploration(df, temperature, df_clean):
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
-        st.dataframe(df.isna().sum()*100/len(df))
+        st.dataframe(df_na)
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
         st.write('Les différentes actions effectuées sur ce fichier:')
