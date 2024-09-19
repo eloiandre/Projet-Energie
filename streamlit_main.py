@@ -230,8 +230,7 @@ def show_exploration():
         - passage de la région en type string
 
         """)
-        if st.checkbox('Afficher un extrait du DataFrame'):
-            st.write(temperature.head(10))
+        
 
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
