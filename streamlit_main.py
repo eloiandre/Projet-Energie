@@ -87,7 +87,7 @@ def import_files():
     output_temperature_csv = "temperature.csv"
     if not os.path.exists(output_temperature_csv):
         gdown.download(url_temperature_csv, output_temperature_csv, quiet=False)
-    temperature = pd.read_csv(output_temperature_csv)
+    temperature = pd.read_csv(output_temperature_csv,index_col=0)
     #st.write("Fichier CSV des températures téléchargé et chargé.")
 
     # Télécharger le fichier GeoJSON
@@ -120,7 +120,6 @@ def import_files():
     with open(output_model, 'rb') as file:
         model = pickle.load(file)
 
-
     #Télecharger ddes 5 premieres lignes de df
     url_head = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/becae1f88ae5650712a044e77c86f3efe29d705d/df_head.csv"
     df_head = pd.read_csv(url_head,index_col=0)
@@ -128,6 +127,7 @@ def import_files():
     #Télecharger les NA
     url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage.csv'
     df_na=pd.read_csv(url_na)
+
     return df,df_head,df_na,geojson, temperature, df_features, model, y_scaler
 def show_definition():
     st.write('## Definition du projet :')
