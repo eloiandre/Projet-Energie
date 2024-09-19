@@ -168,6 +168,7 @@ def show_definition():
 def show_exploration(df, temperature, df_clean):
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site https://meteo.data.gouv.fr.')
+    st.write(df_head)
     with st.expander('**Dataset initial**'):
         """
         Le fichier initial contient 32 colonnes et 2 108 840 lignes. Dans ce fichier, nous disposons, par demie heure et par région:
@@ -180,7 +181,7 @@ def show_exploration(df, temperature, df_clean):
     
 
         if st.checkbox('Afficher un extrait du DataFrame'):
-            #st.write(df_head)
+            st.write(df_head)
         st.write('memo : cree une table describe')
         #st.dataframe(df.describe().round(2))
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
