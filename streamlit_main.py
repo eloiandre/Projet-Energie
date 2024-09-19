@@ -121,11 +121,11 @@ def import_files():
         model = pickle.load(file)
 
     #Télecharger ddes 5 premieres lignes de df
-    url_head = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/becae1f88ae5650712a044e77c86f3efe29d705d/df_head.csv"
+    url_head = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_head%20(1).csv"
     df_head = pd.read_csv(url_head,index_col=0)
 
     #Télecharger les NA
-    url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage.csv'
+    url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage%20(1).csv'
     df_na=pd.read_csv(url_na)
 
     return df,df_head,df_na,geojson, temperature, df_features, model, y_scaler
@@ -188,6 +188,7 @@ def show_exploration():
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
+        
         df_na.rename(columns={df.columns[0]: 'Collumns'}, inplace=True)
         st.write(df_na)
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
