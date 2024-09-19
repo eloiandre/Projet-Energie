@@ -188,7 +188,7 @@ def show_exploration():
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
-        #st.dataframe(df_na)
+        st.write(df_na)
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
         st.write('Les différentes actions effectuées sur ce fichier:')
@@ -242,6 +242,7 @@ def show_exploration():
         """
         if st.checkbox('Afficher un extrait du fichier final',key='final'):
             st.table(df.head(10))
+        if st.checkbox('Afficher ')
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
