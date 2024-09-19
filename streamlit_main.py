@@ -180,14 +180,14 @@ def show_exploration(df, temperature, df_clean):
     
 
         if st.checkbox('Afficher un extrait du DataFrame'):
-            st.table(df_head)
+            st.write(df_head)
         st.write('memo : cree une table describe')
         #st.dataframe(df.describe().round(2))
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
              la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
-        st.dataframe(df_na)
+        #st.dataframe(df_na)
         st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
              Nous ne garderons pas ces variables pour la suite du projet')
         st.write('Les différentes actions effectuées sur ce fichier:')
