@@ -1126,5 +1126,5 @@ df,df_head,df_na,geojson,temperature,df_features,model,y_scaler=import_files()
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 # Télécharger la df_head
 
-st.write(df_head)
+st.write(df_na)
 main()
