@@ -129,7 +129,6 @@ def import_files():
     url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage.csv'
     df_na=pd.read_csv(url_na)
     return df,df_head,df_na,geojson, temperature, df_features, model, y_scaler
-
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -166,9 +165,11 @@ def show_definition():
     - Focus sur les énergies renouvelables (où sont- elles implantées ?)
     """
     )
-
-
-def show_temperature_df():
+def show_exploration():
+    st.title('Exploration')
+    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
+    
+    #show_initial_df
     with st.expander('**Dataset température**'):
         """
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
@@ -177,7 +178,8 @@ def show_temperature_df():
         """
         if st.checkbox('Afficher un extrait du Dataset Température', key='checkbox_temp'):
             st.dataframe(temperature.head(10))
-def show_final_df():
+    
+    #show_final_df
     st.title('Nettoyage et consolidation des deux fichiers')
 
     with st.expander('**Dataset final**'):
@@ -187,12 +189,8 @@ def show_final_df():
         """
         if st.checkbox('Afficher un extrait du fichier final'):
             st.table(df.head(10))
-def show_exploration():
-    st.title('Exploration')
-    st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site [link] https://meteo.data.gouv.fr.')
-    #show_initial_df()
-    show_temperature_df()
-    show_final_df()
+def show_temperature_df():
+
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
@@ -1125,6 +1123,4 @@ df,df_head,df_na,geojson,temperature,df_features,model,y_scaler=import_files()
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
 # Télécharger la df_head
-
-st.write(df_na)
 main()
