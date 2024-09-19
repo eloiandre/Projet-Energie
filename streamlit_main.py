@@ -169,60 +169,8 @@ def show_exploration(df, temperature, df_clean):
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site https://meteo.data.gouv.fr.')
     st.write(df_head)
-    with st.expander('**Dataset initial**'):
-        """
-        Le fichier initial contient 32 colonnes et 2 108 840 lignes. Dans ce fichier, nous disposons, par demie heure et par région:
-        - quantité d'électricité en MW consommée
-        - quantité d'électricité en MW produite, par type d'énergie
-        - les taux de couverture (TCO) par type d'énergie, en pourcentage
-        - les taux de charge (TCH) par type d'énergie, en pourcentage
-        - les échanges d'électricité entre régions, en MW
-        """
+    st.write (df_na)
     
-
-        if st.checkbox('Afficher un extrait du DataFrame'):
-            st.write(df_head)
-        st.write('memo : cree une table describe')
-        #st.dataframe(df.describe().round(2))
-        st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
-             Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
-             Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
-             la région en question reçoit de l'électricité. Une valeur est négative lorsque la région transfère de l'électricité.")
-        #st.dataframe(df_na)
-        st.write('Les variables TCO et TCH comportent beaucoup de manquants (entre 69 et 82%), idem pour les variables stockage.\
-             Nous ne garderons pas ces variables pour la suite du projet')
-        st.write('Les différentes actions effectuées sur ce fichier:')
-        st.write('**Suppressions**')
-        """
-        - supression des données avant 2020 car manque de données tco et tch
-        - suppression des colonnes vides: 'column_30', 'stockage_batterie', 'destockage_batterie','eolien_terrestre','eolien_offshore'
-        - suppression des 12 premières lignes vides du dataframe
-        - les doublons lors du passage en heures d'été ont été supprimés
-        
-        """
-        st.write('**Conversions**')
-        """
-        - variable 'date_heure' en format datetime
-        - variable eolien en float
-        - variable code_insee en string
-        
-        """
-
-        st.write('**Remplacements**')
-        """
-        - encodage de la colonne 'nature', puis remplacée par la variable 'definitif'
-        - mise à zéro de la variable nucléaire pour les régions sans centrales : Ile de France, Pays de la Loire, Provence-Alpes-Côte-d'Azur, \
-        Bretagne, Bourgogne Franche Comté
-        - mise à zéro des NaN dans la variable pompage
-        - gestion des données incohérentes: tch hydraulique > 200%
-
-        """
-
-        st.write('**Enrichissements**')
-        """
-        - ajout des colonnes année, mois, jour et jour de la semaine
-        - ajout des colonnes saison et type_jour qui seront ensuite encodées
-        """
         
 
 @st.cache_data
