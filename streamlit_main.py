@@ -165,7 +165,7 @@ def show_definition():
     - Focus sur les énergies renouvelables (où sont- elles implantées ?)
     """
     )
-def show_exploration(df, temperature, df_clean):
+def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site https://meteo.data.gouv.fr.')
     st.write(df_head)
