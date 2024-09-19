@@ -128,7 +128,10 @@ def import_files():
     url_na='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_na_percentage%20(1).csv'
     df_na=pd.read_csv(url_na)
 
-    return df,df_head,df_na,geojson, temperature, df_features, model, y_scaler
+    url_describe='https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/df_describe.csv'
+    df_describe=pd.read_csv(url_describe)
+
+    return df,df_head,df_na,df_describe,geojson, temperature, df_features, model, y_scaler
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -178,12 +181,11 @@ def show_exploration():
         - les taux de charge (TCH) par type d'énergie, en pourcentage
         - les échanges d'électricité entre régions, en MW
         """
-    
 
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.write(df_head)
     
-        #st.dataframe(df.describe().round(2))
+        st.write(df_describe)
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
              Sur la variable ech_physique, nous observons des valeurs positives et des valeurs négatives. Une valeur est positive lorsque \
@@ -1173,7 +1175,7 @@ def main():
 
 # debut du code
 #importation de tous les fichiers necessaire
-df,df_head,df_na,geojson,temperature,df_features,model,y_scaler=import_files()
+df,df_head,df_na,df_describe,geojson,temperature,df_features,model,y_scaler=import_files()
 
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
