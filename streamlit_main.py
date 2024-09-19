@@ -171,7 +171,6 @@ def show_definition():
 def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site https://meteo.data.gouv.fr.')
-    st.write(temperature.head(10))
     with st.expander('**Dataset initial**'):
         """
         Le fichier initial contient 32 colonnes et 2 108 840 lignes. Dans ce fichier, nous disposons, par demie heure et par région:
