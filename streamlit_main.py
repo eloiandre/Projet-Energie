@@ -1120,7 +1120,7 @@ def main():
 
 # debut du code
 #importation de tous les fichiers necessaire
-df,df_head,geojson,temperature,df_features,model,y_scaler=import_files()
+df,df_head,df_na,geojson,temperature,df_features,model,y_scaler=import_files()
 
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
