@@ -231,7 +231,7 @@ def show_exploration():
 
         """
         
-        if st.checkbox('Afficher un extrait du DataFrame'):
+        if st.checkbox('Afficher un extrait du DataFrame', key="checkbox_temperature"):
             st.write(temperature.head(10))
 
 @st.cache_data
