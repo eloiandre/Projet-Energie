@@ -182,7 +182,7 @@ def show_exploration():
 
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.write(df_head)
-        st.write('memo : cree une table describe')
+    
         #st.dataframe(df.describe().round(2))
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
              Nous remarquons des écarts de consommation très importants, pouvant varier de 703 à 15 338 MW. \
@@ -224,12 +224,12 @@ def show_exploration():
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         """
     with st.expander('**Dataset température**'):
-        """
+        st.markdown("""
         - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
         - changement de la variable date_heure au format datetime
         - passage de la région en type string
 
-        """
+        """)
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.write(temperature.head(10))
 
