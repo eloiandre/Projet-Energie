@@ -188,7 +188,7 @@ def show_exploration():
 
         """
         if st.checkbox('Afficher un extrait du fichier final'):
-            st.table(df.head(10))s
+            st.table(df.head(10))
 
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
