@@ -221,6 +221,7 @@ def show_exploration(df, temperature, df_clean):
         """
         - ajout des colonnes année, mois, jour et jour de la semaine
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
+        """
         
 
 @st.cache_data
