@@ -234,13 +234,13 @@ def show_exploration():
         if st.checkbox('Afficher un extrait du DataFrame', key="checkbox_temperature"):
             st.write(temperature.head(10))
     st.title('Nettoyage et consolidation des deux fichiers')
-    
-    with st.expander('**Dataset final**',key='final'):
+
+    with st.expander('**Dataset final**'):
         """
         - les deux fichiers sont maintenant fusionnés et prêts à être utilisés.
 
         """
-        if st.checkbox('Afficher un extrait du fichier final'):
+        if st.checkbox('Afficher un extrait du fichier final',key='final'):
             st.table(df.head(10))
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
