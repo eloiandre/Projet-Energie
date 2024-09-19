@@ -76,7 +76,7 @@ def github_import():
     # Télécharger le fichier GeoJSON depuis GitHub
     url_geojson = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/regions.geojson"
     geojson = gpd.read_file(url_geojson)
-
+    st.write ('json ok')
     # Télécharger le fichier des features depuis GitHub
     url_features = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/feature_importances.csv"
     df_features = pd.read_csv(url_features, index_col=0)
