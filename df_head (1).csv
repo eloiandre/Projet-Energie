@@ -1,0 +1,6 @@
+,code_insee_region,libelle_region,nature,date,heure,date_heure,consommation,thermique,nucleaire,eolien,solaire,hydraulique,pompage,bioenergies,ech_physiques,stockage_batterie,destockage_batterie,eolien_terrestre,eolien_offshore,tco_thermique,tch_thermique,tco_nucleaire,tch_nucleaire,tco_eolien,tch_eolien,tco_solaire,tch_solaire,tco_hydraulique,tch_hydraulique,tco_bioenergies,tch_bioenergies,column_30
+0,84,Auvergne-Rhône-Alpes,Données définitives,2013-01-01,00:00,2012-12-31T23:00:00+00:00,,,,ND,,,,,,,,,,,,,,,,,,,,,,
+1,27,Bourgogne-Franche-Comté,Données définitives,2013-01-01,00:00,2012-12-31T23:00:00+00:00,,,,ND,,,,,,,,,,,,,,,,,,,,,,
+2,76,Occitanie,Données définitives,2013-01-01,00:00,2012-12-31T23:00:00+00:00,,,,ND,,,,,,,,,,,,,,,,,,,,,,
+3,44,Grand Est,Données définitives,2013-01-01,00:00,2012-12-31T23:00:00+00:00,,,,ND,,,,,,,,,,,,,,,,,,,,,,
+4,93,Provence-Alpes-Côte d'Azur,Données définitives,2013-01-01,00:00,2012-12-31T23:00:00+00:00,,,,ND,,,,,,,,,,,,,,,,,,,,,,
