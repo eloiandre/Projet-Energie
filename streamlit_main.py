@@ -94,8 +94,7 @@ def github_import():
     df_describe = pd.read_csv(url_describe, index_col=None)
 
     return df_head, df_na, df_describe, geojson, df_features
-
-# Fonction pour les fichiers téléchargés depuis Google Drive
+@st.cache_data
 def drive_import():
     # Télécharger le fichier CSV principal depuis Google Drive
     url_csv = "https://drive.google.com/uc?export=download&id=1--2Tsgm3InoAqYkzKlvq0ylJ8JcBmjNU"
@@ -127,8 +126,6 @@ def drive_import():
         model = pickle.load(file)
 
     return df, temperature, model, y_scaler
-
-
 def show_definition():
     st.write('## Definition du projet :')
     st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
@@ -1157,7 +1154,7 @@ def main():
         </ul>
         """, unsafe_allow_html=True)
     
-    if page ==pages[0]:
+    if page==pages[0]:
         show_definition()
     if page==pages[1]:
         show_exploration()
@@ -1173,6 +1170,7 @@ def main():
 # debut du code
 #importation de tous les fichiers necessaire
 df_head, df_na, df_describe, geojson, df_features=github_import()
+st.write(('git ok'))
 df, temperature, model, y_scaler=drive_import()
 #creaction d'un dictionnaire des ferions
 region_dict = df.set_index('code_insee_region')['libelle_region'].to_dict()
