@@ -222,7 +222,15 @@ def show_exploration():
         - ajout des colonnes année, mois, jour et jour de la semaine
         - ajout des colonnes saison et type_jour qui seront ensuite encodées
         """
-        
+     with st.expander('**Dataset température**'):
+        """
+        - ce fichier est le résultat d'une consolidation de plusieurs fichiers de température de météo France
+        - changement de la variable date_heure au format datetime
+        - passage de la région en type string
+
+        """
+        if st.checkbox('Afficher un extrait du DataFrame'):
+            st.dataframe(temperature.head(10))
 
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
