@@ -242,7 +242,7 @@ def show_exploration():
         """
         if st.checkbox('Afficher un extrait du fichier final',key='final'):
             st.table(df.head(10))
-        if st.checkbox('Afficher ')
+        
 @st.cache_data
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
