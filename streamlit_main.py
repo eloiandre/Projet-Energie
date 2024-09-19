@@ -967,7 +967,7 @@ def show_model():
     st.write("### on va surement remplacer par l'image du rapport" )
     plot_residus(df_result)
 def show_conclusion():
-st.write("### Conclusion")
+    st.write("### Conclusion")
     st.write("\n")
     st.write("\n")
 
