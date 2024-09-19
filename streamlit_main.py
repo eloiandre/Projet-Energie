@@ -183,7 +183,7 @@ def show_exploration():
 
         if st.checkbox('Afficher un extrait du DataFrame'):
             st.write(df_head)
-        df_describe.reset_index(drop=True, inplace=True)
+            
         df_describe.rename(columns={df.columns[0]: ''}, inplace=True)
         st.write(df_describe)
         st.write("Toutes les variables sont de type numérique, à l'exception de la variable eolien et libelle_region. \
