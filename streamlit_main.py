@@ -1214,7 +1214,7 @@ def show_prediction():
         key="date_input"
     )
 
-st.write(f"Date sélectionnée : {selected_date}")
+    st.write(f"Date sélectionnée : {selected_date}")
 
     # Sélection de l'heure (curseur avec pas de 30 minutes) avec un identifiant unique
     selected_time = st.slider(
