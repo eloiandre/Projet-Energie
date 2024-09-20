@@ -255,7 +255,7 @@ def show_data_viz():
     conso_prod_ech()  
     heatmap()
 @st.cache_data
-def heatmap()
+def heatmap():
     df_num = df.drop(columns = ['Unnamed: 0','code_insee_region', 'libelle_region', 'date_heure', 'definitif', 'heure', 'date', 'annee', 'mois', 'jour', 'jour_semaine','saison','type_jour'])
     corr = df_num.corr()
     fig = px.imshow(corr,
