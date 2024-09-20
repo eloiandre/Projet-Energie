@@ -1095,8 +1095,10 @@ def show_model():
     # residus exprimés en pourcentage
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
     st.write(df_result.head())
-    st.write("### on va surement remplacer par l'image du rapport" )
-    plot_residus(df_result)
+    
+    image_path = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/qqplot.png" 
+    st.image(image_path, use_column_width=True)
+    
 def show_conclusion():
     st.write("### Conclusion")
     st.write("\n")
@@ -1249,7 +1251,6 @@ def show_prediction():
     pred=y_scaler.inverse_transform([[pred_scaled]])[0][0]
     st.write(f"Le {selected_date} à {int(hours):02}:{int(minutes):02} en {selected_region_name} :" )
     st.header(f"Prédiction : {round(pred,2)} Mw")
-
 
 def main():
     st.title("Projet Energie")
