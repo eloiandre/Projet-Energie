@@ -172,8 +172,8 @@ def show_definition():
     """)
 
     # Autre image provenant de votre dépôt GitHub
-    image_path3 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Image3.png" 
-    st.image(image_path3, use_column_width=True)
+    image_path3 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Image3.png"
+    st.image(image_path3, width=400) 
 
     st.write("\n")
     st.write("""
