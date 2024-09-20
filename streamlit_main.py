@@ -1208,9 +1208,13 @@ def show_prediction():
     # Interface pour sélectionner la date avec un identifiant unique
     selected_date = st.date_input(
         "Sélectionnez une date :", 
-        value=date.today(), 
+        value=date(2022, 1, 1),  # Date par défaut
+        min_value=date(2022, 1, 1),  # Première date disponible
+        max_value=date(2022, 12, 31),  # Dernière date disponible
         key="date_input"
     )
+
+st.write(f"Date sélectionnée : {selected_date}")
 
     # Sélection de l'heure (curseur avec pas de 30 minutes) avec un identifiant unique
     selected_time = st.slider(
