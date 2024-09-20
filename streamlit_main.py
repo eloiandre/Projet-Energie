@@ -1212,7 +1212,7 @@ def show_prediction():
         "Sélectionnez une date :", 
         value=date(2022, 1, 1),  # Date par défaut
         min_value=date(2022, 1, 1),  # Première date disponible
-        max_value=date(2022, 12, 31),  # Dernière date disponible
+        max_value=date(2024, 12, 31),  # Dernière date disponible
         key="date_input"
     )
 
