@@ -251,7 +251,8 @@ def show_data_viz():
     a, b, c = aggreg_period()
     plot_conso_vs_temp(a,b,c)
     plot_conso_region()
-    plot_box_energie_conso()        
+    plot_box_energie_conso()      
+    conso_prod_ech()  
 @st.cache_data
 
 def conso_prod_ech():
