@@ -127,41 +127,87 @@ def drive_import():
 
     return df, temperature, model, y_scaler
 def show_definition():
-    st.write('## Definition du projet :')
-    st.write('« Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out notamment) »')
-    st.info("Depuis 2022 en France, on parle de plus en plus de sécurité d'approvisionnement électrique. \
-    Le parc nucléaire est de moins en moins renouvelé; laissant de la place au développement du parc à énergies renouvelables.")
-    
-    image_compo = Image.open('composition_nucleaire.png')
-    st.image(image_compo)
-    st .write('Depuis 2020, le poids du nucléaire est de 66,5% de la production globale. Les énergies renouvelables quant à elles comptent pour 25.1%.')
+    st.write(""" #### Définition du projet """)
 
-    piechart = Image.open('piechart.png')
-    st.image(piechart)
-    st.write("Les énergies renouvelables prennent de plus en plus de place. Une telle évolution des types d'énergies pose le risque de 'blackout', \
-              à savoir des coupures d'approvisionnement sur tout ou partie du territoire. \
-              Aujourd'hui, il est très difficile de stocker l'énergie. Il faut alors s'assurer que la production subvienne bien à la demande à chaque instant.")
-    
-    prod_type = Image.open('production_par_type.png')
-    st.image(prod_type)
-    st.write("Ce projet porte sur l'analyse de données extraites par une application nommée eCO²mix [link] https://www.rte-france.com/eco2mix. \
-             Le défi est de pouvoir entraîner un modèle capable de prédire la consommation en éléctricité, par demie heure et par région.")
-    st.markdown("""
-    <style>
-            .right-align {
-			    text-align: right;
-		    }
-	</style>
-	""", unsafe_allow_html=True)
+    # URLs des images dans votre dépôt GitHub
+    image_path1 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Image1.png" 
+    st.image(image_path1, use_column_width=True)
 
+    st.write("\n")
+    st.write(""" 
+        ## Constater le phasage entre la consommation et la production énergétique, au niveau national et au niveau régional (risque de black out )
+        """)   
+
+    st.write("\n")
+    st.markdown(""" <i><small> Le black out est un terme anglo-saxon désignant une coupure généralisée de l'approvisionnement en électricité sur tout ou partie d'un territoire. 
+    </small></i>""", unsafe_allow_html=True)
+      
+    st.write("\n")
+    image_path2 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Rapportdinfo.png" 
+    st.image(image_path2, use_column_width=True)
+    
     st.markdown(
-    """
-    Plusieurs aspects seront observés:
+      """ 
+      <p style='text-align: right;'><i><a href="https://www.senat.fr/rap/r21-551/r21-551_mono.html#:~:text=Tout%20d'abord%2C%20les%20deux,la%20s%C3%A9curit%C3%A9%20d'approvisionnement%20%C2%BB." target="_blank">Lien vers le rapport du Sénat</a></i></p>
+      """, 
+      unsafe_allow_html=True
+    )
+
+    st.write("\n")
+    st.write("#### Contexte")
+    st.write("\n")
+    st.write("""
+        Depuis 2022, en France, la sécurité d'approvisionnement électrique est un sujet de plus en plus préoccupant.
+        Cette situation résulte de conjonctures actuelles et de facteurs structurels.
+        - Conjoncture actuelle : L'impact de la crise de la Covid_19 sur le programme d'arrêts pour maintenance ou rechargement des centrales nucléaires.
+        - Facteurs structurels : Le désintérêt des pouvoirs publics pour le nucléaire, avec une priorité donnée aux énergies renouvelables.
+        La loi n° 2019-1147 du 8 novembre 2019 relative à l'énergie et au climat prévoyait de réduire la part du nucléaire à 50% d'ici 2035. Cependant, 
+        la loi n° 2023-491 du 22 juin 2023 relative à l'accélération du nucléaire a supprimé ce plafond.         
+    """)
+
+    st.write("\n")
+    st.write("""
+        Malgré les efforts pour diminuer la part du nucléaire, celle-ci atteint encore 66,5 % en France, indiquant une dépendance forte. 
+        En revanche, les énergies renouvelables ne représentent que 25,1 %.              
+    """)
+
+    # Autre image provenant de votre dépôt GitHub
+    image_path3 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Image3.png" 
+    st.image(image_path3, use_column_width=True)
+
+    st.write("\n")
+    st.write("""
+        Aujourd'hui, il y a 56 réacteurs répartis sur 18 centrales dans toute la France. Pour la première fois depuis 1999 et après l'arrêt de deux réacteurs à Fessenheim en 2020, 
+        un nouveau réacteur est en construction à Flamanville. 
+    """)
+
+    image_path4 = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/Image2.png" 
+    st.image(image_path4, use_column_width=True)
+
+    st.write("\n")
+    st.write("#### Enjeux")
+    st.write("\n")
+    st.write("""
+        Développer un modèle capable de prédire la consommation électrique. 
+        Pour améliorer la gestion de l'approvisionnement en électricité et d'anticiper les variations de demande.      
+    """)
+
+    st.write("\n")
+    st.write("#### Source")
+    st.write("\n")
+    st.write("""
+        Ce projet porte sur l'analyse de données extraites des données éCO2mix régionales consolidées et définitives (janvier 2013 à janvier 2023).
+        [lien](https://www.data.gouv.fr/fr/datasets/donnees-eco2mix-regionales-consolidees-et-definitives-janvier-2013-a-mai-2022/#description)
+    """)
+
+    st.write("\n")
+    st.markdown("""
+     #### Plusieurs aspects seront observés:
     - Analyse au niveau régional pour en déduire une prévision de consommation
     - Analyse par filière de production : énergie nucléaire / renouvelable
     - Focus sur les énergies renouvelables (où sont- elles implantées ?)
-    """
-    )
+    """)
+
 def show_exploration():
     st.title('Exploration')
     st.info('Nous avons dans un premier temps extrait le fichier initial, auquel nous avons ensuite ajouté les températures trouvées sur le site https://meteo.data.gouv.fr.')
