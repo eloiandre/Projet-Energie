@@ -270,7 +270,7 @@ def heatmap():
             'yanchor': 'top'
         }
     )
-    st.plotly_chart(figs, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
 def conso_prod_ech():
     df_reg = df.groupby(['libelle_region']).agg({'thermique':'sum', 'nucleaire':'sum', 'eolien':'sum', 'solaire':'sum',
         'hydraulique':'sum', 'bioenergies':'sum', 'consommation' : 'sum', 'ech_physiques' : 'sum'})
