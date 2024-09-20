@@ -1134,7 +1134,7 @@ def show_prediction():
 
 
 def main():
-    st.title("Projet Energie2")
+    st.title("Projet Energie")
     
     st.sidebar.title("Sommaire")
     pages=[ "👋 Définition du projet", "🔍Exploration des données", " 📊 Data visualisation", " 🧩 Modélisation", "🔮 Prédiction", "📌Conclusion"]
