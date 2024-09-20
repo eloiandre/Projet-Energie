@@ -1094,7 +1094,7 @@ def show_model():
     st.write('# Etude des residus')
     # residus exprimés en pourcentage
     df_result['residus']=((df_result['consommation']-df_result['prevision'])/df_result['consommation'])*100
-    st.write(df_result.head())
+    
     
     image_path = "https://raw.githubusercontent.com/eloiandre/Projet-Energie/main/qqplot.png" 
     st.image(image_path, use_column_width=True)
