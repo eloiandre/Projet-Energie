@@ -922,9 +922,6 @@ def reel_vs_predict_interactive(df_result):
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
-
-    # Afficher le graphique dans Streamlit
-    st.plotly_chart(fig, use_container_width=True)
 def plot_prediction_vs_real(df_result):
     # Ajouter une colonne pour les noms de région à partir du dictionnaire
     df_result['region'] = df_result['code_insee_region'].map(region_dict)
