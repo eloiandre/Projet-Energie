@@ -270,12 +270,12 @@ def conso_prod_ech():
         fig_combined.add_trace(trace)
 
     for trace in line_traces_2:
-    trace.line.color = 'black'
-    fig_combined.add_trace(trace)
+        trace.line.color = 'black'
+        fig_combined.add_trace(trace)
 
     for trace in line_traces_3:
-    trace.line.color = 'pink'
-    fig_combined.add_trace(trace)
+        trace.line.color = 'pink'
+        fig_combined.add_trace(trace)
 
     fig_combined.update_layout(title='Production, consommation et échanges physiques par région de 2020-2023', barmode = 'stack', height = 800)
     fig_combined.update_layout(
