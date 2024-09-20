@@ -240,8 +240,61 @@ def show_exploration():
         """
         if st.checkbox('Afficher un extrait du fichier final',key='final'):
             st.table(df.head(10))
-        
+def show_data_viz():
+    st.write('### DataVisualization2')
+    conso_temp()
+    st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
+              une vague de froid en janvier 2021 engendre un pic de consommation.')
+    st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
+    carte_conso()
+    carte_prod(monthly_2022())
+    a, b, c = aggreg_period()
+    plot_conso_vs_temp(a,b,c)
+    plot_conso_region()
+    plot_box_energie_conso()        
 @st.cache_data
+
+def conso_prod_ech():
+    df_reg = df.groupby(['libelle_region']).agg({'thermique':'sum', 'nucleaire':'sum', 'eolien':'sum', 'solaire':'sum',
+        'hydraulique':'sum', 'bioenergies':'sum', 'consommation' : 'sum', 'ech_physiques' : 'sum'})
+    df_reg = df_reg / 1e3
+    fig = px.bar(df_reg, x=df_reg.index, y=['thermique', 'nucleaire', 'eolien', 'solaire', 'hydraulique', 'bioenergies'])
+    fig2 = px.line(df_reg, x=df_reg.index, y=['ech_physiques'], color_discrete_sequence=['black'])
+    fig3 = px.line(df_reg, x=df_reg.index, y=['consommation'], color_discrete_sequence=['pink'])
+    bar_traces = fig.data
+    line_traces_2 = fig2.data
+    line_traces_3 = fig3.data
+    fig_combined = go.Figure()
+
+    for trace in bar_traces:
+        fig_combined.add_trace(trace)
+
+    for trace in line_traces_2:
+    trace.line.color = 'black'
+    fig_combined.add_trace(trace)
+
+    for trace in line_traces_3:
+    trace.line.color = 'pink'
+    fig_combined.add_trace(trace)
+
+    fig_combined.update_layout(title='Production, consommation et échanges physiques par région de 2020-2023', barmode = 'stack', height = 800)
+    fig_combined.update_layout(
+        title={
+            'text': 'Production, consommation et échanges physiques par région de 2020-2023',
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        },
+        yaxis_title='Valeurs(GW)',
+        yaxis=dict(
+            ticksuffix="GW",
+            tickformat=','
+        ),
+        barmode='stack',
+        height=800
+    )
+    st.plotly_chart(fig_combined, use_container_width=True)
+
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
     df_2022['mois'] = pd.to_datetime(df_2022['date_heure']).dt.month
@@ -549,18 +602,7 @@ def carte_conso():
 
     # Affichage dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
-def show_data_viz():
-    st.write('### DataVisualization2')
-    conso_temp()
-    st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
-              une vague de froid en janvier 2021 engendre un pic de consommation.')
-    st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
-    carte_conso()
-    carte_prod(monthly_2022())
-    a, b, c = aggreg_period()
-    plot_conso_vs_temp(a,b,c)
-    plot_conso_region()
-    plot_box_energie_conso()
+
 def conso_temp():
     # Calcul des moyennes nationales par date/heure
     df_national = df[['date_heure', 'consommation', 'temperature']].groupby('date_heure').mean()
