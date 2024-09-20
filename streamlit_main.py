@@ -256,20 +256,30 @@ def show_data_viz():
     heatmap()
 @st.cache_data
 def heatmap():
-    df_num = df.drop(columns = ['Unnamed: 0','code_insee_region', 'libelle_region', 'date_heure', 'definitif', 'heure', 'date', 'annee', 'mois', 'jour', 'jour_semaine','saison','type_jour'])
+    df_num = df.drop(columns=['Unnamed: 0', 'code_insee_region', 'libelle_region', 'date_heure', 'definitif', 'heure', 'date', 'annee', 'mois', 'jour', 'jour_semaine', 'saison', 'type_jour'])
+    
+    # Calcul de la matrice de corrélation
     corr = df_num.corr()
+    
+    # Créer la heatmap avec Plotly
     fig = px.imshow(corr,
                     text_auto=True,
                     color_continuous_scale='RdBu_r',
                     title="Matrice de Corrélation")
+    
+    # Mettre à jour la mise en page pour ajuster la taille de la figure
     fig.update_layout(
         title={
             'text': "Matrice de Corrélation",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top'
-        }
+        },
+        width=1000,  # Largeur de la heatmap
+        height=800   # Hauteur de la heatmap
     )
+    
+    # Afficher la figure dans Streamlit
     st.plotly_chart(fig, use_container_width=True)
 def conso_prod_ech():
     df_reg = df.groupby(['libelle_region']).agg({'thermique':'sum', 'nucleaire':'sum', 'eolien':'sum', 'solaire':'sum',
