@@ -253,8 +253,24 @@ def show_data_viz():
     plot_conso_region()
     plot_box_energie_conso()      
     conso_prod_ech()  
+    heatmap()
 @st.cache_data
-
+def heatmap()
+    df_num = df.drop(columns = ['Unnamed: 0','code_insee_region', 'libelle_region', 'date_heure', 'definitif', 'heure', 'date', 'annee', 'mois', 'jour', 'jour_semaine','saison','type_jour'])
+    corr = df_num.corr()
+    fig = px.imshow(corr,
+                    text_auto=True,
+                    color_continuous_scale='RdBu_r',
+                    title="Matrice de Corrélation")
+    fig.update_layout(
+        title={
+            'text': "Matrice de Corrélation",
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        }
+    )
+    st.plotly_chart(figs, use_container_width=True)
 def conso_prod_ech():
     df_reg = df.groupby(['libelle_region']).agg({'thermique':'sum', 'nucleaire':'sum', 'eolien':'sum', 'solaire':'sum',
         'hydraulique':'sum', 'bioenergies':'sum', 'consommation' : 'sum', 'ech_physiques' : 'sum'})
@@ -295,7 +311,6 @@ def conso_prod_ech():
         height=800
     )
     st.plotly_chart(fig_combined, use_container_width=True)
-
 def monthly_2022():### adaptation de la df pour le tracé de cartes
     df_2022 = df[df['annee'] == 2022].copy()
     df_2022['mois'] = pd.to_datetime(df_2022['date_heure']).dt.month
