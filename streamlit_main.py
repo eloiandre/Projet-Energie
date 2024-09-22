@@ -1047,9 +1047,7 @@ def plot_box_energie_conso():
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
-    st.write('1')
     df_result=prediction(X_test,y_train,y_test)
-    st.write('hello')
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     st.write('## Feature Importance :')
