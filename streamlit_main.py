@@ -583,7 +583,7 @@ def plot_conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
     # Mise en page avec menu déroulant
     fig.update_layout(
         title={
-        'text': 'Consommation et Température selon différentes agrégations',
+        'text': 'Consommation et Température selon différentes périodes',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
@@ -615,7 +615,7 @@ def plot_conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
                         label='Par Jours de la semaine',
                         method='update',
                         args=[{'visible': [False, False, True, True, False, False]},  # Montrer les traces par jours de la semaine
-                            {'title': 'Consommation et Température par Jours de la semaine',
+                            {'title': 'Consommation et Température par jour de la semaine',
                             'xaxis': {'title': 'Jour de la semaine'}}]
                     ),
                     dict(
