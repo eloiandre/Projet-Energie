@@ -612,7 +612,7 @@ def plot_conso_vs_temp(df_agg_mois,df_agg_jour_semaine,df_agg_heure):
                             'xaxis': {'title': 'Mois'}}]
                     ),
                     dict(
-                        label='Par Jours de la semaine',
+                        label='Par jour de la semaine',
                         method='update',
                         args=[{'visible': [False, False, True, True, False, False]},  # Montrer les traces par jours de la semaine
                             {'title': 'Consommation et Température par jour de la semaine',
