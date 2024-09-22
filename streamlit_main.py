@@ -845,7 +845,7 @@ def intro_model(X_train,y_train):
     st.write("Le pipeline extrait l'année, la saison, le mois et le jour de la semaine de la variable 'date_heure' et décompose les heures en cos et sin.\
               Les heures et la températures sont considérées comme des variables numériques, les autres variables sont considérées comme catégorielles.\
              Le pipeline prévoit aussi une décomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
-              résultats lors de l'apprentissage et ne seront pas utilisées.   ")
+              résultats lors de l'apprentissage et ne seront pas utilisées.")
 def prediction(X_test,y_train,y_test):
     # Mise à l'échelle de y_train et y_test
     y_scaler = StandardScaler()
@@ -1049,6 +1049,7 @@ def show_model():
     intro_model(X_train,y_train)
 
     df_result=prediction(X_test,y_train,y_test)
+    st.write('hello')
     plot_comparaison(df_result['consommation'],df_result['prevision'])
 
     st.write('## Feature Importance :')
