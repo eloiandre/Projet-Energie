@@ -287,7 +287,7 @@ def show_exploration():
         if st.checkbox('Afficher un extrait du fichier final',key='final'):
             st.table(df.head(10))
 def show_data_viz():
-    st.write('### DataVisualization2')
+    st.write('### Data Visualisation')
     conso_temp()
     st.write('En été la consommation suit un cycle défini par les jours ouvrés et jours de weekend plutôt stable. En hiver la consommation est en opposition avec la température,\
               une vague de froid en janvier 2021 engendre un pic de consommation.')
