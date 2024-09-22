@@ -665,7 +665,7 @@ def carte_conso():
         height=900,  
         margin={"r":0,"t":50,"l":0,"b":0},  # Laisser de la marge en haut pour le titre
         title={
-            'text': "Consommation electrique en 2022",
+            'text': "Consommation électrique en 2022",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top'
