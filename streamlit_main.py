@@ -1044,7 +1044,6 @@ def plot_box_energie_conso():
         width=800
     )
     st.plotly_chart(fig, use_container_width=True)
-
 def show_model():
     X_train,X_test,y_train,y_test = split_dataset(df)
     intro_model(X_train,y_train)
@@ -1164,7 +1163,7 @@ regions_dict = {
     93: "Provence-Alpes-Côte d'Azur"
 }
 def show_prediction():
-    st.write("## Predictions")
+    st.write("## Prédictions")
 
     # Interface pour sélectionner la région avec un identifiant unique (key)
     selected_region_name = st.selectbox(
