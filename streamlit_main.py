@@ -343,7 +343,7 @@ def conso_prod_ech():
         fig_combined.add_trace(trace)
 
     for trace in line_traces_2:
-        trace.line.color = 'black'
+        trace.line.color = 'yellow'
         fig_combined.add_trace(trace)
 
     for trace in line_traces_3:
