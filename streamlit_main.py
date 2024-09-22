@@ -500,7 +500,7 @@ def carte_prod(df_2022):
     )
     fig2.update_layout(
     title={
-        'text': "Production electrique par source en 2022",
+        'text': "Production électrique par source en 2022",
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
