@@ -815,18 +815,18 @@ def create_result_df(y_test,y_pred,X_test):
     df_result['date_heure'] = pd.to_datetime(df_result['date_heure'])
     return(df_result)
 def intro_model(X_train,y_train):
-    st.write('### Modéles :')
+    st.write('### Modèles :')
     st.write('## Objectif : Prédire la consommation par région')
-    st.write('# Tableau comparatif de nos modéles :')
+    st.write('# Tableau comparatif de nos modèles :')
     tableaux_modeles()
     st.write("Les modéles Random Forest , XGboost et Decision Tree ont les meilleures performances. Mais le score trop élevé des deux premiers\
-             ressembe à du suraprentissage. Nous selectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicitée")
-    st.write('Notre modéles prend en compte la region, le temps et la temperature pour estimer la consommation regionale.')
+             ressemble à du suraprentissage. Nous séllectionons donc le 'Decision Tree Regressor' pour son score un peu plus faible et sa simplicité")
+    st.write('Notre modèle prend en compte la région, le temps et la température pour estimer la consommation régionale.')
     # Afficher X_train dans la première colonne
     
     col1, col2 = st.columns(2)
     with col1:
-        st.write("Exemple de nos données d'entrainement:")
+        st.write("Exemple de nos données d'entraînement:")
         st.write(X_train.head())
 
     # Afficher y_train dans la seconde colonne
