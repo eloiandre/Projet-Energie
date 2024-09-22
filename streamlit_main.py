@@ -835,16 +835,16 @@ def intro_model(X_train,y_train):
         st.write(y_train.head())
 
     st.write("## Transformation des données :" )
-    st.write("Pour que notre modéle considére les heures comme cyclique nous effectuons une transformation sinusoidale des heures:")
+    st.write("Pour que notre modèle considère les heures comme cycliques nous effectuons une transformation sinusoïdale des heures:")
     image_heures_sin=Image.open('heures.jpg')
     st.image(image_heures_sin,width=500)
 
     st.write("# Pipeline : ")
     image_pipeline=Image.open('pipeline.png')
     st.image(image_pipeline)
-    st.write("Le pipeline extrait l'année, la saison, le moi et le jour de la semaine de la variable 'date_heure' et decompose les heures en cos et sin.\
-              Les heures et la temperatures sont considérés comme des variables numeriques, les autres variables sont considérés comme categorielle.\
-             Le pipeline prévoit aussi une decomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
+    st.write("Le pipeline extrait l'année, la saison, le mois et le jour de la semaine de la variable 'date_heure' et décompose les heures en cos et sin.\
+              Les heures et la températures sont considérées comme des variables numériques, les autres variables sont considérées comme catégorielles.\
+             Le pipeline prévoit aussi une décomposition des saisons en cosinus et sinus comme pour les heures mais ces variables n'ont pas donné de bons\
               résultats lors de l'apprentissage et ne seront pas utilisées.   ")
 def prediction(X_test,y_train,y_test):
     # Mise à l'échelle de y_train et y_test
