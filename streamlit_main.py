@@ -289,9 +289,9 @@ def show_exploration():
 def show_data_viz():
     st.write('### DataVisualization2')
     conso_temp()
-    st.write('En été la consommation suit un cycle defini par les jours ouvrés et jours de weekend plutot stable. En hiver la consommation et en opposition avec la temperature,\
+    st.write('En été la consommation suit un cycle défini par les jours ouvrés et jours de weekend plutôt stable. En hiver la consommation est en opposition avec la température,\
               une vague de froid en janvier 2021 engendre un pic de consommation.')
-    st.write('Inversemet en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
+    st.write('Inversement en janvier 2022 une vague de chaleur engendre une baisse conséquente de la consommation.')
     carte_conso()
     carte_prod(monthly_2022())
     a, b, c = aggreg_period()
